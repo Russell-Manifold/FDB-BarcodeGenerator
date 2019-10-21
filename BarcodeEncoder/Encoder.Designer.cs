@@ -47,7 +47,6 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.label5 = new System.Windows.Forms.Label();
             this.lblDesc = new MetroFramework.Controls.MetroLabel();
-            this.SpinnerLoading = new MetroFramework.Controls.MetroProgressSpinner();
             this.lblMain = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxFinal)).BeginInit();
             this.SuspendLayout();
@@ -214,15 +213,6 @@
             this.lblDesc.Text = "No Item Description";
             this.lblDesc.WrapToLine = true;
             // 
-            // SpinnerLoading
-            // 
-            this.SpinnerLoading.Location = new System.Drawing.Point(270, 86);
-            this.SpinnerLoading.Maximum = 100;
-            this.SpinnerLoading.Name = "SpinnerLoading";
-            this.SpinnerLoading.Size = new System.Drawing.Size(19, 20);
-            this.SpinnerLoading.TabIndex = 25;
-            this.SpinnerLoading.UseSelectable = true;
-            // 
             // lblMain
             // 
             this.lblMain.Location = new System.Drawing.Point(2, 8);
@@ -238,7 +228,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(298, 495);
             this.Controls.Add(this.lblMain);
-            this.Controls.Add(this.SpinnerLoading);
             this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
@@ -281,7 +270,6 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Label label5;
         private MetroFramework.Controls.MetroLabel lblDesc;
-        private MetroFramework.Controls.MetroProgressSpinner SpinnerLoading;
         private MetroFramework.Controls.MetroLabel lblMain;
     }
 }

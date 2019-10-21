@@ -1,5 +1,4 @@
-﻿using PasSDK;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +12,7 @@ using System.Windows.Forms;
 using System.Windows.Xps.Packaging;
 using ZXing;
 using Microsoft.VisualBasic.CompilerServices;
+using System.Threading;
 
 namespace BarcodeEncoder
 {
@@ -23,6 +23,7 @@ namespace BarcodeEncoder
         PastelInfoClass info = new PastelInfoClass();
         string itemCode="";
         string Desc = "No Item Found";
+        bool exists = false;
         public Encoder()
         {
             InitializeComponent();
@@ -37,10 +38,10 @@ namespace BarcodeEncoder
         private async void txfEncoded_TextChanged(object sender, EventArgs e)
         {
             await Task.Delay(100);
+            exists = false;
             if (txfEncoded.TextLength==13&&itemCode=="")
             {
-                SpinnerLoading.Show();
-                itemCode = FindItemCode(txfEncoded.Text);
+                itemCode =await FindItemCode(txfEncoded.Text);
                   if (itemCode != "")
                   {
                     txfEncoded.BackColor = Color.LightGreen;
@@ -55,7 +56,6 @@ namespace BarcodeEncoder
                     txfNumOfItems.Enabled = false;
                     this.ActiveControl = txfEncoded;
                   }
-                SpinnerLoading.Hide();
             }
             else if(txfEncoded.TextLength != 13&&txfEncoded.BackColor == Color.LightGreen&& txfEncoded.TextLength != 0)
             {
@@ -103,16 +103,24 @@ namespace BarcodeEncoder
             }
 
         }
-        private void direc_Click(object sender, EventArgs e)
+        private async void direc_Click(object sender, EventArgs e)
         {
+            string output;
             if (i!=null) {
                 if (txfName.Text != null && txfName.Text != "")
                 {
                     PastelInfoClass SerNum = new PastelInfoClass();
-                    string output = linkBarcodes();
+                    if (exists)
+                    {
+                        output = "0";
+                    }
+                    else
+                    {
+                        output = await linkBarcodes();
+                    }                   
                     if (output == "0")
                     {
-                        MessageBox.Show("The items were linked, Please select a place to save the barcode to", "Complete!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("The items are linked, Please select a place to save the barcode to", "Complete!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Bitmap bmp = new Bitmap(PicBoxFinal.ClientSize.Width, PicBoxFinal.ClientSize.Height);
                         PicBoxFinal.DrawToBitmap(bmp, PicBoxFinal.ClientRectangle);
                         FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -207,64 +215,16 @@ namespace BarcodeEncoder
             dash.ShowDialog();
             this.Close();
         }
-        private void BtnCreate_Click(object sender, EventArgs e)
+        private async void BtnCreate_Click(object sender, EventArgs e)
         {
+            string newCode =await Check();           
             try
             {
-                string auth = @"DK198110007|5635796|C:\Users\Russell - Manifold\Desktop\FDB2020";
-                string Qstr = "ACCBOML|2|" + itemCode+"|"+txfNumOfItems.Text.Trim();
-                RestSharp.RestClient client = new RestSharp.RestClient();
-                string path = "CheckBOMExists";
-                client.BaseUrl = new Uri("http://localhost:7721//api/" + path);
-                {
-                    string str = $"GET?authDetails={auth}&qrystr={Qstr}";
-                    var Request = new RestSharp.RestRequest();
-                    Request.Resource = str;
-                    Request.Method = RestSharp.Method.GET;
-                    var res = client.Execute(Request);
-                    if (res.IsSuccessful)
-                    {
-                        string returnVal = res.Content.Substring(1, res.Content.Length - 2);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Could not connect to the API","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            try
-            {
-                PicBoxFinal.Invalidate();
-                string newCode = "";
-                string items = "";
-                if (Convert.ToInt32(txfNumOfItems.Text) < 10)
-                {
-                    items = "0" + txfNumOfItems.Text;
-                }
-                else if (Convert.ToInt32(txfNumOfItems.Text) > 100)
-                {
-                    items = "99";
-                }
-                else
-                {
-                    items = txfNumOfItems.Text;
-                }
-                newCode = "F" + items + txfEncoded.Text.Substring(txfEncoded.TextLength - 6, 5);
+                PicBoxFinal.Invalidate();               
                 try
                 {
                     BarcodeWriter writer;
-                    if (newCode.Length == 11)
-                    {
-                        writer = new BarcodeWriter() { Format = BarcodeFormat.UPC_E };
-                    }
-                    else if (newCode.Length == 13)
-                    {
-                        writer = new BarcodeWriter() { Format = BarcodeFormat.EAN_13 };
-                    }
-                    else
-                    {
-                        writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
-                    }
+                    writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
                     i = writer.Write(newCode);
                     PicBoxFinal.Width = (i.Width + 20);
                     PicBoxFinal.Height = (i.Height + 20);
@@ -299,7 +259,7 @@ namespace BarcodeEncoder
         {
             ClearPage();
         }
-        private string linkCodesInPastel(string itemCode, string barcode)
+        private async Task<string> linkCodesInPastel(string itemCode, string barcode)
         {
             try
             {
@@ -314,7 +274,8 @@ namespace BarcodeEncoder
                     var Request = new RestSharp.RestRequest();
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.POST;
-                    var res = client.Execute(Request);
+                    var cancellationTokenSource = new CancellationTokenSource();
+                    var res =await client.ExecuteTaskAsync(Request, cancellationTokenSource.Token);
                     if (res.StatusCode.ToString().Contains("OK"))
                     {                                       
                         return res.Content.Substring(1, res.Content.Length - 2);
@@ -331,7 +292,7 @@ namespace BarcodeEncoder
             }
             return "";
         }
-        private  string FindItemCode(string barcode)
+        private async Task<string> FindItemCode(string barcode)
         {
             try
             {
@@ -345,7 +306,8 @@ namespace BarcodeEncoder
                     var Request = new RestSharp.RestRequest();
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.GET;
-                    var res = client.Execute(Request);
+                    var cancellationTokenSource = new CancellationTokenSource();
+                    var res =await client.ExecuteTaskAsync(Request,cancellationTokenSource.Token);
                     if (res.IsSuccessful)
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
@@ -360,11 +322,11 @@ namespace BarcodeEncoder
             }
             return "";
         }
-        public string linkBarcodes()
+        public async Task<string> linkBarcodes()
         {           
             if (itemCode!="")
             {
-              return linkCodesInPastel(itemCode, txfFinalCode.Text);
+              return await linkCodesInPastel(itemCode, txfFinalCode.Text);
             }
             else
             {
@@ -386,6 +348,61 @@ namespace BarcodeEncoder
             i = null;
             PicBoxFinal.Invalidate();
             this.ActiveControl = txfEncoded;
+        }
+        public async Task<string> Check()
+        {
+            string newCode = "";
+            string items = "";
+            try
+            {
+                string auth = @"DK198110007|5635796|C:\Users\Russell - Manifold\Desktop\FDB2020";
+                string Qstr = "ACCBOML|2|" + itemCode + "|" + txfNumOfItems.Text.Trim();
+                RestSharp.RestClient client = new RestSharp.RestClient();
+                string path = "CheckBOMExists";
+                client.BaseUrl = new Uri("http://localhost:7721//api/" + path);
+                {
+                    string str = $"GET?authDetails={auth}&qrystr={Qstr}";
+                    var Request = new RestSharp.RestRequest();
+                    Request.Resource = str;
+                    Request.Method = RestSharp.Method.GET;
+                    var cancellationTokenSource = new CancellationTokenSource();
+                    var res=await client.ExecuteTaskAsync(Request,cancellationTokenSource.Token);
+                    if (res.IsSuccessful)
+                    {
+                        string returnVal = res.Content.Substring(1, res.Content.Length - 2);
+                        if (returnVal.Split('|')[0] == "0")
+                        {
+                            newCode = returnVal.Split('|')[1];
+                            exists = true;
+                            MessageBox.Show("There is already a BOM with this same quatity or this same item", "Notification!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return newCode;
+                        }
+                        else
+                        {
+                            if (Convert.ToInt32(txfNumOfItems.Text) < 10)
+                            {
+                                items = "0" + txfNumOfItems.Text;
+                            }
+                            else if (Convert.ToInt32(txfNumOfItems.Text) > 100)
+                            {
+                                items = "99";
+                            }
+                            else
+                            {
+                                items = txfNumOfItems.Text;
+                            }
+                            newCode = "F" + items + txfEncoded.Text.Substring(txfEncoded.TextLength - 6, 5);
+                            exists = false;
+                            return newCode;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Could not connect to the API", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return "";
         }
     }
 }

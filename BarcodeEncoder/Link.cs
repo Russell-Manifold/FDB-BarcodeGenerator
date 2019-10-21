@@ -8,14 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.CompilerServices;
-using PasSDK;
 
 namespace BarcodeEncoder
 {
     public partial class Link : MetroFramework.Forms.MetroForm
     {
         private string MainCode;
-        private PastelPartnerSDK SDK = new PastelPartnerSDK();
         PastelInfoClass info = new PastelInfoClass();
         string itemCode="";
         string Desc = "";
@@ -23,11 +21,6 @@ namespace BarcodeEncoder
         {
             InitializeComponent();
             this.ActiveControl = txfItemCode;
-        }
-        private object SetYourLicense(string Serno, string authcode)
-        {
-            SDK.SetLicense(ref Serno, ref authcode);
-            return default(object);
         }
         private void BtnBack_Click(object sender, EventArgs e)
         {
