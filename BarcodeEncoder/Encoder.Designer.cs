@@ -39,7 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.btnPrint = new MetroFramework.Controls.MetroButton();
-            this.btnBack = new MetroFramework.Controls.MetroButton();
             this.btnCreate = new MetroFramework.Controls.MetroButton();
             this.btnClear = new MetroFramework.Controls.MetroButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -136,16 +135,6 @@
             this.btnPrint.UseSelectable = true;
             this.btnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(20, 57);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 17;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseSelectable = true;
-            this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
-            // 
             // btnCreate
             // 
             this.btnCreate.Location = new System.Drawing.Point(23, 197);
@@ -234,7 +223,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txfName);
@@ -262,7 +250,6 @@
         private System.Windows.Forms.Label label2;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private MetroFramework.Controls.MetroButton btnPrint;
-        private MetroFramework.Controls.MetroButton btnBack;
         private MetroFramework.Controls.MetroButton btnCreate;
         private MetroFramework.Controls.MetroButton btnClear;
         private System.Windows.Forms.Label label4;

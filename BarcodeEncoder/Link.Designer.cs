@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBack = new MetroFramework.Controls.MetroButton();
             this.lblMainCode = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.txfQty = new MetroFramework.Controls.MetroTextBox();
@@ -41,16 +40,6 @@
             this.txfMainCode = new System.Windows.Forms.TextBox();
             this.btnClear = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
-            // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(7, 59);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 0;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseSelectable = true;
-            this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // lblMainCode
             // 
@@ -188,7 +177,6 @@
             this.Controls.Add(this.txfQty);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.lblMainCode);
-            this.Controls.Add(this.btnBack);
             this.Name = "Link";
             this.Text = "Link Codes";
             this.ResumeLayout(false);
@@ -197,8 +185,6 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroButton btnBack;
         private MetroFramework.Controls.MetroLabel lblMainCode;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTextBox txfQty;

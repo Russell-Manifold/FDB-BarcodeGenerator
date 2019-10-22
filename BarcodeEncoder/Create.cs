@@ -56,13 +56,6 @@ namespace BarcodeEncoder
             }
             
         }
-        private void BtnBack_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            DashBoard dash = new DashBoard();
-            dash.ShowDialog();
-            this.Close();
-        }
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             if (i != null)

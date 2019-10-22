@@ -12,32 +12,86 @@ namespace BarcodeEncoder
 {
     public partial class DashBoard : MetroFramework.Forms.MetroForm
     {
+        Link LinkForm = null;
+        Create CreateForm = null;
+        Encoder EncodeForm = null;
         public DashBoard()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         private void BtnScan_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Link NewForm = new Link();
-            NewForm.ShowDialog();
-            this.Close();
+            try
+            {
+                LinkForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                CreateForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                EncodeForm.Close();
+            }
+            catch (Exception)
+            { }
+            LinkForm = new Link();
+            LinkForm.Show();           
         }
+
         private void BtnCreateBarcode_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Create NewForm = new Create();
-            NewForm.ShowDialog();
-            this.Close();
+
+            try
+            {
+                LinkForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                CreateForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                EncodeForm.Close();
+            }
+            catch (Exception)
+            { }
+            CreateForm = new Create();
+            CreateForm.Show();
         }
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Encoder NewForm = new Encoder();
-            NewForm.ShowDialog();
-            this.Close();
+
+            try
+            {
+                LinkForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                CreateForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                EncodeForm.Close();
+            }
+            catch (Exception)
+            { }
+            EncodeForm = new Encoder();
+            EncodeForm.Show();
         }
        
     }

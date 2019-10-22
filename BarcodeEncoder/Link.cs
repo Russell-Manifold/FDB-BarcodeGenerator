@@ -22,14 +22,7 @@ namespace BarcodeEncoder
         public Link()
         {
             InitializeComponent();
-            this.ActiveControl = txfItemCode;
-        }
-        private void BtnBack_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            DashBoard dash = new DashBoard();
-            dash.ShowDialog();
-            this.Close();
+            this.ActiveControl = txfItemCode;         
         }
         private async void BtnAdd_Click(object sender, EventArgs e)
         {

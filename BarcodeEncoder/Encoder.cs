@@ -209,13 +209,6 @@ namespace BarcodeEncoder
                 MessageBox.Show("There is no barcode to be printed","Error!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
-        private void BtnBack_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            DashBoard dash = new DashBoard();
-            dash.ShowDialog();
-            this.Close();
-        }
         private async void BtnCreate_Click(object sender, EventArgs e)
         {
             string newCode =await Check();           
@@ -403,5 +396,6 @@ namespace BarcodeEncoder
             }
             return "";
         }
+
     }
 }

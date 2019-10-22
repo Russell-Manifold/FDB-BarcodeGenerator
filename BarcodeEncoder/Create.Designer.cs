@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Create));
-            this.btnBack = new MetroFramework.Controls.MetroButton();
             this.lblMainCode = new MetroFramework.Controls.MetroLabel();
             this.txfMainCode = new MetroFramework.Controls.MetroTextBox();
             this.btnPrint = new MetroFramework.Controls.MetroButton();
@@ -43,16 +42,6 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(12, 63);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 1;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseSelectable = true;
-            this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // lblMainCode
             // 
@@ -189,7 +178,6 @@
             this.Controls.Add(this.btnSaveLocation);
             this.Controls.Add(this.lblMainCode);
             this.Controls.Add(this.txfMainCode);
-            this.Controls.Add(this.btnBack);
             this.Name = "Create";
             this.Text = "Create Barcodes";
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).EndInit();
@@ -199,8 +187,6 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroButton btnBack;
         private MetroFramework.Controls.MetroLabel lblMainCode;
         private MetroFramework.Controls.MetroTextBox txfMainCode;
         private MetroFramework.Controls.MetroButton btnPrint;
