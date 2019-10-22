@@ -268,7 +268,7 @@ namespace BarcodeEncoder
                 string line = "" + barcode + "|" + itemCode + "|" + txfNumOfItems.Text.Trim() + "|001#";
                 RestSharp.RestClient client = new RestSharp.RestClient();
                 string path = "POSTBOM";
-                client.BaseUrl = new Uri("http://localhost:7721//api/" + path);
+                client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
                 {
                     string str = $"POST?authDetails={auth}&BOMHead={BOMHead}&line={line}";
                     var Request = new RestSharp.RestRequest();
@@ -299,7 +299,7 @@ namespace BarcodeEncoder
                 string Qstr = "ACCPRD|4|" + barcode;
                 RestSharp.RestClient client = new RestSharp.RestClient();
                 string path = "FindDescAndCode";
-                client.BaseUrl = new Uri("http://localhost:7721//api/" + path);
+                client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
                 {
                     string str = $"GET?authDetails={auth}&qrystr={Qstr}";
                     var Request = new RestSharp.RestRequest();
@@ -358,7 +358,7 @@ namespace BarcodeEncoder
                 string Qstr = "ACCBOML|2|" + itemCode + "|" + txfNumOfItems.Text.Trim();
                 RestSharp.RestClient client = new RestSharp.RestClient();
                 string path = "CheckBOMExists";
-                client.BaseUrl = new Uri("http://localhost:7721//api/" + path);
+                client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
                 {
                     string str = $"GET?authDetails={auth}&qrystr={Qstr}";
                     var Request = new RestSharp.RestRequest();
