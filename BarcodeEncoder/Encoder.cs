@@ -24,6 +24,7 @@ namespace BarcodeEncoder
         string itemCode="";
         string Desc = "No Item Found";
         bool exists = false;
+        string auth = BarcodeEncoder.Properties.Settings.Default.SerNum + "|" + BarcodeEncoder.Properties.Settings.Default.Auth + "|" + BarcodeEncoder.Properties.Settings.Default.ConnectionString;
         public Encoder()
         {
             InitializeComponent();
@@ -263,7 +264,6 @@ namespace BarcodeEncoder
         {
             try
             {
-                string auth = @"DK198110007|5635796|C:\Users\Russell - Manifold\Desktop\FDB2020";
                 string BOMHead = "" + barcode + "|BOM HEADER|12.1|12.2|12.3|12.4|12.5|12.6|12.7|12.8|12.9|12|10|20|30|100|200|300|" + itemCode + "|Y|Y|N||N|N|001";
                 string line = "" + barcode + "|" + itemCode + "|" + txfNumOfItems.Text.Trim() + "|001#";
                 RestSharp.RestClient client = new RestSharp.RestClient();
@@ -296,7 +296,6 @@ namespace BarcodeEncoder
         {
             try
             {
-                string auth = @"DK198110007|5635796|C:\Users\Russell - Manifold\Desktop\FDB2020";
                 string Qstr = "ACCPRD|4|" + barcode;
                 RestSharp.RestClient client = new RestSharp.RestClient();
                 string path = "FindDescAndCode";
@@ -356,7 +355,6 @@ namespace BarcodeEncoder
             string items = "";
             try
             {
-                string auth = @"DK198110007|5635796|C:\Users\Russell - Manifold\Desktop\FDB2020";
                 string Qstr = "ACCBOML|2|" + itemCode + "|" + txfNumOfItems.Text.Trim();
                 RestSharp.RestClient client = new RestSharp.RestClient();
                 string path = "CheckBOMExists";

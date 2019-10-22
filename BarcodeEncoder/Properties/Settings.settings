@@ -1,5 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BarcodeEncoder.Properties" GeneratedClassName="Settings">
   <Profiles />
-  <Settings />
+  <Settings>
+    <Setting Name="ConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\MANIFOLDSERVER\Shared Files\ManifoldFDBData\FDB2020</Value>
+    </Setting>
+    <Setting Name="API" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:7721//api/</Value>
+    </Setting>
+    <Setting Name="SerNum" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DK198110007</Value>
+    </Setting>
+    <Setting Name="Auth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5635796</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

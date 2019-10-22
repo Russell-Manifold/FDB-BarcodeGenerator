@@ -22,5 +22,53 @@ namespace BarcodeEncoder.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\MANIFOLDSERVER\\Shared Files\\ManifoldFDBData\\FDB2020")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+            set {
+                this["ConnectionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:7721//api/")]
+        public string API {
+            get {
+                return ((string)(this["API"]));
+            }
+            set {
+                this["API"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DK198110007")]
+        public string SerNum {
+            get {
+                return ((string)(this["SerNum"]));
+            }
+            set {
+                this["SerNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5635796")]
+        public string Auth {
+            get {
+                return ((string)(this["Auth"]));
+            }
+            set {
+                this["Auth"] = value;
+            }
+        }
     }
 }
