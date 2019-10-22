@@ -348,6 +348,7 @@ namespace BarcodeEncoder
             i = null;
             PicBoxFinal.Invalidate();
             this.ActiveControl = txfEncoded;
+            exists = false;
         }
         public async Task<string> Check()
         {
@@ -374,7 +375,7 @@ namespace BarcodeEncoder
                         {
                             newCode = returnVal.Split('|')[1];
                             exists = true;
-                            MessageBox.Show("There is already a BOM with this same quatity or this same item", "Notification!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("There is already a BOM with this same quatity and the same item code", "Notification!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return newCode;
                         }
                         else

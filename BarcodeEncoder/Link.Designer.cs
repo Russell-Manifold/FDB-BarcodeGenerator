@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.btnBack = new MetroFramework.Controls.MetroButton();
-            this.txfMainCode = new MetroFramework.Controls.MetroTextBox();
             this.lblMainCode = new MetroFramework.Controls.MetroLabel();
-            this.txfItemCode = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.txfQty = new MetroFramework.Controls.MetroTextBox();
             this.btnAdd = new MetroFramework.Controls.MetroButton();
@@ -39,6 +37,9 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.lblDesc = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.txfItemCode = new System.Windows.Forms.TextBox();
+            this.txfMainCode = new System.Windows.Forms.TextBox();
+            this.btnClear = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // btnBack
@@ -51,36 +52,6 @@
             this.btnBack.UseSelectable = true;
             this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
-            // txfMainCode
-            // 
-            // 
-            // 
-            // 
-            this.txfMainCode.CustomButton.Image = null;
-            this.txfMainCode.CustomButton.Location = new System.Drawing.Point(104, 1);
-            this.txfMainCode.CustomButton.Name = "";
-            this.txfMainCode.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txfMainCode.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txfMainCode.CustomButton.TabIndex = 1;
-            this.txfMainCode.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txfMainCode.CustomButton.UseSelectable = true;
-            this.txfMainCode.CustomButton.Visible = false;
-            this.txfMainCode.Lines = new string[0];
-            this.txfMainCode.Location = new System.Drawing.Point(106, 215);
-            this.txfMainCode.MaxLength = 14;
-            this.txfMainCode.Name = "txfMainCode";
-            this.txfMainCode.PasswordChar = '\0';
-            this.txfMainCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txfMainCode.SelectedText = "";
-            this.txfMainCode.SelectionLength = 0;
-            this.txfMainCode.SelectionStart = 0;
-            this.txfMainCode.ShortcutsEnabled = true;
-            this.txfMainCode.Size = new System.Drawing.Size(126, 23);
-            this.txfMainCode.TabIndex = 1;
-            this.txfMainCode.UseSelectable = true;
-            this.txfMainCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txfMainCode.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // lblMainCode
             // 
             this.lblMainCode.AutoSize = true;
@@ -89,37 +60,6 @@
             this.lblMainCode.Size = new System.Drawing.Size(92, 19);
             this.lblMainCode.TabIndex = 2;
             this.lblMainCode.Text = "Packing Code:";
-            // 
-            // txfItemCode
-            // 
-            // 
-            // 
-            // 
-            this.txfItemCode.CustomButton.Image = null;
-            this.txfItemCode.CustomButton.Location = new System.Drawing.Point(103, 1);
-            this.txfItemCode.CustomButton.Name = "";
-            this.txfItemCode.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txfItemCode.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txfItemCode.CustomButton.TabIndex = 1;
-            this.txfItemCode.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txfItemCode.CustomButton.UseSelectable = true;
-            this.txfItemCode.CustomButton.Visible = false;
-            this.txfItemCode.Lines = new string[0];
-            this.txfItemCode.Location = new System.Drawing.Point(104, 81);
-            this.txfItemCode.MaxLength = 13;
-            this.txfItemCode.Name = "txfItemCode";
-            this.txfItemCode.PasswordChar = '\0';
-            this.txfItemCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txfItemCode.SelectedText = "";
-            this.txfItemCode.SelectionLength = 0;
-            this.txfItemCode.SelectionStart = 0;
-            this.txfItemCode.ShortcutsEnabled = true;
-            this.txfItemCode.Size = new System.Drawing.Size(126, 23);
-            this.txfItemCode.TabIndex = 3;
-            this.txfItemCode.UseSelectable = true;
-            this.txfItemCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txfItemCode.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txfItemCode.TextChanged += new System.EventHandler(this.txfItemCode_TextChanged);
             // 
             // metroLabel1
             // 
@@ -207,11 +147,39 @@
             this.metroLabel4.TabIndex = 11;
             this.metroLabel4.Text = "Description:";
             // 
+            // txfItemCode
+            // 
+            this.txfItemCode.Location = new System.Drawing.Point(104, 83);
+            this.txfItemCode.Name = "txfItemCode";
+            this.txfItemCode.Size = new System.Drawing.Size(128, 20);
+            this.txfItemCode.TabIndex = 12;
+            this.txfItemCode.TextChanged += new System.EventHandler(this.txfItemCode_TextChanged);
+            // 
+            // txfMainCode
+            // 
+            this.txfMainCode.Location = new System.Drawing.Point(104, 217);
+            this.txfMainCode.Name = "txfMainCode";
+            this.txfMainCode.Size = new System.Drawing.Size(126, 20);
+            this.txfMainCode.TabIndex = 13;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(157, 59);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 14;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseSelectable = true;
+            this.btnClear.Click += new System.EventHandler(this.clear);
+            // 
             // Link
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(240, 320);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.txfMainCode);
+            this.Controls.Add(this.txfItemCode);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.metroLabel2);
@@ -219,9 +187,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txfQty);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.txfItemCode);
             this.Controls.Add(this.lblMainCode);
-            this.Controls.Add(this.txfMainCode);
             this.Controls.Add(this.btnBack);
             this.Name = "Link";
             this.Text = "Link Codes";
@@ -233,9 +199,7 @@
         #endregion
 
         private MetroFramework.Controls.MetroButton btnBack;
-        private MetroFramework.Controls.MetroTextBox txfMainCode;
         private MetroFramework.Controls.MetroLabel lblMainCode;
-        private MetroFramework.Controls.MetroTextBox txfItemCode;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTextBox txfQty;
         private MetroFramework.Controls.MetroButton btnAdd;
@@ -243,5 +207,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel lblDesc;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private System.Windows.Forms.TextBox txfItemCode;
+        private System.Windows.Forms.TextBox txfMainCode;
+        private MetroFramework.Controls.MetroButton btnClear;
     }
 }

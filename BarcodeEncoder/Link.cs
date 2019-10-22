@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.CompilerServices;
@@ -29,7 +30,7 @@ namespace BarcodeEncoder
             dash.ShowDialog();
             this.Close();
         }
-        private void BtnAdd_Click(object sender, EventArgs e)
+        private async void BtnAdd_Click(object sender, EventArgs e)
         {
             if (txfQty.Text == "")
             {
@@ -42,7 +43,23 @@ namespace BarcodeEncoder
                 {
                     if (itemCode != "")
                     {
-                        linkCodes(itemCode, MainCode);
+                        if (!await Check())
+                        {
+                            if (await linkCodes(itemCode, MainCode))
+                            {
+                                MessageBox.Show("The codes have been linked", "Complete!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                itemCode = "";
+                                Desc = "";
+                                txfMainCode.Text = "";
+                                txfQty.Text = "";
+                                lblDesc.Text = "";
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("There is already a BOM with this same quatity and the same item code", "Notification!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
                     }
                     else
                     {
@@ -56,19 +73,21 @@ namespace BarcodeEncoder
             }
            
         }
-        private void txfItemCode_TextChanged(object sender, EventArgs e)
+        private async void txfItemCode_TextChanged(object sender, EventArgs e)
         {
                 if (txfItemCode.Text.Length == 13 && itemCode == "")
                 {
-                    itemCode = FindItemCode(txfItemCode.Text);
+                    itemCode =await FindItemCode(txfItemCode.Text);
                     if (itemCode != "")
                     {
                         lblDesc.Text = Desc;
                         this.ActiveControl = txfQty;
+                        txfItemCode.BackColor = Color.LightGreen;
                     }
                     else
                     {
                         MessageBox.Show("There was a error in finding this item", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txfItemCode.BackColor = Color.Orange;
                     }
                 }
                 else if (txfItemCode.Text.Length != 13)
@@ -78,9 +97,14 @@ namespace BarcodeEncoder
                     txfMainCode.Text = "";
                     txfQty.Text = "";
                     lblDesc.Text = "";
+                    txfItemCode.BackColor = Color.Orange;
+                }
+                else if(txfItemCode.Text.Length == 0)
+                {
+                    txfItemCode.BackColor = Color.White;
                 }
         }
-        private void linkCodes(string itemCode,string barcode)
+        private async Task<bool> linkCodes(string itemCode,string barcode)
         {
             try
             {               
@@ -95,15 +119,11 @@ namespace BarcodeEncoder
                     var Request = new RestSharp.RestRequest();
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.POST;
-                    var res = client.Execute(Request);
+                    var cancellationTokenSource = new CancellationTokenSource();
+                    var res = await client.ExecuteTaskAsync(Request,cancellationTokenSource.Token);
                     if (res.StatusCode.ToString().Contains("OK"))
                     {
-                        MessageBox.Show("The codes have been linked", "Complete!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        itemCode = "";
-                        Desc = "";
-                        txfMainCode.Text = "";
-                        txfQty.Text = "";
-                        lblDesc.Text = "";
+                        return true;
                     }
                     else
                     {
@@ -115,8 +135,9 @@ namespace BarcodeEncoder
             {
                 MessageBox.Show("Could not link items","Error!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+            return false;
         }
-        private string FindItemCode(string barcode)
+        private async Task<string> FindItemCode(string barcode)
         {
             try
             {
@@ -130,7 +151,8 @@ namespace BarcodeEncoder
                     var Request = new RestSharp.RestRequest();
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.GET;
-                    var res = client.Execute(Request);
+                    var cancellationTokenSource = new CancellationTokenSource();
+                    var res =await client.ExecuteTaskAsync(Request,cancellationTokenSource.Token);
                     if (res.IsSuccessful)
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
@@ -144,6 +166,45 @@ namespace BarcodeEncoder
                 MessageBox.Show("Could not connect to the API", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return "";
+        }
+        public async Task<bool> Check()
+        {
+            try
+            {
+                string auth = @"DK198110007|5635796|C:\Users\Russell - Manifold\Desktop\FDB2020";
+                string Qstr = "ACCBOML|2|" + itemCode + "|" + txfQty.Text.Trim();
+                RestSharp.RestClient client = new RestSharp.RestClient();
+                string path = "CheckBOMExists";
+                client.BaseUrl = new Uri("http://localhost:7721//api/" + path);
+                {
+                    string str = $"GET?authDetails={auth}&qrystr={Qstr}";
+                    var Request = new RestSharp.RestRequest();
+                    Request.Resource = str;
+                    Request.Method = RestSharp.Method.GET;
+                    var cancellationTokenSource = new CancellationTokenSource();
+                    var res = await client.ExecuteTaskAsync(Request, cancellationTokenSource.Token);
+                    if (res.IsSuccessful)
+                    {
+                        string returnVal = res.Content.Substring(1, res.Content.Length - 2);
+                        if (returnVal.Split('|')[0] == "0")
+                        {                  
+                            return true;
+                        }                       
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Could not connect to the API", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return false;
+        }
+        public void clear(object sender, EventArgs e)
+        {
+            txfQty.Text = "";
+            txfMainCode.Text = "";
+            txfItemCode.Text = "";
+            txfItemCode.BackColor = Color.White;
         }
     }
 }
