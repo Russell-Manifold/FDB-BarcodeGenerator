@@ -15,6 +15,7 @@ namespace BarcodeEncoder
         Link LinkForm = null;
         Create CreateForm = null;
         Encoder EncodeForm = null;
+        AdminPanel admin = null;
         public DashBoard()
         {
             InitializeComponent();           
@@ -40,16 +41,27 @@ namespace BarcodeEncoder
             }
             catch (Exception)
             { }
+            try
+            {
+                admin.Close();
+            }
+            catch (Exception)
+            { }
             LinkForm = new Link();
             LinkForm.Show();           
         }
 
         private void BtnCreateBarcode_Click(object sender, EventArgs e)
         {
-
             try
             {
                 LinkForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                admin.Close();
             }
             catch (Exception)
             { }
@@ -80,6 +92,12 @@ namespace BarcodeEncoder
             { }
             try
             {
+                admin.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
                 CreateForm.Close();
             }
             catch (Exception)
@@ -93,6 +111,35 @@ namespace BarcodeEncoder
             EncodeForm = new Encoder();
             EncodeForm.Show();
         }
-       
+
+        private void MetroLink1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                admin.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                CreateForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                EncodeForm.Close();
+            }
+            catch (Exception)
+            { }
+            admin = new AdminPanel();
+            admin.Show();
+        }
     }
 }

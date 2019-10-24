@@ -38,10 +38,11 @@ namespace BarcodeEncoder
         }
         private async void txfEncoded_TextChanged(object sender, EventArgs e)
         {
-            await Task.Delay(100);
             exists = false;
             if (txfEncoded.TextLength==13&&itemCode=="")
             {
+                lblDesc.Hide();
+                metroProgressSpinner1.Show();
                 itemCode =await FindItemCode(txfEncoded.Text);
                   if (itemCode != "")
                   {
@@ -57,6 +58,8 @@ namespace BarcodeEncoder
                     txfNumOfItems.Enabled = false;
                     this.ActiveControl = txfEncoded;
                   }
+                lblDesc.Show();
+                metroProgressSpinner1.Hide();
             }
             else if(txfEncoded.TextLength != 13&&txfEncoded.BackColor == Color.LightGreen&& txfEncoded.TextLength != 0)
             {
@@ -288,6 +291,7 @@ namespace BarcodeEncoder
         }
         private async Task<string> FindItemCode(string barcode)
         {
+            await Task.Delay(1000);
             try
             {
                 string Qstr = "ACCPRD|4|" + barcode;

@@ -32,6 +32,7 @@
             this.btnScan = new MetroFramework.Controls.MetroButton();
             this.btnCreate = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
             // 
             // btnScan
@@ -64,17 +65,29 @@
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.BtnCreateBarcode_Click);
             // 
+            // metroLink1
+            // 
+            this.metroLink1.Location = new System.Drawing.Point(129, 296);
+            this.metroLink1.Name = "metroLink1";
+            this.metroLink1.Size = new System.Drawing.Size(94, 23);
+            this.metroLink1.TabIndex = 8;
+            this.metroLink1.Text = "Admin page-->";
+            this.metroLink1.UseSelectable = true;
+            this.metroLink1.Click += new System.EventHandler(this.MetroLink1_Click);
+            // 
             // DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(240, 320);
+            this.ClientSize = new System.Drawing.Size(252, 334);
+            this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnScan);
             this.Name = "DashBoard";
+            this.Text = "Dashboard";
             this.ResumeLayout(false);
 
         }
@@ -84,5 +97,6 @@
         private MetroFramework.Controls.MetroButton btnScan;
         private MetroFramework.Controls.MetroButton btnCreate;
         private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroLink metroLink1;
     }
 }

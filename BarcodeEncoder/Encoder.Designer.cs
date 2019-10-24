@@ -47,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblDesc = new MetroFramework.Controls.MetroLabel();
             this.lblMain = new MetroFramework.Controls.MetroLabel();
+            this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxFinal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             this.txfEncoded.Name = "txfEncoded";
             this.txfEncoded.Size = new System.Drawing.Size(130, 20);
             this.txfEncoded.TabIndex = 2;
-            this.txfEncoded.TextChanged += new System.EventHandler(this.txfEncoded_TextChanged);
+            this.txfEncoded.Leave += new System.EventHandler(this.txfEncoded_TextChanged);
             // 
             // PicBoxFinal
             // 
@@ -211,13 +212,23 @@
             this.lblMain.Text = "Create and Link Packing Barcodes";
             this.lblMain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // metroProgressSpinner1
+            // 
+            this.metroProgressSpinner1.Location = new System.Drawing.Point(176, 125);
+            this.metroProgressSpinner1.Maximum = 100;
+            this.metroProgressSpinner1.Name = "metroProgressSpinner1";
+            this.metroProgressSpinner1.Size = new System.Drawing.Size(28, 25);
+            this.metroProgressSpinner1.TabIndex = 27;
+            this.metroProgressSpinner1.UseSelectable = true;
+            this.metroProgressSpinner1.Visible = false;
+            // 
             // Encoder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(298, 495);
+            this.Controls.Add(this.metroProgressSpinner1);
             this.Controls.Add(this.lblMain);
-            this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
@@ -232,6 +243,7 @@
             this.Controls.Add(this.txfFinalCode);
             this.Controls.Add(this.PicBoxFinal);
             this.Controls.Add(this.txfEncoded);
+            this.Controls.Add(this.lblDesc);
             this.Name = "Encoder";
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxFinal)).EndInit();
             this.ResumeLayout(false);
@@ -258,6 +270,7 @@
         private System.Windows.Forms.Label label5;
         private MetroFramework.Controls.MetroLabel lblDesc;
         private MetroFramework.Controls.MetroLabel lblMain;
+        private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner1;
     }
 }
 

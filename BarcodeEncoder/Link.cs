@@ -69,7 +69,6 @@ namespace BarcodeEncoder
         }
         private async void txfItemCode_TextChanged(object sender, EventArgs e)
         {          
-            await Task.Delay(10);
             if (txfItemCode.Text.Length == 13 && itemCode == "")
             {
                 lblDesc.Hide();
