@@ -39,6 +39,7 @@
             this.txfItemCode = new System.Windows.Forms.TextBox();
             this.txfMainCode = new System.Windows.Forms.TextBox();
             this.btnClear = new MetroFramework.Controls.MetroButton();
+            this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
             this.SuspendLayout();
             // 
             // lblMainCode
@@ -139,14 +140,16 @@
             // txfItemCode
             // 
             this.txfItemCode.Location = new System.Drawing.Point(104, 83);
+            this.txfItemCode.MaxLength = 13;
             this.txfItemCode.Name = "txfItemCode";
             this.txfItemCode.Size = new System.Drawing.Size(128, 20);
             this.txfItemCode.TabIndex = 12;
-            this.txfItemCode.TextChanged += new System.EventHandler(this.txfItemCode_TextChanged);
+            this.txfItemCode.Leave += new System.EventHandler(this.txfItemCode_TextChanged);
             // 
             // txfMainCode
             // 
             this.txfMainCode.Location = new System.Drawing.Point(104, 217);
+            this.txfMainCode.MaxLength = 14;
             this.txfMainCode.Name = "txfMainCode";
             this.txfMainCode.Size = new System.Drawing.Size(126, 20);
             this.txfMainCode.TabIndex = 13;
@@ -161,24 +164,35 @@
             this.btnClear.UseSelectable = true;
             this.btnClear.Click += new System.EventHandler(this.clear);
             // 
+            // metroProgressSpinner1
+            // 
+            this.metroProgressSpinner1.Location = new System.Drawing.Point(157, 125);
+            this.metroProgressSpinner1.Maximum = 100;
+            this.metroProgressSpinner1.Name = "metroProgressSpinner1";
+            this.metroProgressSpinner1.Size = new System.Drawing.Size(16, 16);
+            this.metroProgressSpinner1.TabIndex = 15;
+            this.metroProgressSpinner1.UseSelectable = true;
+            this.metroProgressSpinner1.Visible = false;
+            // 
             // Link
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(240, 320);
+            this.Controls.Add(this.metroProgressSpinner1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txfMainCode);
             this.Controls.Add(this.txfItemCode);
             this.Controls.Add(this.metroLabel4);
-            this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.lblMainDesc);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txfQty);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.lblMainCode);
+            this.Controls.Add(this.lblDesc);
             this.Name = "Link";
-            this.Text = "Link Codes";
+            this.Text = "Link Barcodes";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +210,6 @@
         private System.Windows.Forms.TextBox txfItemCode;
         private System.Windows.Forms.TextBox txfMainCode;
         private MetroFramework.Controls.MetroButton btnClear;
+        private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner1;
     }
 }

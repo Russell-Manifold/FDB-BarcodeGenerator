@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\MANIFOLDSERVER\Shared Files\ManifoldFDBData\FDB2020</Value>
+      <Value Profile="(Default)">C:\Users\Russell - Manifold\Desktop\FDB2020</Value>
     </Setting>
     <Setting Name="API" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://localhost:7721//api/</Value>

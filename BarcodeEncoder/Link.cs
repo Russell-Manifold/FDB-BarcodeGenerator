@@ -68,10 +68,13 @@ namespace BarcodeEncoder
            
         }
         private async void txfItemCode_TextChanged(object sender, EventArgs e)
-        {
-                if (txfItemCode.Text.Length == 13 && itemCode == "")
-                {
-                    itemCode =await FindItemCode(txfItemCode.Text);
+        {          
+            await Task.Delay(10);
+            if (txfItemCode.Text.Length == 13 && itemCode == "")
+            {
+                lblDesc.Hide();
+                metroProgressSpinner1.Show();               
+                itemCode = await FindItemCode(txfItemCode.Text);
                     if (itemCode != "")
                     {
                         lblDesc.Text = Desc;
@@ -80,23 +83,25 @@ namespace BarcodeEncoder
                     }
                     else
                     {
-                        MessageBox.Show("There was a error in finding this item", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("There  is no item with this barcode", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txfItemCode.BackColor = Color.Orange;
                     }
-                }
-                else if (txfItemCode.Text.Length != 13)
-                {
+                lblDesc.Show();
+                metroProgressSpinner1.Hide();
+            }
+            else if (txfItemCode.Text.Length != 13)
+            {
                     itemCode = "";
                     Desc = "";
                     txfMainCode.Text = "";
                     txfQty.Text = "";
                     lblDesc.Text = "";
-                    txfItemCode.BackColor = Color.Orange;
-                }
-                else if(txfItemCode.Text.Length == 0)
-                {
+                   txfItemCode.BackColor = Color.Orange;
+            }
+            if(txfItemCode.Text == ""|| txfItemCode.Text == null)
+            {
                     txfItemCode.BackColor = Color.White;
-                }
+            }          
         }
         private async Task<bool> linkCodes(string itemCode,string barcode)
         {
@@ -132,6 +137,7 @@ namespace BarcodeEncoder
         }
         private async Task<string> FindItemCode(string barcode)
         {
+            await Task.Delay(1000);
             try
             {                
                 string Qstr = "ACCPRD|4|" + barcode;
@@ -148,8 +154,15 @@ namespace BarcodeEncoder
                     if (res.IsSuccessful)
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
-                        Desc = returnVal.Split('|')[3];
-                        return returnVal.Split('|')[2];
+                        if (returnVal.Split('|')[0]=="0")
+                        {
+                            Desc = returnVal.Split('|')[3];
+                            return returnVal.Split('|')[2];
+                        }
+                        else
+                        {
+                            return "";
+                        }
                     }
                 }
             }

@@ -25,7 +25,7 @@ namespace BarcodeEncoder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\MANIFOLDSERVER\\Shared Files\\ManifoldFDBData\\FDB2020")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Russell - Manifold\\Desktop\\FDB2020")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

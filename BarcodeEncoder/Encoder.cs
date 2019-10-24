@@ -223,6 +223,7 @@ namespace BarcodeEncoder
                     PicBoxFinal.Width = (i.Width + 20);
                     PicBoxFinal.Height = (i.Height + 20);
                     txfFinalCode.Text = newCode;
+                    txfName.Text = newCode;
                     this.ActiveControl = txfName;
                 }
                 catch (Exception)

@@ -37,17 +37,20 @@ namespace BarcodeEncoder
                     {
                         case "Name":
                             i = writer.Write(txfMainCode.Text.ToUpper());
+                            txfName.Text = txfMainCode.Text.ToUpper();
                             break;
                         case "PO Barcode":
                             i = writer.Write("PO"+ txfMainCode.Text.ToUpper());
+                            txfName.Text ="PO"+txfMainCode.Text.ToUpper();
                             break;
                         case "PS Barcode":
                             i = writer.Write("PS"+ txfMainCode.Text.ToUpper());
+                            txfName.Text = "PS"+txfMainCode.Text.ToUpper();
                             break;
                     }
                     PicBox.Width = (i.Width + 20);
                     PicBox.Height = (i.Height + 20);
-                    PicBox.Paint += new PaintEventHandler(pictureBox1_Paint);
+                    PicBox.Paint += new PaintEventHandler(pictureBox1_Paint);                    
                 }
                 catch (Exception)
                 {
