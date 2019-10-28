@@ -51,11 +51,12 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(89, 305);
+            this.btnSave.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSave.Location = new System.Drawing.Point(97, 293);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(122, 42);
             this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "SAVE";
             this.btnSave.UseSelectable = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
@@ -65,9 +66,10 @@
             this.lblCurrentSerNum.Location = new System.Drawing.Point(14, 69);
             this.lblCurrentSerNum.Margin = new System.Windows.Forms.Padding(3, 0, 3, 30);
             this.lblCurrentSerNum.Name = "lblCurrentSerNum";
-            this.lblCurrentSerNum.Size = new System.Drawing.Size(98, 19);
+            this.lblCurrentSerNum.Size = new System.Drawing.Size(77, 19);
             this.lblCurrentSerNum.TabIndex = 5;
-            this.lblCurrentSerNum.Text = "Serial Number:";
+            this.lblCurrentSerNum.Text = "Serial Num:";
+            this.lblCurrentSerNum.Click += new System.EventHandler(this.LblCurrentSerNum_Click);
             // 
             // lblCurrentAuthCode
             // 
@@ -95,7 +97,7 @@
             // 
             // 
             this.txfApi.CustomButton.Image = null;
-            this.txfApi.CustomButton.Location = new System.Drawing.Point(97, 1);
+            this.txfApi.CustomButton.Location = new System.Drawing.Point(231, 1);
             this.txfApi.CustomButton.Name = "";
             this.txfApi.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txfApi.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -106,7 +108,7 @@
             this.txfApi.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::BarcodeEncoder.Properties.Settings.Default, "API", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txfApi.Lines = new string[] {
         "http://localhost:7721//api/"};
-            this.txfApi.Location = new System.Drawing.Point(121, 161);
+            this.txfApi.Location = new System.Drawing.Point(97, 161);
             this.txfApi.MaxLength = 32767;
             this.txfApi.Name = "txfApi";
             this.txfApi.PasswordChar = '\0';
@@ -116,7 +118,7 @@
             this.txfApi.SelectionLength = 0;
             this.txfApi.SelectionStart = 0;
             this.txfApi.ShortcutsEnabled = true;
-            this.txfApi.Size = new System.Drawing.Size(121, 25);
+            this.txfApi.Size = new System.Drawing.Size(255, 25);
             this.txfApi.TabIndex = 8;
             this.txfApi.Text = global::BarcodeEncoder.Properties.Settings.Default.API;
             this.txfApi.UseSelectable = true;
@@ -130,7 +132,7 @@
             // 
             // 
             this.txfLocation.CustomButton.Image = null;
-            this.txfLocation.CustomButton.Location = new System.Drawing.Point(206, 1);
+            this.txfLocation.CustomButton.Location = new System.Drawing.Point(316, 1);
             this.txfLocation.CustomButton.Name = "";
             this.txfLocation.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txfLocation.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -150,7 +152,7 @@
             this.txfLocation.SelectionLength = 0;
             this.txfLocation.SelectionStart = 0;
             this.txfLocation.ShortcutsEnabled = true;
-            this.txfLocation.Size = new System.Drawing.Size(228, 23);
+            this.txfLocation.Size = new System.Drawing.Size(338, 23);
             this.txfLocation.TabIndex = 2;
             this.txfLocation.Text = global::BarcodeEncoder.Properties.Settings.Default.ConnectionString;
             this.txfLocation.UseSelectable = true;
@@ -163,7 +165,7 @@
             // 
             // 
             this.txfAuthCode.CustomButton.Image = null;
-            this.txfAuthCode.CustomButton.Location = new System.Drawing.Point(97, 1);
+            this.txfAuthCode.CustomButton.Location = new System.Drawing.Point(231, 1);
             this.txfAuthCode.CustomButton.Name = "";
             this.txfAuthCode.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txfAuthCode.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -174,7 +176,7 @@
             this.txfAuthCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::BarcodeEncoder.Properties.Settings.Default, "Auth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txfAuthCode.Lines = new string[] {
         "5635796"};
-            this.txfAuthCode.Location = new System.Drawing.Point(121, 112);
+            this.txfAuthCode.Location = new System.Drawing.Point(97, 112);
             this.txfAuthCode.MaxLength = 32767;
             this.txfAuthCode.Name = "txfAuthCode";
             this.txfAuthCode.PasswordChar = '\0';
@@ -183,7 +185,7 @@
             this.txfAuthCode.SelectionLength = 0;
             this.txfAuthCode.SelectionStart = 0;
             this.txfAuthCode.ShortcutsEnabled = true;
-            this.txfAuthCode.Size = new System.Drawing.Size(121, 25);
+            this.txfAuthCode.Size = new System.Drawing.Size(255, 25);
             this.txfAuthCode.TabIndex = 1;
             this.txfAuthCode.Text = global::BarcodeEncoder.Properties.Settings.Default.Auth;
             this.txfAuthCode.UseSelectable = true;
@@ -196,7 +198,7 @@
             // 
             // 
             this.txfSerNum.CustomButton.Image = null;
-            this.txfSerNum.CustomButton.Location = new System.Drawing.Point(97, 1);
+            this.txfSerNum.CustomButton.Location = new System.Drawing.Point(231, 1);
             this.txfSerNum.CustomButton.Name = "";
             this.txfSerNum.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txfSerNum.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -207,7 +209,7 @@
             this.txfSerNum.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::BarcodeEncoder.Properties.Settings.Default, "SerNum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txfSerNum.Lines = new string[] {
         "DK198110007"};
-            this.txfSerNum.Location = new System.Drawing.Point(121, 63);
+            this.txfSerNum.Location = new System.Drawing.Point(97, 63);
             this.txfSerNum.MaxLength = 32767;
             this.txfSerNum.Name = "txfSerNum";
             this.txfSerNum.PasswordChar = '\0';
@@ -216,7 +218,7 @@
             this.txfSerNum.SelectionLength = 0;
             this.txfSerNum.SelectionStart = 0;
             this.txfSerNum.ShortcutsEnabled = true;
-            this.txfSerNum.Size = new System.Drawing.Size(121, 25);
+            this.txfSerNum.Size = new System.Drawing.Size(255, 25);
             this.txfSerNum.TabIndex = 0;
             this.txfSerNum.Text = global::BarcodeEncoder.Properties.Settings.Default.SerNum;
             this.txfSerNum.UseSelectable = true;
@@ -227,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(263, 351);
+            this.ClientSize = new System.Drawing.Size(375, 351);
             this.Controls.Add(this.txfApi);
             this.Controls.Add(this.lblAPI);
             this.Controls.Add(this.lblCurrentAuthCode);
@@ -238,7 +240,7 @@
             this.Controls.Add(this.txfAuthCode);
             this.Controls.Add(this.txfSerNum);
             this.Name = "AdminPanel";
-            this.Text = "Admin Settings";
+            this.Text = "Configuration Settings";
             this.ResumeLayout(false);
             this.PerformLayout();
 

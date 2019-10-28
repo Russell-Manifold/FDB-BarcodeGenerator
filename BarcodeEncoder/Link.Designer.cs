@@ -45,20 +45,20 @@
             // lblMainCode
             // 
             this.lblMainCode.AutoSize = true;
-            this.lblMainCode.Location = new System.Drawing.Point(8, 219);
+            this.lblMainCode.Location = new System.Drawing.Point(8, 217);
             this.lblMainCode.Name = "lblMainCode";
-            this.lblMainCode.Size = new System.Drawing.Size(92, 19);
+            this.lblMainCode.Size = new System.Drawing.Size(91, 19);
             this.lblMainCode.TabIndex = 2;
-            this.lblMainCode.Text = "Packing Code:";
+            this.lblMainCode.Text = "Pack Barcode:";
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(8, 85);
+            this.metroLabel1.Location = new System.Drawing.Point(8, 83);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(74, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(91, 19);
             this.metroLabel1.TabIndex = 5;
-            this.metroLabel1.Text = "Item Code:";
+            this.metroLabel1.Text = "EAN Barcode:";
             // 
             // txfQty
             // 
@@ -76,7 +76,7 @@
             this.txfQty.CustomButton.Visible = false;
             this.txfQty.Lines = new string[] {
         "0"};
-            this.txfQty.Location = new System.Drawing.Point(104, 177);
+            this.txfQty.Location = new System.Drawing.Point(99, 177);
             this.txfQty.MaxLength = 32767;
             this.txfQty.Name = "txfQty";
             this.txfQty.PasswordChar = '\0';
@@ -95,11 +95,12 @@
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnAdd.Location = new System.Drawing.Point(73, 254);
+            this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnAdd.Location = new System.Drawing.Point(8, 254);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(80, 43);
+            this.btnAdd.Size = new System.Drawing.Size(263, 43);
             this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "Link";
+            this.btnAdd.Text = "LINK";
             this.btnAdd.UseSelectable = true;
             this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -122,9 +123,9 @@
             // 
             // lblDesc
             // 
-            this.lblDesc.Location = new System.Drawing.Point(104, 107);
+            this.lblDesc.Location = new System.Drawing.Point(99, 107);
             this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(126, 54);
+            this.lblDesc.Size = new System.Drawing.Size(149, 54);
             this.lblDesc.TabIndex = 10;
             this.lblDesc.WrapToLine = true;
             // 
@@ -139,28 +140,29 @@
             // 
             // txfItemCode
             // 
-            this.txfItemCode.Location = new System.Drawing.Point(104, 83);
+            this.txfItemCode.Location = new System.Drawing.Point(99, 83);
             this.txfItemCode.MaxLength = 13;
             this.txfItemCode.Name = "txfItemCode";
-            this.txfItemCode.Size = new System.Drawing.Size(128, 20);
+            this.txfItemCode.Size = new System.Drawing.Size(151, 20);
             this.txfItemCode.TabIndex = 12;
             this.txfItemCode.Leave += new System.EventHandler(this.txfItemCode_TextChanged);
             // 
             // txfMainCode
             // 
-            this.txfMainCode.Location = new System.Drawing.Point(104, 217);
+            this.txfMainCode.Location = new System.Drawing.Point(99, 217);
             this.txfMainCode.MaxLength = 14;
             this.txfMainCode.Name = "txfMainCode";
-            this.txfMainCode.Size = new System.Drawing.Size(126, 20);
+            this.txfMainCode.Size = new System.Drawing.Size(172, 20);
             this.txfMainCode.TabIndex = 13;
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(157, 59);
+            this.btnClear.BackgroundImage = global::BarcodeEncoder.Properties.Resources.refresh;
+            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClear.Location = new System.Drawing.Point(252, 79);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(19, 27);
             this.btnClear.TabIndex = 14;
-            this.btnClear.Text = "Clear";
             this.btnClear.UseSelectable = true;
             this.btnClear.Click += new System.EventHandler(this.clear);
             // 
@@ -178,7 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(240, 320);
+            this.ClientSize = new System.Drawing.Size(283, 320);
             this.Controls.Add(this.metroProgressSpinner1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txfMainCode);

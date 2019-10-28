@@ -22,6 +22,7 @@ namespace BarcodeEncoder
             InitializeComponent();
             this.ActiveControl = txfMainCode;
             PicBox.Paint += new PaintEventHandler(pictureBox1_Paint);
+            this.cmbType.SelectedIndex = 0;
         }
         private void Code_TextChanged(object sender, EventArgs e)
         {
@@ -40,12 +41,12 @@ namespace BarcodeEncoder
                             txfName.Text = txfMainCode.Text.ToUpper();
                             break;
                         case "PO Barcode":
-                            i = writer.Write("PO"+ txfMainCode.Text.ToUpper());
-                            txfName.Text ="PO"+txfMainCode.Text.ToUpper();
+                            i = writer.Write(txfMainCode.Text.ToUpper());
+                            txfName.Text =txfMainCode.Text.ToUpper();
                             break;
                         case "PS Barcode":
-                            i = writer.Write("PS"+ txfMainCode.Text.ToUpper());
-                            txfName.Text = "PS"+txfMainCode.Text.ToUpper();
+                            i = writer.Write(txfMainCode.Text.ToUpper());
+                            txfName.Text = txfMainCode.Text.ToUpper();
                             break;
                     }
                     PicBox.Width = (i.Width + 20);
@@ -58,6 +59,16 @@ namespace BarcodeEncoder
                 }
             }
             
+        }
+
+        private void cmbIndexChanged(object sender, EventArgs e)
+        {
+            txfMainCode.Text = string.Empty;
+            txfName.Text = string.Empty;
+            if (i != null) {
+                i.Dispose();
+            }
+            PicBox.Paint += new PaintEventHandler(pictureBox1_Paint);
         }
         private void BtnPrint_Click(object sender, EventArgs e)
         {

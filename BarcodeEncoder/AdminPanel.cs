@@ -48,5 +48,10 @@ namespace BarcodeEncoder
             MessageBox.Show("All the changes have been saved","SAVED!",MessageBoxButtons.OK,MessageBoxIcon.Information);
             this.Close();
         }
+
+        private void LblCurrentSerNum_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

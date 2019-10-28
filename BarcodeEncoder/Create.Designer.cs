@@ -32,25 +32,25 @@
             this.lblMainCode = new MetroFramework.Controls.MetroLabel();
             this.txfMainCode = new MetroFramework.Controls.MetroTextBox();
             this.btnPrint = new MetroFramework.Controls.MetroButton();
-            this.label2 = new System.Windows.Forms.Label();
             this.txfName = new System.Windows.Forms.TextBox();
             this.btnSaveLocation = new MetroFramework.Controls.MetroButton();
-            this.PicBox = new System.Windows.Forms.PictureBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.cmbType = new MetroFramework.Controls.MetroComboBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.PicBox = new System.Windows.Forms.PictureBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMainCode
             // 
             this.lblMainCode.AutoSize = true;
-            this.lblMainCode.Location = new System.Drawing.Point(23, 120);
+            this.lblMainCode.Location = new System.Drawing.Point(5, 120);
             this.lblMainCode.Name = "lblMainCode";
-            this.lblMainCode.Size = new System.Drawing.Size(48, 19);
+            this.lblMainCode.Size = new System.Drawing.Size(82, 19);
             this.lblMainCode.TabIndex = 4;
-            this.lblMainCode.Text = "Code: ";
+            this.lblMainCode.Text = "Enter Code: ";
             // 
             // txfMainCode
             // 
@@ -58,7 +58,7 @@
             // 
             // 
             this.txfMainCode.CustomButton.Image = null;
-            this.txfMainCode.CustomButton.Location = new System.Drawing.Point(104, 1);
+            this.txfMainCode.CustomButton.Location = new System.Drawing.Point(152, 1);
             this.txfMainCode.CustomButton.Name = "";
             this.txfMainCode.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txfMainCode.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -76,7 +76,7 @@
             this.txfMainCode.SelectionLength = 0;
             this.txfMainCode.SelectionStart = 0;
             this.txfMainCode.ShortcutsEnabled = true;
-            this.txfMainCode.Size = new System.Drawing.Size(126, 23);
+            this.txfMainCode.Size = new System.Drawing.Size(174, 23);
             this.txfMainCode.TabIndex = 3;
             this.txfMainCode.UseSelectable = true;
             this.txfMainCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -85,70 +85,57 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(128, 334);
+            this.btnPrint.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Print;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPrint.Location = new System.Drawing.Point(219, 334);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(103, 28);
+            this.btnPrint.Size = new System.Drawing.Size(56, 42);
             this.btnPrint.TabIndex = 20;
-            this.btnPrint.Text = "Print";
             this.btnPrint.UseSelectable = true;
             this.btnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 311);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "File Name:";
             // 
             // txfName
             // 
             this.txfName.Location = new System.Drawing.Point(101, 308);
             this.txfName.Name = "txfName";
-            this.txfName.Size = new System.Drawing.Size(130, 20);
+            this.txfName.Size = new System.Drawing.Size(174, 20);
             this.txfName.TabIndex = 18;
             // 
             // btnSaveLocation
             // 
-            this.btnSaveLocation.Location = new System.Drawing.Point(12, 334);
+            this.btnSaveLocation.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
+            this.btnSaveLocation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSaveLocation.Location = new System.Drawing.Point(23, 334);
             this.btnSaveLocation.Name = "btnSaveLocation";
-            this.btnSaveLocation.Size = new System.Drawing.Size(92, 28);
+            this.btnSaveLocation.Size = new System.Drawing.Size(59, 42);
             this.btnSaveLocation.TabIndex = 17;
-            this.btnSaveLocation.Text = "Save File";
             this.btnSaveLocation.UseSelectable = true;
             this.btnSaveLocation.Click += new System.EventHandler(this.direc_Click);
-            // 
-            // PicBox
-            // 
-            this.PicBox.Location = new System.Drawing.Point(23, 145);
-            this.PicBox.Name = "PicBox";
-            this.PicBox.Size = new System.Drawing.Size(204, 157);
-            this.PicBox.TabIndex = 21;
-            this.PicBox.TabStop = false;
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 95);
+            this.metroLabel1.Location = new System.Drawing.Point(5, 95);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(39, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(92, 19);
             this.metroLabel1.TabIndex = 23;
-            this.metroLabel1.Text = "Type:";
+            this.metroLabel1.Text = "Barcode Type:";
             // 
             // cmbType
             // 
             this.cmbType.FormattingEnabled = true;
             this.cmbType.ItemHeight = 23;
             this.cmbType.Items.AddRange(new object[] {
+            "Select Type",
             "Name",
             "PO Barcode",
             "PS Barcode"});
             this.cmbType.Location = new System.Drawing.Point(101, 89);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(126, 29);
-            this.cmbType.TabIndex = 24;
+            this.cmbType.Size = new System.Drawing.Size(174, 29);
+            this.cmbType.TabIndex = 0;
             this.cmbType.UseSelectable = true;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbIndexChanged);
             // 
             // printDocument1
             // 
@@ -164,22 +151,39 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // PicBox
+            // 
+            this.PicBox.Location = new System.Drawing.Point(101, 145);
+            this.PicBox.Name = "PicBox";
+            this.PicBox.Size = new System.Drawing.Size(174, 157);
+            this.PicBox.TabIndex = 21;
+            this.PicBox.TabStop = false;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(5, 308);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(76, 19);
+            this.metroLabel2.TabIndex = 25;
+            this.metroLabel2.Text = "File Name: ";
+            // 
             // Create
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 381);
+            this.ClientSize = new System.Drawing.Size(298, 381);
+            this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.cmbType);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.PicBox);
             this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txfName);
             this.Controls.Add(this.btnSaveLocation);
             this.Controls.Add(this.lblMainCode);
             this.Controls.Add(this.txfMainCode);
             this.Name = "Create";
-            this.Text = "Create Barcodes";
+            this.Text = "Create Barcode";
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -190,7 +194,6 @@
         private MetroFramework.Controls.MetroLabel lblMainCode;
         private MetroFramework.Controls.MetroTextBox txfMainCode;
         private MetroFramework.Controls.MetroButton btnPrint;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txfName;
         private MetroFramework.Controls.MetroButton btnSaveLocation;
         private System.Windows.Forms.PictureBox PicBox;
@@ -198,5 +201,6 @@
         private MetroFramework.Controls.MetroComboBox cmbType;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
     }
 }

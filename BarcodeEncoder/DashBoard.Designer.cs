@@ -31,47 +31,50 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
             this.btnScan = new MetroFramework.Controls.MetroButton();
             this.btnCreate = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnNewBarcode = new MetroFramework.Controls.MetroButton();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
             // 
             // btnScan
             // 
+            this.btnScan.BackgroundImage = global::BarcodeEncoder.Properties.Resources.link1;
+            this.btnScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnScan.Location = new System.Drawing.Point(23, 53);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(200, 75);
             this.btnScan.TabIndex = 0;
-            this.btnScan.Text = "Link";
             this.btnScan.UseSelectable = true;
             this.btnScan.Click += new System.EventHandler(this.BtnScan_Click);
             // 
             // btnCreate
             // 
+            this.btnCreate.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Packbox;
+            this.btnCreate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCreate.Location = new System.Drawing.Point(23, 134);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(200, 75);
             this.btnCreate.TabIndex = 1;
-            this.btnCreate.Text = "Create ITF";
             this.btnCreate.UseSelectable = true;
             this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
-            // metroButton1
+            // btnNewBarcode
             // 
-            this.metroButton1.Location = new System.Drawing.Point(23, 215);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(200, 75);
-            this.metroButton1.TabIndex = 7;
-            this.metroButton1.Text = "Create Barcode";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.BtnCreateBarcode_Click);
+            this.btnNewBarcode.BackgroundImage = global::BarcodeEncoder.Properties.Resources.barcodetags;
+            this.btnNewBarcode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnNewBarcode.Location = new System.Drawing.Point(23, 215);
+            this.btnNewBarcode.Name = "btnNewBarcode";
+            this.btnNewBarcode.Size = new System.Drawing.Size(200, 75);
+            this.btnNewBarcode.TabIndex = 7;
+            this.btnNewBarcode.UseSelectable = true;
+            this.btnNewBarcode.Click += new System.EventHandler(this.BtnCreateBarcode_Click);
             // 
             // metroLink1
             // 
-            this.metroLink1.Location = new System.Drawing.Point(129, 296);
+            this.metroLink1.Location = new System.Drawing.Point(103, 315);
             this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(94, 23);
+            this.metroLink1.Size = new System.Drawing.Size(120, 23);
             this.metroLink1.TabIndex = 8;
-            this.metroLink1.Text = "Admin page-->";
+            this.metroLink1.Text = "Configuration -->";
             this.metroLink1.UseSelectable = true;
             this.metroLink1.Click += new System.EventHandler(this.MetroLink1_Click);
             // 
@@ -81,9 +84,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(252, 334);
+            this.ClientSize = new System.Drawing.Size(252, 347);
             this.Controls.Add(this.metroLink1);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.btnNewBarcode);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnScan);
             this.Name = "DashBoard";
@@ -96,7 +99,7 @@
 
         private MetroFramework.Controls.MetroButton btnScan;
         private MetroFramework.Controls.MetroButton btnCreate;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton btnNewBarcode;
         private MetroFramework.Controls.MetroLink metroLink1;
     }
 }

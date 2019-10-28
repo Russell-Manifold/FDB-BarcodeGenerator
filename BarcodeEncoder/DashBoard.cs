@@ -48,7 +48,8 @@ namespace BarcodeEncoder
             catch (Exception)
             { }
             LinkForm = new Link();
-            LinkForm.Show();           
+            LinkForm.ShowDialog();
+            btnScan.Focus();
         }
 
         private void BtnCreateBarcode_Click(object sender, EventArgs e)
@@ -78,7 +79,8 @@ namespace BarcodeEncoder
             catch (Exception)
             { }
             CreateForm = new Create();
-            CreateForm.Show();
+            CreateForm.ShowDialog();
+            btnNewBarcode.Focus();
         }
 
         private void BtnCreate_Click(object sender, EventArgs e)
@@ -109,7 +111,8 @@ namespace BarcodeEncoder
             catch (Exception)
             { }
             EncodeForm = new Encoder();
-            EncodeForm.Show();
+            EncodeForm.ShowDialog();
+            btnCreate.Focus();
         }
 
         private void MetroLink1_Click(object sender, EventArgs e)
@@ -139,7 +142,8 @@ namespace BarcodeEncoder
             catch (Exception)
             { }
             admin = new AdminPanel();
-            admin.Show();
+            admin.ShowDialog();
+            btnScan.Focus();
         }
     }
 }
