@@ -47,7 +47,6 @@ namespace BarcodeEncoder
 
         private void gridCountHeader_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //var frm = new InvCountItems(gridCountHeader[2, e.RowIndex].Value.ToString(), "102");
             var frm = new InvCountItems();
             frm.ShowDialog();
         }

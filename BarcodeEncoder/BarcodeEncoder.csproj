@@ -351,6 +351,9 @@
     <EmbeddedResource Include="JobTitleConfig.resx">
       <DependentUpon>JobTitleConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JobTitleSetUp.resx">
+      <DependentUpon>JobTitleSetUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>

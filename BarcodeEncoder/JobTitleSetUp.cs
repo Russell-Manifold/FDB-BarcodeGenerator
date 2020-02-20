@@ -16,5 +16,10 @@ namespace BarcodeEncoder
         {
             InitializeComponent();
         }
+
+        private void JobTitleSetUp_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

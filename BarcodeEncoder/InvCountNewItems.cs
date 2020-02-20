@@ -14,6 +14,7 @@ namespace BarcodeEncoder
 {
     public partial class InvCountNewItems : MetroFramework.Forms.MetroForm
     {
+        DataTable invDtbl;
         public InvCountNewItems(string whid, Boolean inclzero)
         {
             InitializeComponent();
@@ -37,8 +38,11 @@ namespace BarcodeEncoder
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
                     ds.Tables[0].Columns.Add("Incl", typeof(Boolean));
+                    invDtbl = ds.Tables[0];
+                    //invDtbl.DefaultView.RowFilter = "Category = '" + "1234" + "'";
                     if (showzero == false) {
-                        ds.Tables[0].DefaultView.RowFilter = "OnHand > 0";
+
+                        invDtbl.DefaultView.RowFilter = "OnHand > 0";
                     }
                     dataGridView1.DataSource = ds.Tables[0];
                     dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

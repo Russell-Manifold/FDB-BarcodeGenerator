@@ -100,7 +100,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BarcodeEncoder.Properties.Resources.FDBicon1;
-            this.pictureBox1.Location = new System.Drawing.Point(344, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(350, 32);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 83);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
