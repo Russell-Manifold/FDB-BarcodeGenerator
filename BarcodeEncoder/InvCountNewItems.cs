@@ -20,8 +20,7 @@ namespace BarcodeEncoder
             InitializeComponent();
             GetFullInventoryList(whid, inclzero);
         }
-
-       private void GetFullInventoryList(string whid, Boolean showzero)
+        private void GetFullInventoryList(string whid, Boolean showzero)
         {
             string Qstr = "ACCSTKLK|0|001";
             RestSharp.RestClient client = new RestSharp.RestClient();

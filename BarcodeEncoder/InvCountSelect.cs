@@ -21,7 +21,7 @@ namespace BarcodeEncoder
 
         public void GetAllOpencounts() {
 
-            string Qstr = "SELECT CountID as [ID], Description, CreatedDate as [Created Date], Whse as [WH]  FROM dbo.InventoryHeader WHERE Active =1 ORDER BY CountID";
+            string Qstr = "SELECT CountID as [ID], Description, CreatedDate as [Created Date], Whse as [WH],SetUpComplete as [Set Up] FROM dbo.InventoryHeader WHERE Active =1 ORDER BY CountID";
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "DocumentSQLConnection";
             client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
@@ -40,6 +40,8 @@ namespace BarcodeEncoder
                     gridCountHeader.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     gridCountHeader.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                     gridCountHeader.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                    gridCountHeader.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                    gridCountHeader.Columns[4].ReadOnly=true;
                 }
             }
 
@@ -47,8 +49,21 @@ namespace BarcodeEncoder
 
         private void gridCountHeader_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var frm = new InvCountItems();
-            frm.ShowDialog();
+            if (e.RowIndex>=0)
+            {
+                DataGridViewRow row = gridCountHeader.Rows[e.RowIndex];
+                if (Convert.ToBoolean(row.Cells["Set Up"].Value))
+                {
+                    var frm = new InvCountItems(row.Cells["ID"].Value.ToString());
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    var frm = new InvCountNewItems(row.Cells["ID"].Value.ToString());
+                    frm.ShowDialog();
+                }
+            }         
+           
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

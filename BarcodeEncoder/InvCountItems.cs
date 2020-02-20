@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,50 @@ namespace BarcodeEncoder
 {
     public partial class InvCountItems : MetroFramework.Forms.MetroForm
     {
-        public InvCountItems()
+        public InvCountItems(string CountID)
         {
             InitializeComponent();
+            getInventoryItems(CountID);
         }
 
-        private void getInventoryItems() { 
+        private void getInventoryItems(string CountID)
+        {
+            string Qstr = $"SELECT BarCode as [Barcode], ItemDesc as [Description],FirstScanQty as [First Scan],SecondScanQty as [Second Scan],Complete,ItemCode,isFirst FROM dbo.InventoryLines WHERE CountID={CountID}";            
+            RestSharp.RestClient client = new RestSharp.RestClient();
+            string path = "DocumentSQLConnection";
+            client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
+            {
+                string str = $"GET?qry={Qstr}";
+                var Request = new RestSharp.RestRequest();
+                Request.Resource = str;
+                Request.Method = RestSharp.Method.GET;
+                var res = client.Execute(Request);
+                if (res.IsSuccessful&&res.Content.Contains("Description"))
+                {
+                    DataSet ds = new DataSet();
+                    ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
+                    dataGridView1.DataSource = ds.Tables[0];
+                    dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                    dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                    dataGridView1.Columns[4].Visible=false;
+                    dataGridView1.Columns[5].Visible=false;
+                    dataGridView1.Columns[6].Visible=false;
 
+                }
+                else if (res.IsSuccessful)
+                {
+                    MessageBox.Show("There are no items found on this order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Counting completed","COMPLETE!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            this.Dispose();
         }
     }
 }

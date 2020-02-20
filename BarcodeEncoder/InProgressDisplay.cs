@@ -32,7 +32,7 @@ namespace BarcodeEncoder
             GetSlips();
         }
 
-     private void GetSlips() {
+        private void GetSlips() {
             Qstr = "ACCHISTH|7|" + doctyp;
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "GetDocStatusSummary";
@@ -219,6 +219,14 @@ namespace BarcodeEncoder
         {
             inProgTbl.DefaultView.RowFilter = String.Format(" Due_Date = '{0}'", dateTimePicker1.Text);
             lblReccount.Text = dataGridView1.Rows.Count.ToString() + " Records";
+        }
+
+        private void InProgressDisplay_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (togrefresh.Checked == true)
+            {
+                timer1.Stop();
+            }           
         }
     }
 }

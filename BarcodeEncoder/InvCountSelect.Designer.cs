@@ -45,7 +45,7 @@
             this.gridCountHeader.AllowUserToResizeColumns = false;
             this.gridCountHeader.AllowUserToResizeRows = false;
             this.gridCountHeader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCountHeader.Location = new System.Drawing.Point(23, 146);
+            this.gridCountHeader.Location = new System.Drawing.Point(23, 143);
             this.gridCountHeader.Name = "gridCountHeader";
             this.gridCountHeader.Size = new System.Drawing.Size(418, 228);
             this.gridCountHeader.TabIndex = 0;
