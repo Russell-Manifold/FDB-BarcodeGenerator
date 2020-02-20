@@ -58,6 +58,7 @@
             this.txfEncoded.Name = "txfEncoded";
             this.txfEncoded.Size = new System.Drawing.Size(174, 20);
             this.txfEncoded.TabIndex = 2;
+            this.txfEncoded.TextChanged += new System.EventHandler(this.txfEncoded_TextChanged);
             this.txfEncoded.Leave += new System.EventHandler(this.txfEncoded_TextChanged);
             // 
             // txfFinalCode
@@ -131,6 +132,7 @@
             this.metroProgressSpinner1.Maximum = 100;
             this.metroProgressSpinner1.Name = "metroProgressSpinner1";
             this.metroProgressSpinner1.Size = new System.Drawing.Size(28, 25);
+            this.metroProgressSpinner1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroProgressSpinner1.TabIndex = 27;
             this.metroProgressSpinner1.UseSelectable = true;
             this.metroProgressSpinner1.Visible = false;
@@ -140,11 +142,13 @@
             this.btnClear.BackColor = System.Drawing.Color.White;
             this.btnClear.BackgroundImage = global::BarcodeEncoder.Properties.Resources.refresh;
             this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnClear.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnClear.Location = new System.Drawing.Point(291, 86);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(287, 86);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(19, 27);
+            this.btnClear.Size = new System.Drawing.Size(31, 27);
+            this.btnClear.Style = MetroFramework.MetroColorStyle.White;
             this.btnClear.TabIndex = 20;
+            this.btnClear.Theme = MetroFramework.MetroThemeStyle.Light;
             this.btnClear.UseSelectable = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
@@ -255,6 +259,7 @@
             this.Controls.Add(this.txfEncoded);
             this.Controls.Add(this.lblDesc);
             this.Name = "Encoder";
+            this.Style = MetroFramework.MetroColorStyle.Orange;
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxFinal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

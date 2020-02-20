@@ -15,7 +15,9 @@ namespace BarcodeEncoder
         Link LinkForm = null;
         Create CreateForm = null;
         Encoder EncodeForm = null;
-        AdminPanel admin = null;
+        AdminDashboard admin = null;
+        SlipsPickOrReceive psList = null;
+
         public DashBoard()
         {
             InitializeComponent();           
@@ -141,9 +143,52 @@ namespace BarcodeEncoder
             }
             catch (Exception)
             { }
-            admin = new AdminPanel();
+            admin = new AdminDashboard();
             admin.ShowDialog();
             btnScan.Focus();
+        }
+
+        private void btnPickSlipsList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                admin.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                CreateForm.Close();
+            }
+            catch (Exception)
+            { }
+            try
+            {
+                EncodeForm.Close();
+            }
+            catch (Exception)
+            { }
+            psList = new SlipsPickOrReceive();
+            psList.ShowDialog();
+            
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            ViewProgressChoose frm = new ViewProgressChoose();
+            frm.ShowDialog();
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            InvCountSelect frm = new InvCountSelect();
+            frm.ShowDialog();
         }
     }
 }

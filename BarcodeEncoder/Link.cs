@@ -12,8 +12,7 @@ namespace BarcodeEncoder
         PastelInfoClass info = new PastelInfoClass();
         string itemCode="";
         string Desc = "";
-        string auth =BarcodeEncoder.Properties.Settings.Default.SerNum+"|"+ BarcodeEncoder.Properties.Settings.Default.Auth + "|"+ BarcodeEncoder.Properties.Settings.Default.ConnectionString;
-        public Link()
+      public Link()
         {
             InitializeComponent();
             this.ActiveControl = txfItemCode;         
@@ -106,12 +105,12 @@ namespace BarcodeEncoder
                 string path = "POSTBOM";
                 client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
                 {
-                    string str = $"POST?authDetails={auth}&BOMHead={BOMHead}&line={line}";
+                    string str = $"POST?BOMHead={BOMHead}&line={line}";
                     var Request = new RestSharp.RestRequest();
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.POST;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res = await client.ExecuteTaskAsync(Request,cancellationTokenSource.Token);
+                    var res = await client.ExecuteAsync(Request,cancellationTokenSource.Token);
                     if (res.StatusCode.ToString().Contains("OK"))
                     {
                         return true;
@@ -138,12 +137,12 @@ namespace BarcodeEncoder
                 string path = "FindDescAndCode";
                 client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
                 {
-                    string str = $"GET?authDetails={auth}&qrystr={Qstr}";
+                    string str = $"GET?qrystr={Qstr}";
                     var Request = new RestSharp.RestRequest();
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.GET;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res =await client.ExecuteTaskAsync(Request,cancellationTokenSource.Token);
+                    var res =await client.ExecuteAsync(Request,cancellationTokenSource.Token);
                     if (res.IsSuccessful)
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
@@ -174,12 +173,12 @@ namespace BarcodeEncoder
                 string path = "CheckBOMExists";
                 client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
                 {
-                    string str = $"GET?authDetails={auth}&qrystr={Qstr}";
+                    string str = $"GET?qrystr={Qstr}";
                     var Request = new RestSharp.RestRequest();
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.GET;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res = await client.ExecuteTaskAsync(Request, cancellationTokenSource.Token);
+                    var res = await client.ExecuteAsync(Request, cancellationTokenSource.Token);
                     if (res.IsSuccessful)
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
