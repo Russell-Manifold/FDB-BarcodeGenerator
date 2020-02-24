@@ -12,15 +12,17 @@ namespace BarcodeEncoder
 {
     public partial class DashBoard : MetroFramework.Forms.MetroForm
     {
+        public static DataRow UserData;
         Link LinkForm = null;
         Create CreateForm = null;
         Encoder EncodeForm = null;
         AdminDashboard admin = null;
         SlipsPickOrReceive psList = null;
 
-        public DashBoard()
-        {
-            InitializeComponent();           
+        public DashBoard(DataRow dr)
+        {          
+            InitializeComponent();
+            UserData = dr;
         }
 
         private void BtnScan_Click(object sender, EventArgs e)
@@ -189,6 +191,33 @@ namespace BarcodeEncoder
         {
             InvCountSelect frm = new InvCountSelect();
             frm.ShowDialog();
+        }
+
+        private void DashBoard_Load(object sender, EventArgs e)
+        {
+            if (UserData["JobTitleCode"].ToString()=="Sup")
+            {
+                btnPickSlipsList.Enabled = true;
+                btnNewBarcode.Enabled = true;
+                btnScan.Enabled = true;
+                btnCreate.Enabled = true;
+                //inv counts
+                metroButton1.Enabled = true;
+                //inprogress
+                metroButton2.Enabled = true;
+            }
+            else
+            {
+                if (Convert.ToBoolean(UserData["fPickPack"]))
+                {
+                    btnPickSlipsList.Enabled = true;
+                }
+                if (Convert.ToBoolean(UserData["fPickPack"]))
+                {
+                    btnNewBarcode.Enabled = true;
+                }
+            }
+           
         }
     }
 }

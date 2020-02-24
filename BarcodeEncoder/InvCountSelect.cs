@@ -21,7 +21,7 @@ namespace BarcodeEncoder
 
         public void GetAllOpencounts() {
 
-            string Qstr = "SELECT CountID as [ID], Description, CreatedDate as [Created Date], Whse as [WH],SetUpComplete as [Set Up] FROM dbo.InventoryHeader WHERE Active =1 ORDER BY CountID";
+            string Qstr = "SELECT CountID as [ID], Description, CreatedDate as [Created Date], Whse as [WH] FROM dbo.InventoryHeader WHERE Active =1 ORDER BY CountID";
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "DocumentSQLConnection";
             client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
@@ -31,7 +31,7 @@ namespace BarcodeEncoder
                 Request.Resource = str;
                 Request.Method = RestSharp.Method.GET;
                 var res = client.Execute(Request);
-                if (res.IsSuccessful)
+                if (res.StatusCode.ToString().Contains("OK"))
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
@@ -40,8 +40,6 @@ namespace BarcodeEncoder
                     gridCountHeader.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     gridCountHeader.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                     gridCountHeader.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                    gridCountHeader.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                    gridCountHeader.Columns[4].ReadOnly=true;
                 }
             }
 
@@ -52,18 +50,9 @@ namespace BarcodeEncoder
             if (e.RowIndex>=0)
             {
                 DataGridViewRow row = gridCountHeader.Rows[e.RowIndex];
-                if (Convert.ToBoolean(row.Cells["Set Up"].Value))
-                {
-                    var frm = new InvCountItems(row.Cells["ID"].Value.ToString());
-                    frm.ShowDialog();
-                }
-                else
-                {
-                    var frm = new InvCountNewItems(row.Cells["ID"].Value.ToString());
-                    frm.ShowDialog();
-                }
+                var frm = new InvCountItems(row.Cells["ID"].Value.ToString());
+                frm.ShowDialog();
             }         
-           
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -74,6 +63,11 @@ namespace BarcodeEncoder
                 var frm = new InvCountNew();
                 frm.ShowDialog();
             }
+        }
+
+        private void InvCountSelect_Activated(object sender, EventArgs e)
+        {
+            GetAllOpencounts();
         }
     }
 }

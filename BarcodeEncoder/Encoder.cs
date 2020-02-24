@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZXing;
 using System.Threading;
+using RestSharp;
 
 namespace BarcodeEncoder
 {
@@ -264,7 +265,7 @@ namespace BarcodeEncoder
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.POST;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res =await client.ExecuteAsync(Request, cancellationTokenSource.Token);
+                    var res = client.Execute(Request);
                     if (res.StatusCode.ToString().Contains("OK"))
                     {                                       
                         return res.Content.Substring(1, res.Content.Length - 2);
@@ -296,8 +297,8 @@ namespace BarcodeEncoder
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.GET;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res =await client.ExecuteAsync(Request,cancellationTokenSource.Token);
-                    if (res.IsSuccessful)
+                    var res = client.Execute(Request);
+                    if (res.StatusCode.ToString()=="Complete")
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
                         Desc = returnVal.Split('|')[3];
@@ -355,8 +356,8 @@ namespace BarcodeEncoder
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.GET;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res=await client.ExecuteAsync(Request,cancellationTokenSource.Token);
-                    if (res.IsSuccessful)
+                    var res=client.Execute(Request);
+                    if (res.StatusCode.ToString().Contains("OK"))
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
                         if (returnVal.Split('|')[0] == "0")

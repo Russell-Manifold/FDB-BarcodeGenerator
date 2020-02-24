@@ -103,7 +103,7 @@ namespace BarcodeEncoder
                 Request.Resource = str;
                 Request.Method = RestSharp.Method.GET;
                 var res = client.Execute(Request);
-                if (res.IsSuccessful)
+                if (res.StatusCode.ToString().Contains("OK"))
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
@@ -123,7 +123,7 @@ namespace BarcodeEncoder
                 Request.Resource = str;
                 Request.Method = RestSharp.Method.GET;
                 var res = client1.Execute(Request);
-                if (res.IsSuccessful)
+                if (res.StatusCode.ToString().Contains("OK"))
                 {
                     DataSet ds1 = new DataSet();
                     ds1 = JsonConvert.DeserializeObject<DataSet>(res.Content);

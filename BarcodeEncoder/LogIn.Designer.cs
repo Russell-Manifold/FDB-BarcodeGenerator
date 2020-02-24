@@ -64,6 +64,7 @@
             // 
             resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -87,6 +88,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "LogIn";
             this.Style = MetroFramework.MetroColorStyle.Orange;
+            this.Load += new System.EventHandler(this.LogIn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

@@ -46,6 +46,7 @@
             // 
             this.btnScan.BackgroundImage = global::BarcodeEncoder.Properties.Resources.link1;
             this.btnScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnScan.Enabled = false;
             this.btnScan.Location = new System.Drawing.Point(133, 326);
             this.btnScan.Name = "btnScan";
             this.btnScan.Size = new System.Drawing.Size(200, 75);
@@ -57,6 +58,7 @@
             // 
             this.btnCreate.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Packbox;
             this.btnCreate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCreate.Enabled = false;
             this.btnCreate.Location = new System.Drawing.Point(133, 407);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(200, 75);
@@ -68,6 +70,7 @@
             // 
             this.btnNewBarcode.BackgroundImage = global::BarcodeEncoder.Properties.Resources.barcodetags;
             this.btnNewBarcode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnNewBarcode.Enabled = false;
             this.btnNewBarcode.Location = new System.Drawing.Point(133, 245);
             this.btnNewBarcode.Name = "btnNewBarcode";
             this.btnNewBarcode.Size = new System.Drawing.Size(200, 75);
@@ -90,6 +93,7 @@
             // 
             this.btnPickSlipsList.BackgroundImage = global::BarcodeEncoder.Properties.Resources.pickslip;
             this.btnPickSlipsList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPickSlipsList.Enabled = false;
             this.btnPickSlipsList.Location = new System.Drawing.Point(133, 164);
             this.btnPickSlipsList.Name = "btnPickSlipsList";
             this.btnPickSlipsList.Size = new System.Drawing.Size(200, 75);
@@ -121,6 +125,7 @@
             // 
             this.metroButton1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.InvCount1;
             this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.metroButton1.Enabled = false;
             this.metroButton1.Location = new System.Drawing.Point(133, 490);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(200, 75);
@@ -132,6 +137,7 @@
             // 
             this.metroButton2.BackgroundImage = global::BarcodeEncoder.Properties.Resources.WIP;
             this.metroButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.metroButton2.Enabled = false;
             this.metroButton2.Location = new System.Drawing.Point(133, 571);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(200, 75);
@@ -158,6 +164,7 @@
             this.Name = "DashBoard";
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Orange;
+            this.Load += new System.EventHandler(this.DashBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

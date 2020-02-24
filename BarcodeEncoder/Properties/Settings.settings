@@ -12,7 +12,7 @@
       <Value Profile="(Default)">5635796</Value>
     </Setting>
     <Setting Name="API" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://192.168.0.108/FDBAPI/api/</Value>
+      <Value Profile="(Default)">http://192.168.0.111/FDBAPI/api/</Value>
     </Setting>
   </Settings>
 </SettingsFile>

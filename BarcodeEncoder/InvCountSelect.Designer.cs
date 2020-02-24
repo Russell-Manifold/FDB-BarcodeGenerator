@@ -104,6 +104,7 @@
             this.Name = "InvCountSelect";
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Inventory Count Master";
+            this.Activated += new System.EventHandler(this.InvCountSelect_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.gridCountHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

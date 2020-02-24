@@ -51,6 +51,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.chkRecount = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox2 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox3 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -181,7 +185,7 @@
             // chkAuthWhTrf
             // 
             this.chkAuthWhTrf.AutoSize = true;
-            this.chkAuthWhTrf.Location = new System.Drawing.Point(257, 218);
+            this.chkAuthWhTrf.Location = new System.Drawing.Point(434, 197);
             this.chkAuthWhTrf.Name = "chkAuthWhTrf";
             this.chkAuthWhTrf.Size = new System.Drawing.Size(174, 15);
             this.chkAuthWhTrf.TabIndex = 8;
@@ -191,7 +195,7 @@
             // chkAuthReceive
             // 
             this.chkAuthReceive.AutoSize = true;
-            this.chkAuthReceive.Location = new System.Drawing.Point(257, 197);
+            this.chkAuthReceive.Location = new System.Drawing.Point(272, 197);
             this.chkAuthReceive.Name = "chkAuthReceive";
             this.chkAuthReceive.Size = new System.Drawing.Size(128, 15);
             this.chkAuthReceive.TabIndex = 9;
@@ -211,7 +215,7 @@
             // chkInvCntClose
             // 
             this.chkInvCntClose.AutoSize = true;
-            this.chkInvCntClose.Location = new System.Drawing.Point(257, 302);
+            this.chkInvCntClose.Location = new System.Drawing.Point(434, 293);
             this.chkInvCntClose.Name = "chkInvCntClose";
             this.chkInvCntClose.Size = new System.Drawing.Size(159, 15);
             this.chkInvCntClose.TabIndex = 11;
@@ -221,7 +225,7 @@
             // chkInvCntCreate
             // 
             this.chkInvCntCreate.AutoSize = true;
-            this.chkInvCntCreate.Location = new System.Drawing.Point(257, 281);
+            this.chkInvCntCreate.Location = new System.Drawing.Point(434, 251);
             this.chkInvCntCreate.Name = "chkInvCntCreate";
             this.chkInvCntCreate.Size = new System.Drawing.Size(146, 15);
             this.chkInvCntCreate.TabIndex = 12;
@@ -232,7 +236,7 @@
             // chkAuthDispatch
             // 
             this.chkAuthDispatch.AutoSize = true;
-            this.chkAuthDispatch.Location = new System.Drawing.Point(257, 239);
+            this.chkAuthDispatch.Location = new System.Drawing.Point(272, 218);
             this.chkAuthDispatch.Name = "chkAuthDispatch";
             this.chkAuthDispatch.Size = new System.Drawing.Size(123, 15);
             this.chkAuthDispatch.TabIndex = 13;
@@ -262,7 +266,7 @@
             // chkAdmin
             // 
             this.chkAdmin.AutoSize = true;
-            this.chkAdmin.Location = new System.Drawing.Point(465, 176);
+            this.chkAdmin.Location = new System.Drawing.Point(368, 106);
             this.chkAdmin.Name = "chkAdmin";
             this.chkAdmin.Size = new System.Drawing.Size(100, 15);
             this.chkAdmin.TabIndex = 16;
@@ -283,7 +287,7 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(257, 146);
+            this.metroLabel5.Location = new System.Drawing.Point(357, 146);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(98, 19);
             this.metroLabel5.TabIndex = 18;
@@ -292,7 +296,7 @@
             // chkPickControl
             // 
             this.chkPickControl.AutoSize = true;
-            this.chkPickControl.Location = new System.Drawing.Point(257, 176);
+            this.chkPickControl.Location = new System.Drawing.Point(272, 176);
             this.chkPickControl.Name = "chkPickControl";
             this.chkPickControl.Size = new System.Drawing.Size(140, 15);
             this.chkPickControl.TabIndex = 20;
@@ -303,7 +307,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.BanRed;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 311);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 337);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 40);
             this.pictureBox1.TabIndex = 21;
@@ -314,7 +318,7 @@
             // 
             this.pictureBox2.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(499, 311);
+            this.pictureBox2.Location = new System.Drawing.Point(611, 337);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(66, 40);
             this.pictureBox2.TabIndex = 22;
@@ -324,18 +328,62 @@
             // chkRecount
             // 
             this.chkRecount.AutoSize = true;
-            this.chkRecount.Location = new System.Drawing.Point(257, 260);
+            this.chkRecount.Location = new System.Drawing.Point(434, 272);
             this.chkRecount.Name = "chkRecount";
             this.chkRecount.Size = new System.Drawing.Size(186, 15);
             this.chkRecount.TabIndex = 23;
             this.chkRecount.Text = "Authorise Inventory Re-Counts";
             this.chkRecount.UseSelectable = true;
             // 
+            // metroCheckBox1
+            // 
+            this.metroCheckBox1.AutoSize = true;
+            this.metroCheckBox1.Location = new System.Drawing.Point(434, 176);
+            this.metroCheckBox1.Name = "metroCheckBox1";
+            this.metroCheckBox1.Size = new System.Drawing.Size(157, 15);
+            this.metroCheckBox1.TabIndex = 24;
+            this.metroCheckBox1.Text = "Create Warhouse Transfer";
+            this.metroCheckBox1.UseSelectable = true;
+            // 
+            // metroCheckBox2
+            // 
+            this.metroCheckBox2.AutoSize = true;
+            this.metroCheckBox2.Location = new System.Drawing.Point(84, 311);
+            this.metroCheckBox2.Name = "metroCheckBox2";
+            this.metroCheckBox2.Size = new System.Drawing.Size(135, 15);
+            this.metroCheckBox2.TabIndex = 25;
+            this.metroCheckBox2.Text = "Create New barcodes";
+            this.metroCheckBox2.UseSelectable = true;
+            // 
+            // metroCheckBox3
+            // 
+            this.metroCheckBox3.AutoSize = true;
+            this.metroCheckBox3.Location = new System.Drawing.Point(84, 332);
+            this.metroCheckBox3.Name = "metroCheckBox3";
+            this.metroCheckBox3.Size = new System.Drawing.Size(96, 15);
+            this.metroCheckBox3.TabIndex = 26;
+            this.metroCheckBox3.Text = "Link Barcodes";
+            this.metroCheckBox3.UseSelectable = true;
+            // 
+            // metroCheckBox4
+            // 
+            this.metroCheckBox4.AutoSize = true;
+            this.metroCheckBox4.Location = new System.Drawing.Point(84, 353);
+            this.metroCheckBox4.Name = "metroCheckBox4";
+            this.metroCheckBox4.Size = new System.Drawing.Size(191, 15);
+            this.metroCheckBox4.TabIndex = 27;
+            this.metroCheckBox4.Text = "Create new packaging barcodes";
+            this.metroCheckBox4.UseSelectable = true;
+            // 
             // JobTitleConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 362);
+            this.ClientSize = new System.Drawing.Size(700, 400);
+            this.Controls.Add(this.metroCheckBox4);
+            this.Controls.Add(this.metroCheckBox3);
+            this.Controls.Add(this.metroCheckBox2);
+            this.Controls.Add(this.metroCheckBox1);
             this.Controls.Add(this.chkRecount);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -395,5 +443,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private MetroFramework.Controls.MetroCheckBox chkRecount;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox2;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox3;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox4;
     }
 }

@@ -110,7 +110,7 @@ namespace BarcodeEncoder
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.POST;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res = await client.ExecuteAsync(Request,cancellationTokenSource.Token);
+                    var res =  client.Execute(Request);
                     if (res.StatusCode.ToString().Contains("OK"))
                     {
                         return true;
@@ -142,8 +142,8 @@ namespace BarcodeEncoder
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.GET;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res =await client.ExecuteAsync(Request,cancellationTokenSource.Token);
-                    if (res.IsSuccessful)
+                    var res = client.Execute(Request);
+                    if (res.StatusCode.ToString().Contains("OK"))
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
                         if (returnVal.Split('|')[0]=="0")
@@ -178,8 +178,8 @@ namespace BarcodeEncoder
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.GET;
                     var cancellationTokenSource = new CancellationTokenSource();
-                    var res = await client.ExecuteAsync(Request, cancellationTokenSource.Token);
-                    if (res.IsSuccessful)
+                    var res =  client.Execute(Request);
+                    if (res.StatusCode.ToString().Contains("OK"))
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
                         if (returnVal.Split('|')[0] == "0")

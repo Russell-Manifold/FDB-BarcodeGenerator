@@ -34,7 +34,7 @@ namespace BarcodeEncoder
                 Request.Method = RestSharp.Method.GET;
                 //var cancellationTokenSource = new CancellationTokenSource();
                 var res = client.Execute(Request);
-                if (res.IsSuccessful)
+                if (res.StatusCode.ToString().Contains("OK"))
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);

@@ -30,7 +30,7 @@ namespace BarcodeEncoder
                 Request.Resource = str;
                 Request.Method = RestSharp.Method.GET;
                 var res = client.Execute(Request);
-                if (res.IsSuccessful)
+                if (res.StatusCode.ToString().Contains("OK"))
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
@@ -43,7 +43,9 @@ namespace BarcodeEncoder
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Qstr = "INSERT INTO InventoryHeader (CreatedDate,Active, AllowCustomQty, Whse, Description) SELECT '" + Convert.ToDateTime(dateTimePicker1.Text) + "', 1, '" + chkManual.Checked + "', '" + DDWhse.SelectedValue.ToString() + "', '" + txtDescript.Text.ToString() + "'";
+            frmwait f1 = new frmwait();
+            f1.Show();
+            Qstr = "INSERT INTO InventoryHeader(CreatedDate,Active, AllowCustomQty, Whse, Description) VALUES('" + Convert.ToDateTime(dateTimePicker1.Text) + "', 1, '" + chkManual.Checked + "', '" + DDWhse.SelectedValue.ToString() + "', '" + txtDescript.Text.ToString() + "')";
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "DocumentSQLConnection";
             client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
@@ -55,9 +57,11 @@ namespace BarcodeEncoder
                 var res = client.Execute(Request);
                 if (res.StatusCode.ToString() == "OK")
                 {
+                    f1.Hide();
                     DialogResult result = MessageBox.Show("Successfully created, add items now?", "SAVED!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (result.ToString() == "Yes")
                     {
+                        f1.Show();
                         metroProgressSpinner1.Show();
                         this.Close();
                         Boolean showzero = false;
@@ -65,11 +69,13 @@ namespace BarcodeEncoder
                             showzero = true;
                         }
                         var frm = new InvCountNewItems(DDWhse.SelectedValue.ToString(), showzero);
+                        f1.Dispose();
                         frm.ShowDialog();
                     }
                 }
                 else
                 {
+                    f1.Dispose();
                     MessageBox.Show("Error saving changes - " + res.Content.ToString(), "SAVE FAILURE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
