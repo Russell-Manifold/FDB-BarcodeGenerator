@@ -26,7 +26,7 @@ namespace BarcodeEncoder
                 txtCode.Enabled = true;
             }
             else {
-                string Qstr = "SELECT TOP (1) PERCENT * FROM dbo.JobTitles WHERE TitleID = " + lblTitleID.Text;
+                string Qstr = "SELECT TOP (1) * FROM dbo.JobTitles WHERE TitleID = " + lblTitleID.Text;
                 RestSharp.RestClient client = new RestSharp.RestClient();
                 string path = "DocumentSQLConnection";
                 client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
@@ -48,7 +48,11 @@ namespace BarcodeEncoder
                         chkWhTrf.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["fWhTrf"].ToString());
                         chkPickPack.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["fPickPack"].ToString());
                         chkChecker.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["PickChecker"].ToString());
-
+                        chkCreateBarcode.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["CreateBarcodes"].ToString());
+                        chkLinkBarcode.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["LinkBarcodes"].ToString());
+                        chkCreatePackCode.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["CreatePackCodes"].ToString());
+                        
+                        //chkCreateWHTran.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["PickChecker"].ToString());
                         chkPickControl.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["PSCollect"].ToString());
                         chkAuthWhTrf.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["AuthWHTrf"].ToString());
                         chkAuthReceive.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["AuthReceive"].ToString());
@@ -62,20 +66,20 @@ namespace BarcodeEncoder
             }
         }
 
-       private void pictureBox2_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             string Qstr = string.Empty;
             if (lblTitleID.Text == "0")
             {
                 // insert new job title
-                Qstr = "INSERT INTO dbo.JobTitles (JobTitleCode, JobTitle, fReceive, fRepack, fInvCount, fWhTrf, fPickPack, PickChecker, PSCollect, AuthWHTrf, AuthReceive, AuthDispatch, CreateInvCount,  CloseInvCount, SystAdmin, InvReCountAuth )" +
-                   " SELECT '" + txtCode.Text.ToString() + "', '" + txtDescript.Text.ToString() + "', '" + chkReceive.Checked.ToString() + "', '" + chkRepack.Checked.ToString() + "', '" + chkInvCnt.Checked.ToString() + "', '" + chkWhTrf.Checked.ToString() + "',  '" + chkPickPack.Checked.ToString() + "', '" + chkChecker.Checked.ToString() + "', '" + chkPickControl.Checked.ToString() + "', '" + chkAuthWhTrf.Checked.ToString() + "', '" + chkAuthReceive.Checked.ToString() + "', '" + chkAuthDispatch.Checked.ToString() + "', '" + chkInvCntCreate.Checked.ToString() + "',  '" + chkInvCntClose.Checked.ToString() + "', '" + chkAdmin.Checked.ToString() + "', '" + chkRecount.Checked.ToString() + "'";
+                Qstr = "INSERT INTO dbo.JobTitles (JobTitleCode, JobTitle, fReceive, fRepack, fInvCount, fWhTrf, fPickPack, PickChecker, PSCollect, AuthWHTrf, AuthReceive, AuthDispatch, CreateInvCount,  CloseInvCount, SystAdmin, InvReCountAuth,CreateBarcodes,LinkBarcodes,CreatePackCodes )" +
+                   " VALUES('" + txtCode.Text.ToString() + "', '" + txtDescript.Text.ToString() + "', '" + chkReceive.Checked.ToString() + "', '" + chkRepack.Checked.ToString() + "', '" + chkInvCnt.Checked.ToString() + "', '" + chkWhTrf.Checked.ToString() + "',  '" + chkPickPack.Checked.ToString() + "', '" + chkChecker.Checked.ToString() + "', '" + chkPickControl.Checked.ToString() + "', '" + chkAuthWhTrf.Checked.ToString() + "', '" + chkAuthReceive.Checked.ToString() + "', '" + chkAuthDispatch.Checked.ToString() + "', '" + chkInvCntCreate.Checked.ToString() + "',  '" + chkInvCntClose.Checked.ToString() + "', '" + chkAdmin.Checked.ToString() + "', '" + chkRecount.Checked.ToString() + "','"+ chkCreateBarcode.Checked.ToString()+"','" + chkLinkBarcode.Checked.ToString() +"','"+ chkCreatePackCode.Checked.ToString() +"')";
             }
             else
             {
                 // update job title
                 Qstr = "UPDATE dbo.JobTitles SET JobTitleCode = '" + txtCode.Text.ToString() + "', JobTitle = '" + txtDescript.Text.ToString() + "', fReceive = '" + chkReceive.Checked.ToString() + "', fRepack = '" + chkRepack.Checked.ToString() + "', fInvCount = '" + chkInvCnt.Checked.ToString() + "', fWhTrf = '" + chkWhTrf.Checked.ToString() + "', fPickPack = '" + chkPickPack.Checked.ToString() + "', PickChecker = '" + chkChecker.Checked.ToString() + "'," +
-                    " PSCollect = '" + chkPickControl.Checked.ToString() + "', AuthWHTrf = '" + chkAuthWhTrf.Checked.ToString() + "', AuthReceive = '" + chkAuthReceive.Checked.ToString() + "', AuthDispatch = '" + chkAuthDispatch.Checked.ToString() + "', CreateInvCount = '" + chkInvCntCreate.Checked.ToString() + "',  CloseInvCount = '" + chkInvCntClose.Checked.ToString() + "', SystAdmin = '" + chkAdmin.Checked.ToString() + "', InvReCountAuth = '" + chkRecount.Checked.ToString() + "'" +
+                    " PSCollect = '" + chkPickControl.Checked.ToString() + "', AuthWHTrf = '" + chkAuthWhTrf.Checked.ToString() + "', AuthReceive = '" + chkAuthReceive.Checked.ToString() + "', AuthDispatch = '" + chkAuthDispatch.Checked.ToString() + "', CreateInvCount = '" + chkInvCntCreate.Checked.ToString() + "',  CloseInvCount = '" + chkInvCntClose.Checked.ToString() + "', SystAdmin = '" + chkAdmin.Checked.ToString() + "', InvReCountAuth = '" + chkRecount.Checked.ToString() + "'" + ", CreateBarcodes = '" + chkCreateBarcode.Checked.ToString() + "'" + ", LinkBarcodes = '" + chkLinkBarcode.Checked.ToString() + "'" + ", CreatePackCodes = '" + chkCreatePackCode.Checked.ToString() + "'" +
                     " WHERE TitleID = " + lblTitleID.Text;
             }
 
@@ -99,7 +103,7 @@ namespace BarcodeEncoder
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             string Qstr = string.Empty;
             string message = "Delete this Job Title";
@@ -119,7 +123,7 @@ namespace BarcodeEncoder
                     Request.Resource = str;
                     Request.Method = RestSharp.Method.POST;
                     var res = client.Execute(Request);
-                    if (res.StatusCode.ToString() == "OK")
+                    if (res.StatusCode.ToString().Contains("OK"))
                     {
                         MessageBox.Show("Changes successfully saved", "SAVED!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -128,14 +132,8 @@ namespace BarcodeEncoder
                         MessageBox.Show("Error saving changes - " + res.Content.ToString(), "SAVE FAILURE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                // Closes the parent form.
                 this.Close();
             }
         }
-
-        private void chkInvCntCreate_CheckedChanged(object sender, EventArgs e) 
-        { 
-        }
-        //
     }
 }

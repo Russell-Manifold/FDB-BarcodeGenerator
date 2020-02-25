@@ -28,7 +28,10 @@ namespace BarcodeEncoder
         void TickTimer(object sender, EventArgs e)
         {
             delayTimer.Stop();
-            CheckUser(textBox1.Text);
+            if (textBox1.Text.Length>0)
+            {                
+                CheckUser(textBox1.Text);
+            }           
         }
         void CheckUser(string UserName)
         {
@@ -45,18 +48,38 @@ namespace BarcodeEncoder
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
-                    DataRow UserDeatils = ds.Tables[0].Rows[0];
-                    if (Convert.ToInt32(UserDeatils["Id"])>0)
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
-                        DashBoard db = new DashBoard(UserDeatils);
-                        this.Hide();
-                        db.FormClosed += (s, args) => this.Close();
-                        db.Show();   
+                        DataRow UserDeatils = ds.Tables[0].Rows[0];
+                        if (Convert.ToInt32(UserDeatils["Id"]) > 0)
+                        {
+                            DashBoard db = new DashBoard(UserDeatils);
+                            this.Hide();
+                            db.FormClosed += (s, args) => this.Close();
+                            db.Show();
+                        }
+                        else
+                        {
+                            Error();
+                        }
                     }
+                    else
+                    {
+                        Error();
+                    }
+                }
+                else
+                {
+                    Error();
                 }
             }
         }
-
+        void Error()
+        {
+            MessageBox.Show("Invalid User","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            textBox1.Text="";
+            textBox1.Focus();
+        }
         private void LogIn_Load(object sender, EventArgs e)
         {
             textBox1.Focus();

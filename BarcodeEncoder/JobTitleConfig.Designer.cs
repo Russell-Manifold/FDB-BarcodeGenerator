@@ -48,15 +48,15 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.chkPickControl = new MetroFramework.Controls.MetroCheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.PictureBox();
+            this.btnSave = new System.Windows.Forms.PictureBox();
             this.chkRecount = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox2 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox3 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.chkCreateWHTran = new MetroFramework.Controls.MetroCheckBox();
+            this.chkCreateBarcode = new MetroFramework.Controls.MetroCheckBox();
+            this.chkLinkBarcode = new MetroFramework.Controls.MetroCheckBox();
+            this.chkCreatePackCode = new MetroFramework.Controls.MetroCheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitleID
@@ -231,7 +231,6 @@
             this.chkInvCntCreate.TabIndex = 12;
             this.chkInvCntCreate.Text = "Create Inventory Count";
             this.chkInvCntCreate.UseSelectable = true;
-            this.chkInvCntCreate.CheckedChanged += new System.EventHandler(this.chkInvCntCreate_CheckedChanged);
             // 
             // chkAuthDispatch
             // 
@@ -303,27 +302,27 @@
             this.chkPickControl.Text = "Picking Slip Controller";
             this.chkPickControl.UseSelectable = true;
             // 
-            // pictureBox1
+            // btnClose
             // 
-            this.pictureBox1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.BanRed;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 337);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.btnClose.BackgroundImage = global::BarcodeEncoder.Properties.Resources.BanRed;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClose.Location = new System.Drawing.Point(8, 337);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(39, 40);
+            this.btnClose.TabIndex = 21;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // pictureBox2
+            // btnSave
             // 
-            this.pictureBox2.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(611, 337);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(66, 40);
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.btnSave.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSave.Location = new System.Drawing.Point(611, 337);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(66, 40);
+            this.btnSave.TabIndex = 22;
+            this.btnSave.TabStop = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // chkRecount
             // 
@@ -335,58 +334,58 @@
             this.chkRecount.Text = "Authorise Inventory Re-Counts";
             this.chkRecount.UseSelectable = true;
             // 
-            // metroCheckBox1
+            // chkCreateWHTran
             // 
-            this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(434, 176);
-            this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(157, 15);
-            this.metroCheckBox1.TabIndex = 24;
-            this.metroCheckBox1.Text = "Create Warhouse Transfer";
-            this.metroCheckBox1.UseSelectable = true;
+            this.chkCreateWHTran.AutoSize = true;
+            this.chkCreateWHTran.Location = new System.Drawing.Point(434, 176);
+            this.chkCreateWHTran.Name = "chkCreateWHTran";
+            this.chkCreateWHTran.Size = new System.Drawing.Size(157, 15);
+            this.chkCreateWHTran.TabIndex = 24;
+            this.chkCreateWHTran.Text = "Create Warhouse Transfer";
+            this.chkCreateWHTran.UseSelectable = true;
             // 
-            // metroCheckBox2
+            // chkCreateBarcode
             // 
-            this.metroCheckBox2.AutoSize = true;
-            this.metroCheckBox2.Location = new System.Drawing.Point(84, 311);
-            this.metroCheckBox2.Name = "metroCheckBox2";
-            this.metroCheckBox2.Size = new System.Drawing.Size(135, 15);
-            this.metroCheckBox2.TabIndex = 25;
-            this.metroCheckBox2.Text = "Create New barcodes";
-            this.metroCheckBox2.UseSelectable = true;
+            this.chkCreateBarcode.AutoSize = true;
+            this.chkCreateBarcode.Location = new System.Drawing.Point(84, 311);
+            this.chkCreateBarcode.Name = "chkCreateBarcode";
+            this.chkCreateBarcode.Size = new System.Drawing.Size(135, 15);
+            this.chkCreateBarcode.TabIndex = 25;
+            this.chkCreateBarcode.Text = "Create New barcodes";
+            this.chkCreateBarcode.UseSelectable = true;
             // 
-            // metroCheckBox3
+            // chkLinkBarcode
             // 
-            this.metroCheckBox3.AutoSize = true;
-            this.metroCheckBox3.Location = new System.Drawing.Point(84, 332);
-            this.metroCheckBox3.Name = "metroCheckBox3";
-            this.metroCheckBox3.Size = new System.Drawing.Size(96, 15);
-            this.metroCheckBox3.TabIndex = 26;
-            this.metroCheckBox3.Text = "Link Barcodes";
-            this.metroCheckBox3.UseSelectable = true;
+            this.chkLinkBarcode.AutoSize = true;
+            this.chkLinkBarcode.Location = new System.Drawing.Point(84, 332);
+            this.chkLinkBarcode.Name = "chkLinkBarcode";
+            this.chkLinkBarcode.Size = new System.Drawing.Size(96, 15);
+            this.chkLinkBarcode.TabIndex = 26;
+            this.chkLinkBarcode.Text = "Link Barcodes";
+            this.chkLinkBarcode.UseSelectable = true;
             // 
-            // metroCheckBox4
+            // chkCreatePackCode
             // 
-            this.metroCheckBox4.AutoSize = true;
-            this.metroCheckBox4.Location = new System.Drawing.Point(84, 353);
-            this.metroCheckBox4.Name = "metroCheckBox4";
-            this.metroCheckBox4.Size = new System.Drawing.Size(191, 15);
-            this.metroCheckBox4.TabIndex = 27;
-            this.metroCheckBox4.Text = "Create new packaging barcodes";
-            this.metroCheckBox4.UseSelectable = true;
+            this.chkCreatePackCode.AutoSize = true;
+            this.chkCreatePackCode.Location = new System.Drawing.Point(84, 353);
+            this.chkCreatePackCode.Name = "chkCreatePackCode";
+            this.chkCreatePackCode.Size = new System.Drawing.Size(191, 15);
+            this.chkCreatePackCode.TabIndex = 27;
+            this.chkCreatePackCode.Text = "Create new packaging barcodes";
+            this.chkCreatePackCode.UseSelectable = true;
             // 
             // JobTitleConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 400);
-            this.Controls.Add(this.metroCheckBox4);
-            this.Controls.Add(this.metroCheckBox3);
-            this.Controls.Add(this.metroCheckBox2);
-            this.Controls.Add(this.metroCheckBox1);
+            this.Controls.Add(this.chkCreatePackCode);
+            this.Controls.Add(this.chkLinkBarcode);
+            this.Controls.Add(this.chkCreateBarcode);
+            this.Controls.Add(this.chkCreateWHTran);
             this.Controls.Add(this.chkRecount);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.chkPickControl);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroLabel4);
@@ -411,8 +410,8 @@
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Job Title Configuration";
             this.Load += new System.EventHandler(this.JobTitleSetUp_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,12 +439,12 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroCheckBox chkPickControl;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnClose;
+        private System.Windows.Forms.PictureBox btnSave;
         private MetroFramework.Controls.MetroCheckBox chkRecount;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox2;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox3;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox4;
+        private MetroFramework.Controls.MetroCheckBox chkCreateWHTran;
+        private MetroFramework.Controls.MetroCheckBox chkCreateBarcode;
+        private MetroFramework.Controls.MetroCheckBox chkLinkBarcode;
+        private MetroFramework.Controls.MetroCheckBox chkCreatePackCode;
     }
 }

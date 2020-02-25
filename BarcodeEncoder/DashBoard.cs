@@ -208,14 +208,74 @@ namespace BarcodeEncoder
             }
             else
             {
-                if (Convert.ToBoolean(UserData["fPickPack"]))
+                try
                 {
-                    btnPickSlipsList.Enabled = true;
+                    if (Convert.ToBoolean(UserData["fReceive"]))
+                    {
+                        btnPickSlipsList.Enabled = true;
+                    }
                 }
-                if (Convert.ToBoolean(UserData["fPickPack"]))
+                catch
                 {
-                    btnNewBarcode.Enabled = true;
+
                 }
+                try
+                {
+
+                    if (Convert.ToBoolean(UserData["CreateBarcodes"]))
+                    {
+                        btnNewBarcode.Enabled = true;
+                    }
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    if (Convert.ToBoolean(UserData["LinkBarcodes"]))
+                    {
+                        btnScan.Enabled = true;
+                    }
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    if (Convert.ToBoolean(UserData["CreatePackCodes"]))
+                    {
+                        btnCreate.Enabled = true;
+                    }
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    if (Convert.ToBoolean(UserData["fInvCount"]))
+                    {
+                        metroButton1.Enabled = true;
+                    }
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    if (Convert.ToBoolean(UserData["AuthDispatch"]))
+                    {
+                        metroButton2.Enabled = true;
+                    }
+                }
+                catch
+                {
+
+                }
+               
             }
            
         }
