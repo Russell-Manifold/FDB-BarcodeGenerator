@@ -23,7 +23,7 @@ namespace BarcodeEncoder
 
         private void getInventoryItems()
         {
-            string Qstr = $"SELECT BarCode as [Barcode], ItemDesc as [Description],FirstScanQty as [First Scan],SecondScanQty as [Second Scan],Complete,ItemCode,isFirst FROM dbo.InventoryLines WHERE CountID={CountID}";            
+            string Qstr = $"SELECT BarCode AS Barcode, ItemDesc AS Description, FirstScanQty AS [Count 1], SecondScanQty AS [Count 2], SystemQty AS [Q O H], FinalScanQty - SystemQty AS Diff, Complete, ItemCode, isFirst FROM dbo.InventoryLines WHERE CountID={CountID}";            
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "DocumentSQLConnection";
             client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
@@ -38,14 +38,21 @@ namespace BarcodeEncoder
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
                     dataGridView1.DataSource = ds.Tables[0];
-                    dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                    dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                    dataGridView1.Columns[4].Visible=false;
-                    dataGridView1.Columns[5].Visible=false;
-                    dataGridView1.Columns[6].Visible=false;
-
+                    dataGridView1.Columns[2].Width = 50;
+                    dataGridView1.Columns[3].Width = 50;
+                    dataGridView1.Columns[4].Width = 50;
+                    dataGridView1.Columns[5].Width = 50;
+                    dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    dataGridView1.Columns[6].ReadOnly = true;
+                    dataGridView1.Columns[7].Visible=false;
+                    dataGridView1.Columns[8].Visible=false;
+                    formatgridcells();
                 }
                 else if (res.StatusCode.ToString().Contains("OK"))
                 {
@@ -57,13 +64,17 @@ namespace BarcodeEncoder
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Counting completed","COMPLETE!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("Close off Inventory Count as Complete - Are You Sure?", "Question?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.ToString() == "Yes")
+            {
+                MessageBox.Show("Counting completed", "COMPLETE!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }         
             this.Dispose();
         }
 
         private void btnDeleteCount_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you would like to delete this stock count?", "Question?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Delete this stock count?", "Question?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result.ToString() == "Yes")
             {
                 SendData();
@@ -90,6 +101,18 @@ namespace BarcodeEncoder
                 {
                     MessageBox.Show("There was a error in deleting this count", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void formatgridcells() {
+            foreach (DataGridViewRow dr in dataGridView1.Rows) {
+                try{
+                    if (Convert.ToInt32(dr.Cells[5].Value) != 0) {
+                        dr.Cells[5].Style.BackColor = System.Drawing.Color.Green;
+                    }
+                }
+                catch (Exception) { }
+
             }
         }
     }

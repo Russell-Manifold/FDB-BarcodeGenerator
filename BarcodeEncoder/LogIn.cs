@@ -13,26 +13,12 @@ namespace BarcodeEncoder
 {
     public partial class LogIn : MetroFramework.Forms.MetroForm
     {
-        Timer delayTimer = new Timer();
         public LogIn()
         {
             InitializeComponent();
-            delayTimer.Tick += TickTimer;
-            delayTimer.Interval = 2000;
+            txtUserCode.Focus();
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            delayTimer.Stop();
-            delayTimer.Start();          
-        }
-        void TickTimer(object sender, EventArgs e)
-        {
-            delayTimer.Stop();
-            if (textBox1.Text.Length>0)
-            {                
-                CheckUser(textBox1.Text);
-            }           
-        }
+        
         void CheckUser(string UserName)
         {
             RestSharp.RestClient client = new RestSharp.RestClient();
@@ -44,7 +30,7 @@ namespace BarcodeEncoder
                 Request.Resource = str;
                 Request.Method = RestSharp.Method.GET;
                 var res = client.Execute(Request);
-                if (res.StatusCode.ToString().Contains("OK"))
+                if (res.Content!="null")
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
@@ -77,12 +63,31 @@ namespace BarcodeEncoder
         void Error()
         {
             MessageBox.Show("Invalid User","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            textBox1.Text="";
-            textBox1.Focus();
+            txtUserCode.Text="";
+            txtUserCode.Focus();
         }
         private void LogIn_Load(object sender, EventArgs e)
         {
-            textBox1.Focus();
+            txtUserCode.Focus();
+        }
+
+        private void metroToggle1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (TogCodeShow.Checked == true)
+            {
+                txtUserCode.UseSystemPasswordChar = false;
+            }
+            else {
+                txtUserCode.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            if (txtUserCode.Text.Length > 0)
+            {
+                CheckUser(txtUserCode.Text);
+            }
         }
     }
 }

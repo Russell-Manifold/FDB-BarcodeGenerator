@@ -93,6 +93,16 @@ namespace BarcodeEncoder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap barcodetagsSmall {
+            get {
+                object obj = ResourceManager.GetObject("barcodetagsSmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FDBicon1 {
             get {
                 object obj = ResourceManager.GetObject("FDBicon1", resourceCulture);
@@ -123,9 +133,39 @@ namespace BarcodeEncoder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap InvCount2 {
+            get {
+                object obj = ResourceManager.GetObject("InvCount2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap link {
+            get {
+                object obj = ResourceManager.GetObject("link", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap link1 {
             get {
                 object obj = ResourceManager.GetObject("link1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap linkSmall {
+            get {
+                object obj = ResourceManager.GetObject("linkSmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +193,39 @@ namespace BarcodeEncoder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newbarcode {
+            get {
+                object obj = ResourceManager.GetObject("newbarcode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Packbox {
             get {
                 object obj = ResourceManager.GetObject("Packbox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Packbox1 {
+            get {
+                object obj = ResourceManager.GetObject("Packbox1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PackboxSmall {
+            get {
+                object obj = ResourceManager.GetObject("PackboxSmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +266,16 @@ namespace BarcodeEncoder.Properties {
         internal static System.Drawing.Bitmap pickslip {
             get {
                 object obj = ResourceManager.GetObject("pickslip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pickslip1 {
+            get {
+                object obj = ResourceManager.GetObject("pickslip1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +336,16 @@ namespace BarcodeEncoder.Properties {
         internal static System.Drawing.Bitmap WIP {
             get {
                 object obj = ResourceManager.GetObject("WIP", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WIP1 {
+            get {
+                object obj = ResourceManager.GetObject("WIP1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

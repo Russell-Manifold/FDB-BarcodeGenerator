@@ -32,7 +32,8 @@
             this.lblAPI = new MetroFramework.Controls.MetroLabel();
             this.txfApi = new MetroFramework.Controls.MetroTextBox();
             this.txfLocation = new MetroFramework.Controls.MetroTextBox();
-            this.btnSave = new MetroFramework.Controls.MetroButton();
+            this.btnSave = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLocation
@@ -71,12 +72,12 @@
             this.txfApi.CustomButton.Visible = false;
             this.txfApi.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::BarcodeEncoder.Properties.Settings.Default, "API", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txfApi.Lines = new string[] {
-        "http://localhost:7721//api/"};
+        "http://192.168.0.111/FDBAPI/api/"};
             this.txfApi.Location = new System.Drawing.Point(97, 81);
             this.txfApi.MaxLength = 32767;
             this.txfApi.Name = "txfApi";
             this.txfApi.PasswordChar = '\0';
-            this.txfApi.WaterMark = "http://localhost:7721//api/";
+            this.txfApi.PromptText = "http://localhost:7721//api/";
             this.txfApi.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txfApi.SelectedText = "";
             this.txfApi.SelectionLength = 0;
@@ -125,28 +126,29 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSave.Location = new System.Drawing.Point(336, 25);
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Image = global::BarcodeEncoder.Properties.Resources.Save;
+            this.btnSave.Location = new System.Drawing.Point(315, 24);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(33, 32);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.UseSelectable = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            this.btnSave.Size = new System.Drawing.Size(37, 32);
+            this.btnSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnSave.TabIndex = 9;
+            this.btnSave.TabStop = false;
             // 
             // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 448);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txfApi);
             this.Controls.Add(this.lblAPI);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnLocation);
             this.Controls.Add(this.txfLocation);
             this.Name = "AdminPanel";
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Configuration Settings";
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,8 +157,8 @@
         #endregion
         private MetroFramework.Controls.MetroTextBox txfLocation;
         private MetroFramework.Controls.MetroButton btnLocation;
-        private MetroFramework.Controls.MetroButton btnSave;
         private MetroFramework.Controls.MetroLabel lblAPI;
         private MetroFramework.Controls.MetroTextBox txfApi;
+        private System.Windows.Forms.PictureBox btnSave;
     }
 }

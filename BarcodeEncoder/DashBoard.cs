@@ -186,7 +186,7 @@ namespace BarcodeEncoder
             ViewProgressChoose frm = new ViewProgressChoose();
             frm.ShowDialog();
         }
-
+        
         private void metroButton1_Click(object sender, EventArgs e)
         {
             InvCountSelect frm = new InvCountSelect();
@@ -195,6 +195,8 @@ namespace BarcodeEncoder
 
         private void DashBoard_Load(object sender, EventArgs e)
         {
+            lblUserName.Text = "Hi " + UserData["UserName"].ToString();
+            
             if (UserData["JobTitleCode"].ToString()=="Sup")
             {
                 btnPickSlipsList.Enabled = true;
@@ -205,6 +207,7 @@ namespace BarcodeEncoder
                 metroButton1.Enabled = true;
                 //inprogress
                 metroButton2.Enabled = true;
+                metroLink1.Visible = true;
             }
             else
             {
@@ -213,6 +216,12 @@ namespace BarcodeEncoder
                     if (Convert.ToBoolean(UserData["fReceive"]))
                     {
                         btnPickSlipsList.Enabled = true;
+                        btnPickSlipsList.BackColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        btnPickSlipsList.Enabled = false;
+                        btnPickSlipsList.BackColor = Color.LightGray;
                     }
                 }
                 catch
@@ -225,6 +234,12 @@ namespace BarcodeEncoder
                     if (Convert.ToBoolean(UserData["CreateBarcodes"]))
                     {
                         btnNewBarcode.Enabled = true;
+                        btnNewBarcode.BackColor = Color.Transparent;
+                    }
+                    else 
+                    {
+                        btnNewBarcode.Enabled = false;
+                        btnNewBarcode.BackColor = Color.LightGray;
                     }
                 }
                 catch
@@ -236,6 +251,12 @@ namespace BarcodeEncoder
                     if (Convert.ToBoolean(UserData["LinkBarcodes"]))
                     {
                         btnScan.Enabled = true;
+                        btnScan.BackColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        btnScan.Enabled = true;
+                        btnScan.BackColor = Color.LightGray;
                     }
                 }
                 catch
@@ -247,6 +268,12 @@ namespace BarcodeEncoder
                     if (Convert.ToBoolean(UserData["CreatePackCodes"]))
                     {
                         btnCreate.Enabled = true;
+                        btnCreate.BackColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        btnCreate.Enabled = false;
+                        btnCreate.BackColor = Color.LightGray;
                     }
                 }
                 catch
@@ -258,6 +285,12 @@ namespace BarcodeEncoder
                     if (Convert.ToBoolean(UserData["fInvCount"]))
                     {
                         metroButton1.Enabled = true;
+                        metroButton1.BackColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        metroButton1.Enabled = false;
+                        metroButton1.BackColor = Color.LightGray;
                     }
                 }
                 catch
@@ -269,6 +302,12 @@ namespace BarcodeEncoder
                     if (Convert.ToBoolean(UserData["AuthDispatch"]))
                     {
                         metroButton2.Enabled = true;
+                        metroButton2.BackColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        metroButton2.Enabled = false;
+                        metroButton2.BackColor = Color.LightGray;
                     }
                 }
                 catch

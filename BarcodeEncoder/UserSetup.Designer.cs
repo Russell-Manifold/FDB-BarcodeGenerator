@@ -38,8 +38,6 @@
             this.txtPwd = new MetroFramework.Controls.MetroTextBox();
             this.togActive = new MetroFramework.Controls.MetroToggle();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.btnPrint = new MetroFramework.Controls.MetroButton();
-            this.btnSaveLocation = new MetroFramework.Controls.MetroButton();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.DDUserName = new MetroFramework.Controls.MetroComboBox();
@@ -48,14 +46,19 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.txtUserName = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.btnPrint = new System.Windows.Forms.PictureBox();
+            this.btnSaveLocation = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveLocation)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(28, 104);
+            this.metroLabel1.Location = new System.Drawing.Point(28, 128);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(85, 19);
             this.metroLabel1.TabIndex = 1;
@@ -64,7 +67,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(28, 168);
+            this.metroLabel2.Location = new System.Drawing.Point(28, 192);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(106, 19);
             this.metroLabel2.TabIndex = 3;
@@ -75,7 +78,7 @@
             // 
             this.ddJobTitles.FormattingEnabled = true;
             this.ddJobTitles.ItemHeight = 23;
-            this.ddJobTitles.Location = new System.Drawing.Point(136, 163);
+            this.ddJobTitles.Location = new System.Drawing.Point(136, 187);
             this.ddJobTitles.Name = "ddJobTitles";
             this.ddJobTitles.Size = new System.Drawing.Size(215, 29);
             this.ddJobTitles.TabIndex = 2;
@@ -84,7 +87,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(28, 69);
+            this.metroLabel3.Location = new System.Drawing.Point(28, 93);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(68, 19);
             this.metroLabel3.TabIndex = 6;
@@ -106,7 +109,7 @@
             this.txtUserNumber.CustomButton.Visible = false;
             this.txtUserNumber.Enabled = false;
             this.txtUserNumber.Lines = new string[0];
-            this.txtUserNumber.Location = new System.Drawing.Point(136, 69);
+            this.txtUserNumber.Location = new System.Drawing.Point(136, 93);
             this.txtUserNumber.MaxLength = 32767;
             this.txtUserNumber.Name = "txtUserNumber";
             this.txtUserNumber.PasswordChar = '\0';
@@ -124,7 +127,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(28, 134);
+            this.metroLabel4.Location = new System.Drawing.Point(28, 158);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(73, 19);
             this.metroLabel4.TabIndex = 8;
@@ -146,7 +149,7 @@
             this.txtPwd.CustomButton.Visible = false;
             this.txtPwd.Lines = new string[] {
         "metroTextBox2"};
-            this.txtPwd.Location = new System.Drawing.Point(136, 134);
+            this.txtPwd.Location = new System.Drawing.Point(136, 158);
             this.txtPwd.MaxLength = 32767;
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.PasswordChar = '●';
@@ -168,7 +171,7 @@
             this.togActive.AutoSize = true;
             this.togActive.Checked = true;
             this.togActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.togActive.Location = new System.Drawing.Point(136, 198);
+            this.togActive.Location = new System.Drawing.Point(136, 222);
             this.togActive.Name = "togActive";
             this.togActive.Size = new System.Drawing.Size(80, 17);
             this.togActive.Style = MetroFramework.MetroColorStyle.Orange;
@@ -179,42 +182,16 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(28, 198);
+            this.metroLabel5.Location = new System.Drawing.Point(28, 222);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(44, 19);
             this.metroLabel5.TabIndex = 10;
             this.metroLabel5.Text = "Active";
             // 
-            // btnPrint
-            // 
-            this.btnPrint.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Print;
-            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrint.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnPrint.Location = new System.Drawing.Point(28, 249);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(64, 44);
-            this.btnPrint.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnPrint.TabIndex = 4;
-            this.btnPrint.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.btnPrint.UseSelectable = true;
-            this.btnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
-            // 
-            // btnSaveLocation
-            // 
-            this.btnSaveLocation.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
-            this.btnSaveLocation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSaveLocation.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveLocation.Location = new System.Drawing.Point(297, 249);
-            this.btnSaveLocation.Name = "btnSaveLocation";
-            this.btnSaveLocation.Size = new System.Drawing.Size(54, 44);
-            this.btnSaveLocation.TabIndex = 5;
-            this.btnSaveLocation.UseSelectable = true;
-            this.btnSaveLocation.Click += new System.EventHandler(this.btnSaveLocation_Click);
-            // 
             // metroLabel6
             // 
-            this.metroLabel6.Location = new System.Drawing.Point(10, 293);
+            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel6.Location = new System.Drawing.Point(10, 321);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(95, 41);
             this.metroLabel6.TabIndex = 19;
@@ -225,9 +202,10 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(302, 295);
+            this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel7.Location = new System.Drawing.Point(300, 324);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(39, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(33, 15);
             this.metroLabel7.TabIndex = 20;
             this.metroLabel7.Text = "SAVE";
             // 
@@ -235,7 +213,7 @@
             // 
             this.DDUserName.FormattingEnabled = true;
             this.DDUserName.ItemHeight = 23;
-            this.DDUserName.Location = new System.Drawing.Point(136, 98);
+            this.DDUserName.Location = new System.Drawing.Point(136, 122);
             this.DDUserName.Name = "DDUserName";
             this.DDUserName.Size = new System.Drawing.Size(215, 29);
             this.DDUserName.TabIndex = 0;
@@ -247,16 +225,16 @@
             this.btnAddUser.BackgroundImage = global::BarcodeEncoder.Properties.Resources.PalletAdd;
             this.btnAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddUser.Location = new System.Drawing.Point(223, 13);
+            this.btnAddUser.Location = new System.Drawing.Point(218, 21);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(33, 50);
+            this.btnAddUser.Size = new System.Drawing.Size(30, 30);
             this.btnAddUser.TabIndex = 22;
             this.btnAddUser.TabStop = false;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // PicBox
             // 
-            this.PicBox.Location = new System.Drawing.Point(136, 237);
+            this.PicBox.Location = new System.Drawing.Point(136, 261);
             this.PicBox.Name = "PicBox";
             this.PicBox.Size = new System.Drawing.Size(142, 60);
             this.PicBox.TabIndex = 35;
@@ -293,7 +271,7 @@
             this.txtUserName.CustomButton.Visible = false;
             this.txtUserName.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtUserName.Lines = new string[0];
-            this.txtUserName.Location = new System.Drawing.Point(137, 100);
+            this.txtUserName.Location = new System.Drawing.Point(137, 124);
             this.txtUserName.MaxLength = 32767;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PasswordChar = '\0';
@@ -309,19 +287,54 @@
             this.txtUserName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtUserName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel8.Location = new System.Drawing.Point(202, 54);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(61, 15);
+            this.metroLabel8.TabIndex = 36;
+            this.metroLabel8.Text = "(Add New)";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.Image = global::BarcodeEncoder.Properties.Resources.Print;
+            this.btnPrint.Location = new System.Drawing.Point(28, 271);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(66, 50);
+            this.btnPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnPrint.TabIndex = 41;
+            this.btnPrint.TabStop = false;
+            this.btnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
+            // 
+            // btnSaveLocation
+            // 
+            this.btnSaveLocation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveLocation.Image = global::BarcodeEncoder.Properties.Resources.Save;
+            this.btnSaveLocation.Location = new System.Drawing.Point(285, 271);
+            this.btnSaveLocation.Name = "btnSaveLocation";
+            this.btnSaveLocation.Size = new System.Drawing.Size(66, 50);
+            this.btnSaveLocation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnSaveLocation.TabIndex = 42;
+            this.btnSaveLocation.TabStop = false;
+            this.btnSaveLocation.Click += new System.EventHandler(this.btnSaveLocation_Click);
+            // 
             // UserSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 365);
+            this.ClientSize = new System.Drawing.Size(385, 378);
+            this.Controls.Add(this.btnSaveLocation);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.PicBox);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.DDUserName);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroLabel6);
-            this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.btnSaveLocation);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.togActive);
             this.Controls.Add(this.metroLabel4);
@@ -337,6 +350,8 @@
             this.Load += new System.EventHandler(this.UserSetup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAddUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveLocation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,8 +367,6 @@
         private MetroFramework.Controls.MetroTextBox txtPwd;
         private MetroFramework.Controls.MetroToggle togActive;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroButton btnPrint;
-        private MetroFramework.Controls.MetroButton btnSaveLocation;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroComboBox DDUserName;
@@ -362,5 +375,8 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private MetroFramework.Controls.MetroTextBox txtUserName;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private System.Windows.Forms.PictureBox btnPrint;
+        private System.Windows.Forms.PictureBox btnSaveLocation;
     }
 }

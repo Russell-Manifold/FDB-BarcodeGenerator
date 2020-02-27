@@ -45,6 +45,7 @@ namespace BarcodeEncoder
         {
             frmwait f1 = new frmwait();
             f1.Show();
+            f1.Refresh();
             Qstr = "INSERT INTO InventoryHeader(CreatedDate,Active, AllowCustomQty, Whse, Description) VALUES('" + Convert.ToDateTime(dateTimePicker1.Text) + "', 1, '" + chkManual.Checked + "', '" + DDWhse.SelectedValue.ToString() + "', '" + txtDescript.Text.ToString() + "')";
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "DocumentSQLConnection";
@@ -62,6 +63,7 @@ namespace BarcodeEncoder
                     if (result.ToString() == "Yes")
                     {
                         f1.Show();
+                        f1.Refresh();
                         metroProgressSpinner1.Show();
                         this.Close();
                         Boolean showzero = false;

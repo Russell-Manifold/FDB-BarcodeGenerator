@@ -68,5 +68,12 @@ namespace BarcodeEncoder
         {
             LoadData();
         }
+
+        private void btnJobTitleAdd_Click(object sender, EventArgs e)
+        {
+            JobTitleNew frm = new JobTitleNew();
+            frm.ShowDialog();
+            LoadData();
+        }
     }
 }

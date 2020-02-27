@@ -38,14 +38,16 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.lblUserName = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnScan
             // 
-            this.btnScan.BackgroundImage = global::BarcodeEncoder.Properties.Resources.link1;
+            this.btnScan.BackgroundImage = global::BarcodeEncoder.Properties.Resources.link;
             this.btnScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnScan.Enabled = false;
             this.btnScan.Location = new System.Drawing.Point(133, 326);
             this.btnScan.Name = "btnScan";
@@ -56,8 +58,9 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Packbox;
+            this.btnCreate.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Packbox1;
             this.btnCreate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreate.Enabled = false;
             this.btnCreate.Location = new System.Drawing.Point(133, 407);
             this.btnCreate.Name = "btnCreate";
@@ -68,8 +71,9 @@
             // 
             // btnNewBarcode
             // 
-            this.btnNewBarcode.BackgroundImage = global::BarcodeEncoder.Properties.Resources.barcodetags;
+            this.btnNewBarcode.BackgroundImage = global::BarcodeEncoder.Properties.Resources.newbarcode;
             this.btnNewBarcode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnNewBarcode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNewBarcode.Enabled = false;
             this.btnNewBarcode.Location = new System.Drawing.Point(133, 245);
             this.btnNewBarcode.Name = "btnNewBarcode";
@@ -87,12 +91,15 @@
             this.metroLink1.TabIndex = 8;
             this.metroLink1.Text = "Configuration -->";
             this.metroLink1.UseSelectable = true;
+            this.metroLink1.Visible = false;
             this.metroLink1.Click += new System.EventHandler(this.MetroLink1_Click);
             // 
             // btnPickSlipsList
             // 
-            this.btnPickSlipsList.BackgroundImage = global::BarcodeEncoder.Properties.Resources.pickslip;
+            this.btnPickSlipsList.BackColor = System.Drawing.Color.Transparent;
+            this.btnPickSlipsList.BackgroundImage = global::BarcodeEncoder.Properties.Resources.pickslip1;
             this.btnPickSlipsList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPickSlipsList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPickSlipsList.Enabled = false;
             this.btnPickSlipsList.Location = new System.Drawing.Point(133, 164);
             this.btnPickSlipsList.Name = "btnPickSlipsList";
@@ -123,8 +130,9 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.InvCount1;
-            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.metroButton1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.InvCount2;
+            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.metroButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton1.Enabled = false;
             this.metroButton1.Location = new System.Drawing.Point(133, 490);
             this.metroButton1.Name = "metroButton1";
@@ -135,8 +143,9 @@
             // 
             // metroButton2
             // 
-            this.metroButton2.BackgroundImage = global::BarcodeEncoder.Properties.Resources.WIP;
+            this.metroButton2.BackgroundImage = global::BarcodeEncoder.Properties.Resources.WIP1;
             this.metroButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.metroButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton2.Enabled = false;
             this.metroButton2.Location = new System.Drawing.Point(133, 571);
             this.metroButton2.Name = "metroButton2";
@@ -145,6 +154,15 @@
             this.metroButton2.UseSelectable = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(139, 134);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(81, 19);
+            this.lblUserName.TabIndex = 14;
+            this.lblUserName.Text = "metroLabel1";
+            // 
             // DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,6 +170,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(446, 706);
+            this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.pictureBox2);
@@ -168,6 +187,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -182,5 +202,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroLabel lblUserName;
     }
 }

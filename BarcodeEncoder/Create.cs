@@ -46,7 +46,7 @@ namespace BarcodeEncoder
                     Double Hf = (H / pixelFactor) - 20;
                     writer.Options.Width = Convert.ToInt16(Wf);
                     writer.Options.Height = Convert.ToInt16(Hf);
-
+                   
                     i = writer.Write(txfMainCode.Text.ToUpper());
                     txfName.Text = txfMainCode.Text.ToUpper();
                     PicBox.Width = (i.Width + 20);
@@ -195,7 +195,7 @@ namespace BarcodeEncoder
                 Request.Resource = str;
                 Request.Method = RestSharp.Method.GET;
                 var res = client.Execute(Request);
-                if (res.ResponseStatus.ToString()=="Complete")
+                if (res.StatusCode.ToString()=="OK")
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);

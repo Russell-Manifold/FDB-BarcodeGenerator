@@ -62,6 +62,7 @@ namespace BarcodeEncoder
                             d["ItemCode"] = dr["ItemCode"].ToString();
                             d["ItemDescription"] = dr["ItemDesc"].ToString();
                             d["Qty"] = dr["ItemQty"].ToString();
+                            d["Bin"] = dr["Bin"].ToString();
                             d["Barcode"] = dr["Barcode"].ToString();
                             thisqty = Convert.ToInt32(dr["ItemQty"].ToString());
                             totqty = totqty + thisqty;

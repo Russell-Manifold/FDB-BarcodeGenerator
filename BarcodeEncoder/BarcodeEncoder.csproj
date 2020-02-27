@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -237,6 +237,12 @@
     <Compile Include="JobTitleConfig.Designer.cs">
       <DependentUpon>JobTitleConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="JobTitleNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JobTitleNew.Designer.cs">
+      <DependentUpon>JobTitleNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="JobTitleSetUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="JobTitleConfig.resx">
       <DependentUpon>JobTitleConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JobTitleNew.resx">
+      <DependentUpon>JobTitleNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JobTitleSetUp.resx">
       <DependentUpon>JobTitleSetUp.cs</DependentUpon>
@@ -464,7 +473,10 @@
     </Content>
     <None Include="Resources\FDBicon1.png" />
     <Content Include="Icon.ico" />
+    <None Include="link.png" />
     <Content Include="MainIcon.ico" />
+    <None Include="newbarcode.png" />
+    <None Include="Packbox.png" />
     <Content Include="pickslip.jpg" />
     <None Include="Resources\spinner5.gif" />
     <None Include="Resources\MainIconLogin.png" />
@@ -476,8 +488,13 @@
     <None Include="Resources\ReceiveStck.png" />
     <None Include="Resources\InvCount.png" />
     <None Include="Resources\InvCount.jpg" />
+    <None Include="Resources\barcodetagsSmall.png" />
+    <None Include="Resources\linkSmall.png" />
+    <None Include="Resources\PackboxSmall.png" />
+    <None Include="pickslip.png" />
     <Content Include="Resources\ViewAll.png" />
     <None Include="Resources\WIP.jpg" />
+    <None Include="Resources\WIP.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -493,15 +510,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
+      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

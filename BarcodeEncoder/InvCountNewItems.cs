@@ -165,7 +165,7 @@ namespace BarcodeEncoder
                 }
                 foreach (DataRow row in drL)
                 {
-                    string str = $"POST?qry=INSERT INTO InventoryLines(CountID,ItemCode,ItemDesc,BarCode)VALUES({CountID},'{row["ItemCode"].ToString()}','{row["ItemDescription"]}','{row["BarCode"]}')";
+                    string str = $"POST?qry=INSERT INTO InventoryLines(CountID,ItemCode,ItemDesc,BarCode, Bin)VALUES({CountID},'{row["ItemCode"].ToString()}','{row["ItemDescription"]}','{row["BarCode"]}' ,'{row["Bin"].ToString()}')";
                     Request = new RestRequest(str,Method.POST);
                     var res = client.Execute(Request);
                     if (res.StatusCode.ToString().Contains("OK") && !res.Content.Contains("Complete"))

@@ -42,16 +42,19 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(23, 101);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(754, 553);
+            this.dataGridView1.Size = new System.Drawing.Size(1096, 553);
             this.dataGridView1.TabIndex = 0;
             // 
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(607, 33);
+            this.metroLabel3.Location = new System.Drawing.Point(949, 32);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(124, 19);
             this.metroLabel3.TabIndex = 7;
@@ -62,7 +65,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(737, 29);
+            this.pictureBox1.Location = new System.Drawing.Point(1079, 28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 29);
             this.pictureBox1.TabIndex = 6;
@@ -133,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 677);
+            this.ClientSize = new System.Drawing.Size(1142, 677);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.txfFilterText);
             this.Controls.Add(this.CMBXFilterBy);

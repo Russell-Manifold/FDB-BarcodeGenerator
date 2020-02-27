@@ -28,49 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new System.Windows.Forms.Button();
+            this.metroButton3 = new System.Windows.Forms.Button();
+            this.metroButton1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Location = new System.Drawing.Point(51, 88);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(154, 39);
-            this.metroButton1.TabIndex = 0;
-            this.metroButton1.Text = "Connection Configuration";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // metroButton2
             // 
-            this.metroButton2.Location = new System.Drawing.Point(51, 178);
+            this.metroButton2.BackColor = System.Drawing.Color.Transparent;
+            this.metroButton2.FlatAppearance.BorderColor = System.Drawing.Color.OrangeRed;
+            this.metroButton2.FlatAppearance.BorderSize = 2;
+            this.metroButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.metroButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroButton2.ForeColor = System.Drawing.Color.OrangeRed;
+            this.metroButton2.Location = new System.Drawing.Point(57, 138);
             this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(154, 39);
-            this.metroButton2.TabIndex = 1;
-            this.metroButton2.Text = "Users";
-            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Size = new System.Drawing.Size(189, 51);
+            this.metroButton2.TabIndex = 45;
+            this.metroButton2.Text = "USERS";
+            this.metroButton2.UseVisualStyleBackColor = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // metroButton3
             // 
-            this.metroButton3.Location = new System.Drawing.Point(51, 133);
+            this.metroButton3.BackColor = System.Drawing.Color.Transparent;
+            this.metroButton3.FlatAppearance.BorderColor = System.Drawing.Color.OrangeRed;
+            this.metroButton3.FlatAppearance.BorderSize = 2;
+            this.metroButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.metroButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroButton3.ForeColor = System.Drawing.Color.OrangeRed;
+            this.metroButton3.Location = new System.Drawing.Point(57, 195);
             this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(154, 39);
-            this.metroButton3.TabIndex = 2;
-            this.metroButton3.Text = "Job Titles";
-            this.metroButton3.UseSelectable = true;
+            this.metroButton3.Size = new System.Drawing.Size(189, 51);
+            this.metroButton3.TabIndex = 46;
+            this.metroButton3.Text = "JOB TITLES";
+            this.metroButton3.UseVisualStyleBackColor = true;
             this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.BackColor = System.Drawing.Color.Transparent;
+            this.metroButton1.FlatAppearance.BorderColor = System.Drawing.Color.OrangeRed;
+            this.metroButton1.FlatAppearance.BorderSize = 2;
+            this.metroButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.metroButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroButton1.ForeColor = System.Drawing.Color.OrangeRed;
+            this.metroButton1.Location = new System.Drawing.Point(57, 252);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(189, 51);
+            this.metroButton1.TabIndex = 47;
+            this.metroButton1.Text = "CONNECTION";
+            this.metroButton1.UseVisualStyleBackColor = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 450);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroButton3);
             this.Controls.Add(this.metroButton2);
-            this.Controls.Add(this.metroButton1);
             this.Name = "AdminDashboard";
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Configuration";
@@ -79,9 +97,8 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroButton metroButton3;
+        private System.Windows.Forms.Button metroButton2;
+        private System.Windows.Forms.Button metroButton3;
+        private System.Windows.Forms.Button metroButton1;
     }
 }

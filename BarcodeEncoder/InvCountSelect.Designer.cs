@@ -33,6 +33,7 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gridCountHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -74,7 +75,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.FDBicon1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(23, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(366, 29);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(88, 60);
             this.pictureBox1.TabIndex = 3;
@@ -84,18 +85,30 @@
             // 
             this.pictureBox2.BackgroundImage = global::BarcodeEncoder.Properties.Resources.PalletAdd;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(395, 28);
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Location = new System.Drawing.Point(272, 29);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(46, 47);
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel1.Location = new System.Drawing.Point(252, 62);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(66, 15);
+            this.metroLabel1.TabIndex = 5;
+            this.metroLabel1.Text = "Create New";
             // 
             // InvCountSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 397);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.metroLabel3);
@@ -120,5 +133,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

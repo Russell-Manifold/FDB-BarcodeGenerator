@@ -298,7 +298,7 @@ namespace BarcodeEncoder
                     Request.Method = RestSharp.Method.GET;
                     var cancellationTokenSource = new CancellationTokenSource();
                     var res = client.Execute(Request);
-                    if (res.StatusCode.ToString()=="Complete")
+                    if (res.StatusCode.ToString()=="OK")
                     {
                         string returnVal = res.Content.Substring(1, res.Content.Length - 2);
                         Desc = returnVal.Split('|')[3];
@@ -394,5 +394,6 @@ namespace BarcodeEncoder
             }
             return "";
         }
+
     }
 }
