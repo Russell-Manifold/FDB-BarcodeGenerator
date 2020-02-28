@@ -133,7 +133,6 @@ namespace BarcodeEncoder
             }
             loaded = true;
         }
-
         private void btnSaveLocation_Click(object sender, EventArgs e)
         {
             string Qstr = string.Empty;
@@ -165,7 +164,6 @@ namespace BarcodeEncoder
             }
 
         }
-
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             txtUserNumber.Enabled = true;
@@ -176,7 +174,6 @@ namespace BarcodeEncoder
             txtPwd.Text = "";
             ddJobTitles.SelectedIndex = -1;
         }
-
         private void DDUserName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (DDUserName.SelectedIndex!=-1&&loaded)

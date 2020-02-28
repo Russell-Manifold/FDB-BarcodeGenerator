@@ -58,7 +58,7 @@ namespace BarcodeEncoder.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.111/FDBAPI/api/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:7721/api/")]
         public string API {
             get {
                 return ((string)(this["API"]));

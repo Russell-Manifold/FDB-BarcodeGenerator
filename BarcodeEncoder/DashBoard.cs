@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 
 namespace BarcodeEncoder
 {
@@ -18,6 +20,7 @@ namespace BarcodeEncoder
         Encoder EncodeForm = null;
         AdminDashboard admin = null;
         SlipsPickOrReceive psList = null;
+        Image i = null;
 
         public DashBoard(DataRow dr)
         {          
@@ -230,6 +233,21 @@ namespace BarcodeEncoder
                 }
                 try
                 {
+                    if (Convert.ToBoolean(UserData["CanPrintBarcodes"]))
+                    {
+                        btnPrint.Visible = true;
+                    }
+                    else
+                    {
+                        btnPrint.Visible= false;                       
+                    }
+                }
+                catch
+                {
+
+                }
+                try
+                {
 
                     if (Convert.ToBoolean(UserData["CreateBarcodes"]))
                     {
@@ -317,6 +335,80 @@ namespace BarcodeEncoder
                
             }
            
+        }
+        private void DeleteQue()
+        {
+            RestSharp.RestClient client = new RestSharp.RestClient();
+            string path = "DocumentSQLConnection";
+            client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
+            {
+                string str = $"POST?qry=DELETE FROM tblPrintQue";
+                var Request = new RestSharp.RestRequest();
+                Request.Resource = str;
+                Request.Method = RestSharp.Method.GET;
+                var res = client.Execute(Request);
+            }
+        }
+        private List<string> GetQue()
+        {
+            RestSharp.RestClient client = new RestSharp.RestClient();
+            string path = "DocumentSQLConnection";
+            client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
+            {
+                string str = $"GET?qry=SELECT * FROM tblPrintQue";
+                var Request = new RestSharp.RestRequest();
+                Request.Resource = str;
+                Request.Method = RestSharp.Method.GET;
+                var res = client.Execute(Request);
+                if(res.StatusCode.ToString().Contains("OK")&&res.Content.Contains("Barcode"))
+                {
+
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            List<string> lists = GetQue();
+            if (lists==null)
+            {
+                MessageBox.Show("There is no barcodes to print", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int hei = 100;
+            int wid = 100;
+            try
+            {
+                BarcodeWriter writer;
+                writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
+                writer.Options.PureBarcode = true;
+                //User setting Height and width
+                writer.Options.Width = Convert.ToInt16(hei);
+                writer.Options.Height = Convert.ToInt16(wid);
+
+                i = writer.Write("");
+                if (i != null)
+                {
+                    PrintDocument pd = new PrintDocument();
+                    pd.PrintPage += PrintPage;
+                    pd.Print();
+                    DeleteQue();
+                }
+                else
+                {
+                    MessageBox.Show("There is no barcodes to print", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception) { }
+        }
+        private void PrintPage(object o, PrintPageEventArgs e)
+        {
+            System.Drawing.Image img = i;
+            Point loc = new Point(100, 100);
+            e.Graphics.DrawImage(img, loc);
         }
     }
 }
