@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,7 @@ namespace BarcodeEncoder
         Encoder EncodeForm = null;
         AdminDashboard admin = null;
         SlipsPickOrReceive psList = null;
-        Image i = null;
+        //Image i = null;
 
         public DashBoard(DataRow dr)
         {          
@@ -236,10 +237,12 @@ namespace BarcodeEncoder
                     if (Convert.ToBoolean(UserData["CanPrintBarcodes"]))
                     {
                         btnPrint.Visible = true;
+                        lblPrint.Visible = true;
                     }
                     else
                     {
-                        btnPrint.Visible= false;                       
+                        btnPrint.Visible= false;
+                        lblPrint.Visible = false;
                     }
                 }
                 catch
@@ -336,20 +339,7 @@ namespace BarcodeEncoder
             }
            
         }
-        private void DeleteQue()
-        {
-            RestSharp.RestClient client = new RestSharp.RestClient();
-            string path = "DocumentSQLConnection";
-            client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
-            {
-                string str = $"POST?qry=DELETE FROM tblPrintQue";
-                var Request = new RestSharp.RestRequest();
-                Request.Resource = str;
-                Request.Method = RestSharp.Method.GET;
-                var res = client.Execute(Request);
-            }
-        }
-        private List<string> GetQue()
+        private void btnPrint_Click(object sender, EventArgs e)
         {
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "DocumentSQLConnection";
@@ -360,55 +350,25 @@ namespace BarcodeEncoder
                 Request.Resource = str;
                 Request.Method = RestSharp.Method.GET;
                 var res = client.Execute(Request);
-                if(res.StatusCode.ToString().Contains("OK")&&res.Content.Contains("Barcode"))
+                if (res.StatusCode.ToString().Contains("OK") && res.Content.Contains("Barcode"))
                 {
-                    return null;
+                    DataSet ds = new DataSet();
+                    ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        RepackBarcodePrint frm = new RepackBarcodePrint();
+                        frm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No barcodes to print", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    return null;
+                    MessageBox.Show("No barcodes to print", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            List<string> lists = GetQue();
-            if (lists==null)
-            {
-                MessageBox.Show("There is no barcodes to print", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            int hei = 100;
-            int wid = 100;
-            try
-            {
-                BarcodeWriter writer;
-                writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
-                writer.Options.PureBarcode = true;
-                //User setting Height and width
-                writer.Options.Width = Convert.ToInt16(hei);
-                writer.Options.Height = Convert.ToInt16(wid);
-
-                i = writer.Write("");
-                if (i != null)
-                {
-                    PrintDocument pd = new PrintDocument();
-                    pd.PrintPage += PrintPage;
-                    pd.Print();
-                    DeleteQue();
-                }
-                else
-                {
-                    MessageBox.Show("There is no barcodes to print", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception) { }
-        }
-        private void PrintPage(object o, PrintPageEventArgs e)
-        {
-            System.Drawing.Image img = i;
-            Point loc = new Point(100, 100);
-            e.Graphics.DrawImage(img, loc);
         }
     }
 }

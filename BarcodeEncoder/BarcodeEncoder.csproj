@@ -60,7 +60,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2306DF8EF14C0E10B39D3A6B77C58E8A35BC9992</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BA15EFC8B2759D233F8119410C9B6BAB1AC69F54</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>BarcodeEncoder_TemporaryKey.pfx</ManifestKeyFile>
@@ -296,6 +296,12 @@
     <Compile Include="ReceiveSlipsList.Designer.cs">
       <DependentUpon>ReceiveSlipsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="RepackBarcodePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepackBarcodePrint.Designer.cs">
+      <DependentUpon>RepackBarcodePrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="SlipsPickOrReceive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -393,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReceiveSlipsList.resx">
       <DependentUpon>ReceiveSlipsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepackBarcodePrint.resx">
+      <DependentUpon>RepackBarcodePrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SlipsPickOrReceive.resx">
       <DependentUpon>SlipsPickOrReceive.cs</DependentUpon>

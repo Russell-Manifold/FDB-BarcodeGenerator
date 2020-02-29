@@ -82,8 +82,9 @@ namespace BarcodeEncoder
                 pd = printDocument1;
                 pd.PrinterSettings = printDocument1.PrinterSettings;
                 pd.PrinterSettings.DefaultPageSettings.PaperSize = size;
-                printPreviewDialog1.Document = pd;
-                printPreviewDialog1.ShowDialog();
+                pd.Print();
+                //printPreviewDialog1.Document = pd;
+                //printPreviewDialog1.ShowDialog();
             }
             else
             {
