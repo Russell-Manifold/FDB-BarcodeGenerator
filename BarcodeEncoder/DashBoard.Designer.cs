@@ -40,6 +40,7 @@
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.lblUserName = new MetroFramework.Controls.MetroLabel();
             this.btnPrint = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
@@ -169,13 +170,22 @@
             // 
             this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrint.Image = global::BarcodeEncoder.Properties.Resources.Print;
-            this.btnPrint.Location = new System.Drawing.Point(23, 649);
+            this.btnPrint.Location = new System.Drawing.Point(23, 630);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(41, 34);
             this.btnPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnPrint.TabIndex = 42;
             this.btnPrint.TabStop = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(-7, 667);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 30);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Print Barcodes From Scanner(s)";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DashBoard
             // 
@@ -184,6 +194,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(446, 706);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.metroButton2);
@@ -220,5 +231,6 @@
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroLabel lblUserName;
         private System.Windows.Forms.PictureBox btnPrint;
+        private System.Windows.Forms.Label label1;
     }
 }

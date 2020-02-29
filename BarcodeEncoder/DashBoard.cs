@@ -362,7 +362,7 @@ namespace BarcodeEncoder
                 var res = client.Execute(Request);
                 if(res.StatusCode.ToString().Contains("OK")&&res.Content.Contains("Barcode"))
                 {
-
+                    return null;
                 }
                 else
                 {

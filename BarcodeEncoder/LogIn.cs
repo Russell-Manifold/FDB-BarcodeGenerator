@@ -34,24 +34,26 @@ namespace BarcodeEncoder
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        DataRow UserDeatils = ds.Tables[0].Rows[0];
-                        if (Convert.ToInt32(UserDeatils["Id"]) > 0)
+                    if (ds != null) { 
+                        if (ds.Tables[0].Rows.Count > 0)
                         {
-                            DashBoard db = new DashBoard(UserDeatils);
-                            this.Hide();
-                            db.FormClosed += (s, args) => this.Close();
-                            db.Show();
+                            DataRow UserDeatils = ds.Tables[0].Rows[0];
+                            if (Convert.ToInt32(UserDeatils["Id"]) > 0)
+                            {
+                                DashBoard db = new DashBoard(UserDeatils);
+                                this.Hide();
+                                db.FormClosed += (s, args) => this.Close();
+                                db.Show();
+                            }
+                            else
+                            {
+                                Error();
+                            }
                         }
                         else
                         {
                             Error();
                         }
-                    }
-                    else
-                    {
-                        Error();
                     }
                 }
                 else

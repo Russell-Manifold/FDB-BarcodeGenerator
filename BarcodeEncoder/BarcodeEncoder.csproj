@@ -60,10 +60,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>6977A7B6B7E7CE8C68EED772BC478B2B4D8BA299</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2306DF8EF14C0E10B39D3A6B77C58E8A35BC9992</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>BarcodeEncoder_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>BarcodeEncoder_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -403,7 +403,7 @@
     <EmbeddedResource Include="ViewProgressChoose.resx">
       <DependentUpon>ViewProgressChoose.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BarcodeEncoder_1_TemporaryKey.pfx" />
+    <None Include="BarcodeEncoder_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="PickSlip.xsc">
       <DependentUpon>PickSlip.xsd</DependentUpon>
