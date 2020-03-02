@@ -57,6 +57,7 @@
             this.chkCreatePackCode = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.chkPrintPCodes = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.SuspendLayout();
@@ -351,7 +352,7 @@
             // chkCreateBarcode
             // 
             this.chkCreateBarcode.AutoSize = true;
-            this.chkCreateBarcode.Location = new System.Drawing.Point(84, 311);
+            this.chkCreateBarcode.Location = new System.Drawing.Point(84, 335);
             this.chkCreateBarcode.Name = "chkCreateBarcode";
             this.chkCreateBarcode.Size = new System.Drawing.Size(135, 15);
             this.chkCreateBarcode.TabIndex = 25;
@@ -361,7 +362,7 @@
             // chkLinkBarcode
             // 
             this.chkLinkBarcode.AutoSize = true;
-            this.chkLinkBarcode.Location = new System.Drawing.Point(84, 332);
+            this.chkLinkBarcode.Location = new System.Drawing.Point(84, 356);
             this.chkLinkBarcode.Name = "chkLinkBarcode";
             this.chkLinkBarcode.Size = new System.Drawing.Size(96, 15);
             this.chkLinkBarcode.TabIndex = 26;
@@ -371,7 +372,7 @@
             // chkCreatePackCode
             // 
             this.chkCreatePackCode.AutoSize = true;
-            this.chkCreatePackCode.Location = new System.Drawing.Point(84, 353);
+            this.chkCreatePackCode.Location = new System.Drawing.Point(84, 377);
             this.chkCreatePackCode.Name = "chkCreatePackCode";
             this.chkCreatePackCode.Size = new System.Drawing.Size(191, 15);
             this.chkCreatePackCode.TabIndex = 27;
@@ -398,11 +399,22 @@
             this.metroLabel6.TabIndex = 29;
             this.metroLabel6.Text = "Save";
             // 
+            // chkPrintPCodes
+            // 
+            this.chkPrintPCodes.AutoSize = true;
+            this.chkPrintPCodes.Location = new System.Drawing.Point(84, 314);
+            this.chkPrintPCodes.Name = "chkPrintPCodes";
+            this.chkPrintPCodes.Size = new System.Drawing.Size(225, 15);
+            this.chkPrintPCodes.TabIndex = 30;
+            this.chkPrintPCodes.Text = "Print Packing Barcodes From Scanners";
+            this.chkPrintPCodes.UseSelectable = true;
+            // 
             // JobTitleConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 434);
+            this.Controls.Add(this.chkPrintPCodes);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.chkCreatePackCode);
@@ -474,5 +486,6 @@
         private MetroFramework.Controls.MetroCheckBox chkCreatePackCode;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroCheckBox chkPrintPCodes;
     }
 }

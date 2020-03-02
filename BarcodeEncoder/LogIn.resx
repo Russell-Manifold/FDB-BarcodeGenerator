@@ -122,7 +122,7 @@
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="txtUserCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 139</value>
+    <value>172, 160</value>
   </data>
   <data name="txtUserCode.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 22</value>
@@ -154,7 +154,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 139</value>
+    <value>70, 160</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 20</value>
@@ -181,7 +181,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>270, 165</value>
+    <value>203, 186</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 15</value>
@@ -208,7 +208,7 @@
     <value>True</value>
   </data>
   <data name="TogCodeShow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>355, 98</value>
+    <value>374, 162</value>
   </data>
   <data name="TogCodeShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 17</value>
@@ -235,7 +235,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>337, 118</value>
+    <value>367, 182</value>
   </data>
   <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 15</value>
@@ -268,7 +268,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnLogIn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 215</value>
+    <value>172, 227</value>
   </data>
   <data name="btnLogIn.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 43</value>
@@ -298,7 +298,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 29</value>
+    <value>23, 30</value>
   </data>
   <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 104</value>
@@ -325,7 +325,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>482, 29</value>
+    <value>470, 30</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 104</value>
@@ -2466,9 +2466,6 @@
         EhISBQ4ODlUAAAAAAAAAAAAAAAAAAAAA/h8AAP4fAAD4HwAA8B8AAPgfAAD+HwAA/h8AAP4fAAD+HwAA
         /h8AAPPPAADwDwAA8A8AAPAPAADwDwAA888AAA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>WindowsDefaultLocation</value>

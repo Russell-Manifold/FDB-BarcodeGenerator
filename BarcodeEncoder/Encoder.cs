@@ -267,7 +267,7 @@ namespace BarcodeEncoder
                     var cancellationTokenSource = new CancellationTokenSource();
                     var res = client.Execute(Request);
                     if (res.StatusCode.ToString().Contains("OK"))
-                    {                                       
+                    {                                      
                         return res.Content.Substring(1, res.Content.Length - 2);
                     }
                     else

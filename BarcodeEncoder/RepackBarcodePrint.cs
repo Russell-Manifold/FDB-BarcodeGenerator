@@ -62,7 +62,7 @@ namespace BarcodeEncoder
             else {
                 int j = 0;
                 while (j < lists.Count()) {
-                DialogResult result = MessageBox.Show("Print " + lists[j].Split('|')[0] + " ?", "Print Pack Code?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Print " + lists[j].Split('|')[0] + " ?", "Print Pack Code?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result.ToString() == "Yes")
                     {
                         try
@@ -108,7 +108,17 @@ namespace BarcodeEncoder
                         }
                         catch (Exception) { }
                     }
-                    else { j += 1; }
+                    else if (result.ToString() == "Cancel")
+                    {
+                        DialogResult resultC = MessageBox.Show("Cancel printing and remove " + lists[j].Split('|')[0] + " ?", "Cancel Printing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (resultC.ToString() == "Yes")
+                        {
+                            DeleteQue(Convert.ToInt16(lists[0].Split('|')[1]));
+                        }
+                        j += 1;
+                    }
+                    else
+                    { j += 1; }
             }
                 MessageBox.Show("Printing Complete", "Pack Code Printing!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

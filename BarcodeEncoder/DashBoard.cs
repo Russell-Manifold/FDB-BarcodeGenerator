@@ -212,6 +212,7 @@ namespace BarcodeEncoder
                 //inprogress
                 metroButton2.Enabled = true;
                 metroLink1.Visible = true;
+                metroLink2.Visible = true;
             }
             else
             {
@@ -236,13 +237,11 @@ namespace BarcodeEncoder
                 {
                     if (Convert.ToBoolean(UserData["CanPrintBarcodes"]))
                     {
-                        btnPrint.Visible = true;
-                        lblPrint.Visible = true;
+                        metroLink2.Visible = true;
                     }
                     else
                     {
-                        btnPrint.Visible= false;
-                        lblPrint.Visible = false;
+                        metroLink2.Visible= false;
                     }
                 }
                 catch
@@ -339,7 +338,7 @@ namespace BarcodeEncoder
             }
            
         }
-        private void btnPrint_Click(object sender, EventArgs e)
+        private void metroLink2_Click(object sender, EventArgs e)
         {
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "DocumentSQLConnection";

@@ -63,9 +63,9 @@
             // 
             // lblPrint
             // 
-            this.lblPrint.Location = new System.Drawing.Point(372, 158);
+            this.lblPrint.Location = new System.Drawing.Point(434, 158);
             this.lblPrint.Name = "lblPrint";
-            this.lblPrint.Size = new System.Drawing.Size(121, 19);
+            this.lblPrint.Size = new System.Drawing.Size(69, 19);
             this.lblPrint.TabIndex = 45;
             this.lblPrint.Text = "Print Codes";
             this.lblPrint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,7 +74,7 @@
             // 
             this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrint.Image = global::BarcodeEncoder.Properties.Resources.Print;
-            this.btnPrint.Location = new System.Drawing.Point(417, 121);
+            this.btnPrint.Location = new System.Drawing.Point(450, 121);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(41, 34);
             this.btnPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -99,9 +99,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BarcodeEncoder.Properties.Resources.FDBicon1;
-            this.pictureBox1.Location = new System.Drawing.Point(417, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(436, 21);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 51);
+            this.pictureBox1.Size = new System.Drawing.Size(74, 61);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 46;
             this.pictureBox1.TabStop = false;
@@ -142,7 +142,7 @@
             this.Controls.Add(this.metroLabel4);
             this.Name = "RepackBarcodePrint";
             this.Style = MetroFramework.MetroColorStyle.Orange;
-            this.Text = "Repacking Barcodes Print";
+            this.Text = "Print Repacking Barcodes";
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

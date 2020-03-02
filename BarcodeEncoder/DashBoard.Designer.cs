@@ -39,13 +39,11 @@
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.lblUserName = new MetroFramework.Controls.MetroLabel();
-            this.btnPrint = new System.Windows.Forms.PictureBox();
-            this.lblPrint = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.metroLink2 = new MetroFramework.Controls.MetroLink();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.SuspendLayout();
             // 
             // btnScan
@@ -116,7 +114,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BarcodeEncoder.Properties.Resources.FDBicon1;
-            this.pictureBox1.Location = new System.Drawing.Point(350, 44);
+            this.pictureBox1.Location = new System.Drawing.Point(350, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 83);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -127,9 +125,9 @@
             // 
             this.pictureBox2.BackgroundImage = global::BarcodeEncoder.Properties.Resources.MainIconLogin;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(10, 22);
+            this.pictureBox2.Location = new System.Drawing.Point(10, 23);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(123, 131);
+            this.pictureBox2.Size = new System.Drawing.Size(106, 112);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
@@ -162,32 +160,11 @@
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(139, 134);
+            this.lblUserName.Location = new System.Drawing.Point(10, 138);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(81, 19);
             this.lblUserName.TabIndex = 14;
             this.lblUserName.Text = "metroLabel1";
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrint.Image = global::BarcodeEncoder.Properties.Resources.Print;
-            this.btnPrint.Location = new System.Drawing.Point(35, 612);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(41, 34);
-            this.btnPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnPrint.TabIndex = 42;
-            this.btnPrint.TabStop = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // lblPrint
-            // 
-            this.lblPrint.Location = new System.Drawing.Point(5, 646);
-            this.lblPrint.Name = "lblPrint";
-            this.lblPrint.Size = new System.Drawing.Size(100, 38);
-            this.lblPrint.TabIndex = 43;
-            this.lblPrint.Text = "Print Repacking Barcodes";
-            this.lblPrint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // printPreviewDialog1
             // 
@@ -199,6 +176,16 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // metroLink2
+            // 
+            this.metroLink2.Location = new System.Drawing.Point(10, 670);
+            this.metroLink2.Name = "metroLink2";
+            this.metroLink2.Size = new System.Drawing.Size(123, 23);
+            this.metroLink2.TabIndex = 44;
+            this.metroLink2.Text = "<-- Print Repacking";
+            this.metroLink2.UseSelectable = true;
+            this.metroLink2.Click += new System.EventHandler(this.metroLink2_Click);
+            // 
             // DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,8 +193,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(446, 706);
-            this.Controls.Add(this.lblPrint);
-            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.metroLink2);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
@@ -224,7 +210,6 @@
             this.Load += new System.EventHandler(this.DashBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,9 +227,8 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroLabel lblUserName;
-        private System.Windows.Forms.PictureBox btnPrint;
-        private System.Windows.Forms.Label lblPrint;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private MetroFramework.Controls.MetroLink metroLink2;
     }
 }
