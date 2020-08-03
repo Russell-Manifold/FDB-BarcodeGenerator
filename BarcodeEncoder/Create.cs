@@ -24,6 +24,7 @@ namespace BarcodeEncoder
             this.ActiveControl = txfMainCode;
             PicBox.Paint += new PaintEventHandler(pictureBox1_Paint);
             getLabelSizes();
+            DDCodeType.SelectedIndex = 0;
         }
         private void Code_TextChanged(object sender, EventArgs e)
         {
@@ -35,6 +36,75 @@ namespace BarcodeEncoder
                     Task.Delay(1000);
                     BarcodeWriter writer;
                     writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
+                    switch (DDCodeType.Text)
+                    {
+                        case "QR_CODE":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.QR_CODE };
+                            break;
+                        case "UPC_A":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.UPC_A };
+                            break;
+                        case "CODE_128 (General)":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
+                            break;
+                        case "EAN_13":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.EAN_13 };
+                            break;
+                        case "CODE_39":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_39 };
+                            break;
+                        case "All_1D":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.All_1D };
+                            break;
+                        case "AZTEC":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.AZTEC };
+                            break;
+                        case "CODABAR":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.CODABAR };
+                            break;
+                        case "CODE_93":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_93 };
+                            break;
+                        case "DATA_MATRIX":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.DATA_MATRIX };
+                            break;
+                        case "EAN_8":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.EAN_8 };
+                            break;
+                        case "IMB":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.IMB };
+                            break;
+                        case "ITF":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.ITF };
+                            break;
+                        case "MAXICODE":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.MAXICODE };
+                            break;
+                        case "MSI":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.MSI };
+                            break;
+                        case "PDF_417":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.PDF_417 };
+                            break;
+                        case "PHARMA_CODE":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.PHARMA_CODE };
+                            break;
+                        case "PLESSEY":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.PLESSEY };
+                            break;
+                        case "RSS_14":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.RSS_14 };
+                            break;
+                        case "RSS_EXPANDED":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.RSS_EXPANDED };
+                            break;
+                        case "UPC_E":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.UPC_E };
+                            break;
+                        case "UPC_EAN_EXTENSION":
+                            writer = new BarcodeWriter() { Format = BarcodeFormat.UPC_EAN_EXTENSION };
+                            break;
+                    }
                     if (togValue.Checked == false)
                     {
                         writer.Options.PureBarcode = true;
@@ -46,11 +116,42 @@ namespace BarcodeEncoder
                     Double Hf = (H / pixelFactor) - 20;
                     writer.Options.Width = Convert.ToInt16(Wf);
                     writer.Options.Height = Convert.ToInt16(Hf);
-                   
-                    i = writer.Write(txfMainCode.Text.ToUpper());
+
+                    if (DDCodeType.Text == "EAN_13")
+                    {
+                        if (txfMainCode.Text.Length == 12)
+                        {
+                            i = writer.Write(txfMainCode.Text.ToUpper());
+                            PicBox.Width = (i.Width + 20);
+                            PicBox.Height = (i.Height + 20);
+                        }
+                        else
+                        {
+                            i = null;
+                        }
+                    }
+                    else
+                    if (DDCodeType.Text == "UPC_A")
+                    {
+                        if (txfMainCode.Text.Length == 11)
+                        {
+                            i = writer.Write(txfMainCode.Text.ToUpper());
+                            PicBox.Width = (i.Width + 20);
+                            PicBox.Height = (i.Height + 20);
+                        }
+                        else
+                        {
+                            i = null;
+                        }
+                    }
+
+                    else
+                    {
+                        i = writer.Write(txfMainCode.Text.ToUpper());
+                        PicBox.Width = (i.Width + 20);
+                        PicBox.Height = (i.Height + 20);
+                    }
                     txfName.Text = txfMainCode.Text.ToUpper();
-                    PicBox.Width = (i.Width + 20);
-                    PicBox.Height = (i.Height + 20);
                     PicBox.Paint += new PaintEventHandler(pictureBox1_Paint);
                 }
             }
@@ -73,22 +174,20 @@ namespace BarcodeEncoder
         {
             if (i != null)
             {
-                PaperSize size = new PaperSize();
-                size.RawKind = (int)PaperKind.Custom;
-                size.Width = PicBox.Width;
-                size.Height = PicBox.Height;
-                size.PaperName = "Barcode";
-                PrintDocument pd = new PrintDocument();
-                pd = printDocument1;
-                pd.PrinterSettings = printDocument1.PrinterSettings;
-                pd.PrinterSettings.DefaultPageSettings.PaperSize = size;
-                pd.Print();
-                //printPreviewDialog1.Document = pd;
-                //printPreviewDialog1.ShowDialog();
+                var frm1 = new frmwait();
+                frm1.Show();
+                frm1.Refresh();
+                Bitmap bmp = new Bitmap(PicBox.ClientSize.Width, PicBox.ClientSize.Height);
+                PicBox.DrawToBitmap(bmp, PicBox.ClientRectangle);
+                bmp.Save(System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "barcode1Print.jpg"), ImageFormat.Jpeg);
+                var frm = new BarcodePrint();
+                frm.Show();
+                frm.TopMost = true;
+                frm1.Hide();
             }
             else
             {
-                MessageBox.Show("There is no barcode to be printed", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No barcode present", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void direc_Click(object sender, EventArgs e)

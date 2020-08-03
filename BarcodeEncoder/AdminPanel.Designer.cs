@@ -72,7 +72,7 @@
             this.txfApi.CustomButton.Visible = false;
             this.txfApi.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::BarcodeEncoder.Properties.Settings.Default, "API", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txfApi.Lines = new string[] {
-        "http://192.168.0.111/FDBAPI/api/"};
+        "http://localhost:7721/api/"};
             this.txfApi.Location = new System.Drawing.Point(97, 81);
             this.txfApi.MaxLength = 32767;
             this.txfApi.Name = "txfApi";
@@ -134,6 +134,7 @@
             this.btnSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnSave.TabIndex = 9;
             this.btnSave.TabStop = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // AdminPanel
             // 

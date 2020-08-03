@@ -16,6 +16,7 @@ namespace BarcodeEncoder
         string Qstr = string.Empty;
         string doctyp = string.Empty;
         DataTable inProgTbl; DataTable ColTbl; DataRow dtblRow;
+        Boolean b = true;
         public InProgressDisplay(int doctype)
         {
             InitializeComponent();
@@ -29,11 +30,16 @@ namespace BarcodeEncoder
             {
                 lblHeader.Text = "Purchase Orders";
             }
+            Refresh();
             GetSlips();
         }
 
         private void GetSlips() {
-            Qstr = "ACCHISTH|7|" + doctyp;
+            var frm1 = new frmwait();
+            frm1.Show();
+            frm1.Refresh();
+
+            Qstr = "ACCHISTH|14|" + doctyp;
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "GetDocStatusSummary";
             client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
@@ -47,6 +53,7 @@ namespace BarcodeEncoder
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
+                    frm1.Refresh();
                     ds.Tables[0].Columns.Remove("Printed");
                     ds.Tables[0].DefaultView.RowFilter = " Status <> '" + "Complete" + "'";
                     inProgTbl = ds.Tables[0];
@@ -62,12 +69,15 @@ namespace BarcodeEncoder
                         dtblRow["Colname"] = inProgTbl.Columns[i].ColumnName;
                         ColTbl.Rows.Add(dtblRow);
                         i = i += 1;
+                        frm1.Refresh();
                     }
                     DDsearchBy.DataSource = ColTbl;
                     DDsearchBy.ValueMember = "Colname";
                     DDsearchBy.DisplayMember = "Colname";
 
                     formatgridlines();
+                    frm1.Dispose();
+                    b = false;
                     timer1.Start();
                 }
                 else
@@ -76,63 +86,13 @@ namespace BarcodeEncoder
                 }
             }
         }
-
-
-        //private async Task<string>GetSlipsOnTimer()
-        private Task<string> GetSlipsOnTimer()
+        
+       private void timer1_Tick(object sender, EventArgs e)
         {
             if (togrefresh.Checked == true) {
-                var frm = new frmwait();
-                frm.Show();
-                frm.Refresh();
-
-                RestSharp.RestClient client = new RestSharp.RestClient();
-                string path = "GetDocStatusSummary";
-                client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
-                {
-                    string str = $"GET?qrystr={Qstr}";
-                    var Request = new RestSharp.RestRequest();
-                    Request.Resource = str;
-                    Request.Method = RestSharp.Method.GET;
-                    //var cancellationTokenSource = new CancellationTokenSource();
-                    var res = client.Execute(Request);
-                    if (res.StatusCode.ToString().Contains("OK"))
-                    {
-                        DataSet ds = new DataSet();
-                        ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
-                        ds.Tables[0].Columns.Remove("Printed");
-                        ds.Tables[0].DefaultView.RowFilter = " Status <> '" + "Complete" + "'";
-                        inProgTbl = ds.Tables[0];
-                        dataGridView1.DataSource = inProgTbl;
-                        int rwcnt = inProgTbl.Rows.Count;
-                        int i = 0; int colcnt = inProgTbl.Columns.Count;
-                        ColTbl = new DataTable();
-                        ColTbl.Columns.Add("Colname");
-                        while (i < colcnt)
-                        {
-                            dtblRow = ColTbl.NewRow();
-                            dtblRow["Colname"] = inProgTbl.Columns[i].ColumnName;
-                            ColTbl.Rows.Add(dtblRow);
-                            i = i += 1;
-                        }
-                        DDsearchBy.DataSource = ColTbl;
-                        DDsearchBy.ValueMember = "Colname";
-                        DDsearchBy.DisplayMember = "Colname";
-                        formatgridlines();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Unable to display Picking slips", "Unable to connect", MessageBoxButtons.OK);
-                    }
-                }
-                frm.Hide();
+                GetSlips();
             }
-            return null;
-        }
-
-        private async void timer1_Tick(object sender, EventArgs e)
-        {
-           await GetSlipsOnTimer();
+            
         }
 
         private void Sort_Rows (object sender, EventArgs e) {
@@ -148,10 +108,10 @@ namespace BarcodeEncoder
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             if (doctyp == "106") {
-                dataGridView1.Columns[4].Visible = false;
                 dataGridView1.Columns[5].Visible = false;
                 dataGridView1.Columns[6].Visible = false;
                 dataGridView1.Columns[7].Visible = false;
+                dataGridView1.Columns[8].Visible = false;
             }
             dataGridView1.Columns["Due_Date"].DefaultCellStyle.Format = "dd MMM yyyy";
             dataGridView1.Columns["Due_Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;

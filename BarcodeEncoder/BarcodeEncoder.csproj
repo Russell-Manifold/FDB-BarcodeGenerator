@@ -14,17 +14,18 @@
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>F:\Users\user\OneDrive - Manifold Business Solutions\First Dutch Brands\Scanner Windows App\</PublishUrl>
+    <PublishUrl>C:\Users\Russell - Manifold\Desktop\FDB Scanner Published\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>7</ApplicationRevision>
+    <UpdateUrl>\\Server1\ManifoldFDBData\FDB Scanner Published\</UpdateUrl>
+    <ApplicationRevision>25</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -60,7 +61,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>BA15EFC8B2759D233F8119410C9B6BAB1AC69F54</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>4926B0F1F1B769AC68D77DFE80852A6CBCD68E8F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>BarcodeEncoder_TemporaryKey.pfx</ManifestKeyFile>
@@ -156,6 +157,13 @@
     <Compile Include="AdminPanel.Designer.cs">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="BarcodePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarcodePrint.Designer.cs">
+      <DependentUpon>BarcodePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="Create.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +316,9 @@
       <DependentUpon>AdminPanel.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="BarcodePrint.resx">
+      <DependentUpon>BarcodePrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Create.resx">
       <DependentUpon>Create.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -382,6 +393,7 @@
     <EmbeddedResource Include="RepackBarcodePrint.resx">
       <DependentUpon>RepackBarcodePrint.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BarCodePrintReport.rdlc" />
     <EmbeddedResource Include="SlipsPickOrReceive.resx">
       <DependentUpon>SlipsPickOrReceive.cs</DependentUpon>
     </EmbeddedResource>
@@ -498,15 +510,10 @@
     <None Include="Resources\WIP.png" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
+      <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,17 +13,16 @@ namespace BarcodeEncoder
 {
     public partial class ReceiveSlipsList : MetroFramework.Forms.MetroForm
     {
-        DataTable reclisttbl;
+        public DataSet ds = new DataSet();
+        public DataTable dtbl = new DataTable();
         public ReceiveSlipsList()
         {
             InitializeComponent();
         }
 
-        private void GetReceiveSlips()
+        private async Task<string> GetReceiveSlips()
         {
-
-            //metroProgressSpinner1.Show(); 
-            string Qstr = "ACCHISTH|7|106";
+            string Qstr = "ACCHISTH|14|106";
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "GetDocumentList";
             client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
@@ -35,26 +34,38 @@ namespace BarcodeEncoder
                 var res = client.Execute(Request);
                 if (res.StatusCode.ToString().Contains("OK"))
                 {
-                    DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
-                    ds.Tables[0].DefaultView.RowFilter = " Status <> '" + "Complete" + "'";
-                    reclisttbl = new DataTable();
-                    reclisttbl = ds.Tables[0];
-                    GridReceiveSlips.DataSource = ds.Tables[0];
-                    GridReceiveSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    int rwcnt = ds.Tables[0].Rows.Count;
+                     if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        ds.Tables[0].DefaultView.RowFilter = " Status <> '" + "Complete" + "'";
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Unable to display Receiving Slips", "Unable to connect", MessageBoxButtons.OK);
                 }
             }
-            //metroProgressSpinner1.Hide();
+            return await Task.FromResult("");
         }
 
-        private void GridReceiveSlips_Load(object sender, EventArgs e)
+        private async void GridReceiveSlips_Load(object sender, EventArgs e)
         {
-            GetReceiveSlips();
+            frmwait frm1 = new frmwait();
+            frm1.Show();
+            frm1.TopMost = true;
+            frm1.Refresh();
+            var getslips = await Task.Run(GetReceiveSlips);         
+            frm1.Refresh();
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                dtbl = ds.Tables[0];
+                GridReceiveSlips.DataSource = dtbl;
+                frm1.Refresh();
+                GridReceiveSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                GridReceiveSlips.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                lblReccount.Text = dtbl.DefaultView.Count + " Records";
+            }
+            frm1.Dispose();
         }
 
         private void GridReceiveSlips_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -65,8 +76,12 @@ namespace BarcodeEncoder
 
         private void metroTextBox1_Click(object sender, EventArgs e)
         {
-            reclisttbl.DefaultView.RowFilter = String.Format("Number LIKE '%{0}%'", txtfind.Text);
-
+            dtbl.DefaultView.RowFilter = String.Format("Number LIKE '%{0}%'", txtfind.Text);
         }
+        private void txtref_Changed(object sender, EventArgs e)
+        {
+            dtbl.DefaultView.RowFilter = String.Format("Reference LIKE '%{0}%'", txtfindref.Text);
+        }
+
     }
 }

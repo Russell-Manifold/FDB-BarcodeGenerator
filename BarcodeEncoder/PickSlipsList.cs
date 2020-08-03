@@ -14,16 +14,16 @@ namespace BarcodeEncoder
 {
     public partial class PickSlipsList : MetroFramework.Forms.MetroForm
     {
-        DataTable picktbl;
+        public  DataSet ds = new DataSet();
+        public DataTable dtbl = new DataTable();
         public PickSlipsList()
         {
             InitializeComponent();
         }
 
-        private void GetPickingSlips() {
-
-            //metroProgressSpinner1.Show(); 
-            string Qstr = "ACCHISTH|7|102";
+        private async Task<DataSet> GetPickingSlips() 
+        {
+            string Qstr = "ACCHISTH|14|102";
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "GetDocumentList";
             client.BaseUrl = new Uri(BarcodeEncoder.Properties.Settings.Default.API + path);
@@ -32,29 +32,40 @@ namespace BarcodeEncoder
                 var Request = new RestSharp.RestRequest();
                 Request.Resource = str;
                 Request.Method = RestSharp.Method.GET;
-                //var cancellationTokenSource = new CancellationTokenSource();
                 var res = client.Execute(Request);
                 if (res.StatusCode.ToString().Contains("OK"))
                 {
-                    DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
-                    ds.Tables[0].DefaultView.RowFilter = " Status <> '" + "Complete" + "'";
-                    picktbl = new DataTable();
-                    picktbl = ds.Tables[0];
-                    GridPickSlips.DataSource = ds.Tables[0];
-                    GridPickSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    lblReccount.Text = ds.Tables[0].Rows.Count.ToString() + " Records";
+                    if (ds.Tables[0].Rows.Count > 0) { 
+                        ds.Tables[0].DefaultView.RowFilter = " Status <> '" + "Complete" + "'";
+                    }
                 }
                 else {
                     MessageBox.Show("Unable to display Picking slips", "Unable to connect", MessageBoxButtons.OK);
                 }
             }
-            //metroProgressSpinner1.Hide();
+            return await Task.FromResult(ds);
         }
 
-        private void PickSlipsList_Load(object sender, EventArgs e)
+        private async void PickSlipsList_Load(object sender, EventArgs e)
         {
-            GetPickingSlips();
+            Refresh(); 
+            frmwait frm1 = new frmwait();
+            frm1.Show();
+            frm1.TopMost = true;
+            frm1.Refresh();
+            var getslips = await Task.Run(GetPickingSlips);
+            frm1.Refresh();
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                dtbl = ds.Tables[0];
+                GridPickSlips.DataSource = dtbl;
+                frm1.Refresh();
+                GridPickSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                GridPickSlips.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                lblReccount.Text = dtbl.DefaultView.Count + " Records";
+            }
+        frm1.Dispose();
         }
 
         private void GridPickSlips_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -65,7 +76,12 @@ namespace BarcodeEncoder
 
         private void txtPickFind_TextChanged(object sender, EventArgs e)
         {
-            picktbl.DefaultView.RowFilter = String.Format("Number LIKE '%{0}%'", txtPickFind.Text);
+            dtbl.DefaultView.RowFilter = String.Format("Number LIKE '%{0}%'", txtPickFind.Text);
+        }
+
+        private void txtfindref_Click(object sender, EventArgs e)
+        {
+            dtbl.DefaultView.RowFilter = String.Format("Reference LIKE '%{0}%'", txtfindref.Text);
         }
     }
 }

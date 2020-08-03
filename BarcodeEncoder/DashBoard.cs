@@ -209,7 +209,7 @@ namespace BarcodeEncoder
                 btnCreate.Enabled = true;
                 //inv counts
                 metroButton1.Enabled = true;
-                //inprogress
+                //inprogressTammy
                 metroButton2.Enabled = true;
                 metroLink1.Visible = true;
                 metroLink2.Visible = true;
@@ -264,7 +264,8 @@ namespace BarcodeEncoder
                 }
                 catch
                 {
-
+                    btnNewBarcode.Enabled = false;
+                    btnNewBarcode.BackColor = Color.LightGray;
                 }
                 try
                 {
@@ -281,7 +282,8 @@ namespace BarcodeEncoder
                 }
                 catch
                 {
-
+                    btnScan.Enabled = true;
+                    btnScan.BackColor = Color.LightGray;
                 }
                 try
                 {
@@ -298,7 +300,8 @@ namespace BarcodeEncoder
                 }
                 catch
                 {
-
+                    btnCreate.Enabled = false;
+                    btnCreate.BackColor = Color.LightGray;
                 }
                 try
                 {
@@ -315,7 +318,8 @@ namespace BarcodeEncoder
                 }
                 catch
                 {
-
+                    metroButton1.Enabled = false;
+                    metroButton1.BackColor = Color.LightGray;
                 }
                 try
                 {
@@ -332,7 +336,8 @@ namespace BarcodeEncoder
                 }
                 catch
                 {
-
+                    metroButton2.Enabled = false;
+                    metroButton2.BackColor = Color.LightGray;
                 }
                
             }

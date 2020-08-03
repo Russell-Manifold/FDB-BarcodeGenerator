@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Encoder));
             this.txfEncoded = new System.Windows.Forms.TextBox();
             this.txfFinalCode = new System.Windows.Forms.TextBox();
             this.txfNumOfItems = new System.Windows.Forms.TextBox();
             this.txfName = new System.Windows.Forms.TextBox();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.lblDesc = new MetroFramework.Controls.MetroLabel();
             this.lblMain = new MetroFramework.Controls.MetroLabel();
             this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
@@ -90,20 +87,6 @@
             this.txfName.Name = "txfName";
             this.txfName.Size = new System.Drawing.Size(191, 20);
             this.txfName.TabIndex = 14;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocument1_PrintPage);
-            // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
             // 
             // lblDesc
             // 
@@ -182,7 +165,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(363, 508);
+            this.metroLabel7.Location = new System.Drawing.Point(36, 513);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(36, 19);
             this.metroLabel7.TabIndex = 41;
@@ -191,7 +174,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(36, 508);
+            this.metroLabel6.Location = new System.Drawing.Point(373, 513);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(40, 19);
             this.metroLabel6.TabIndex = 39;
@@ -212,7 +195,7 @@
             // 
             this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrint.Image = global::BarcodeEncoder.Properties.Resources.Print;
-            this.btnPrint.Location = new System.Drawing.Point(350, 455);
+            this.btnPrint.Location = new System.Drawing.Point(23, 460);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(66, 50);
             this.btnPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -224,7 +207,7 @@
             // 
             this.btnSaveLocation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveLocation.Image = global::BarcodeEncoder.Properties.Resources.Save;
-            this.btnSaveLocation.Location = new System.Drawing.Point(23, 455);
+            this.btnSaveLocation.Location = new System.Drawing.Point(360, 460);
             this.btnSaveLocation.Name = "btnSaveLocation";
             this.btnSaveLocation.Size = new System.Drawing.Size(66, 50);
             this.btnSaveLocation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -315,8 +298,6 @@
         private System.Windows.Forms.TextBox txfFinalCode;
         private System.Windows.Forms.TextBox txfNumOfItems;
         private System.Windows.Forms.TextBox txfName;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private MetroFramework.Controls.MetroLabel lblDesc;
         private MetroFramework.Controls.MetroLabel lblMain;
         private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner1;

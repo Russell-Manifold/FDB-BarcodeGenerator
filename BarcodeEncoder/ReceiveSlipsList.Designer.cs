@@ -36,6 +36,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtfind = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lblReccount = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.txtfindref = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridReceiveSlips)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -85,7 +88,7 @@
             this.GridReceiveSlips.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridReceiveSlips.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.GridReceiveSlips.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridReceiveSlips.Size = new System.Drawing.Size(1100, 370);
+            this.GridReceiveSlips.Size = new System.Drawing.Size(1235, 370);
             this.GridReceiveSlips.TabIndex = 0;
             this.GridReceiveSlips.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReceiveSlips_CellDoubleClick);
             // 
@@ -95,17 +98,18 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.FDBicon1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(1038, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(1117, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 54);
+            this.pictureBox1.Size = new System.Drawing.Size(63, 45);
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackgroundImage = global::BarcodeEncoder.Properties.Resources.ReceiveStck;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(705, 9);
+            this.pictureBox2.Location = new System.Drawing.Point(985, 9);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(126, 45);
             this.pictureBox2.TabIndex = 31;
@@ -117,7 +121,7 @@
             // 
             // 
             this.txtfind.CustomButton.Image = null;
-            this.txtfind.CustomButton.Location = new System.Drawing.Point(120, 1);
+            this.txtfind.CustomButton.Location = new System.Drawing.Point(79, 1);
             this.txtfind.CustomButton.Name = "";
             this.txtfind.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtfind.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -135,12 +139,12 @@
             this.txtfind.SelectionLength = 0;
             this.txtfind.SelectionStart = 0;
             this.txtfind.ShortcutsEnabled = true;
-            this.txtfind.Size = new System.Drawing.Size(142, 23);
+            this.txtfind.Size = new System.Drawing.Size(101, 23);
             this.txtfind.TabIndex = 36;
             this.txtfind.UseSelectable = true;
             this.txtfind.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtfind.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtfind.Click += new System.EventHandler(this.metroTextBox1_Click);
+            this.txtfind.TextChanged += new System.EventHandler(this.metroTextBox1_Click);
             // 
             // metroLabel1
             // 
@@ -151,18 +155,69 @@
             this.metroLabel1.TabIndex = 37;
             this.metroLabel1.Text = "Find Slip #";
             // 
+            // lblReccount
+            // 
+            this.lblReccount.AutoSize = true;
+            this.lblReccount.Location = new System.Drawing.Point(734, 28);
+            this.lblReccount.Name = "lblReccount";
+            this.lblReccount.Size = new System.Drawing.Size(83, 19);
+            this.lblReccount.TabIndex = 38;
+            this.lblReccount.Text = "metroLabel2";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(559, 30);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(57, 19);
+            this.metroLabel2.TabIndex = 40;
+            this.metroLabel2.Text = "Find Ref";
+            // 
+            // txtfindref
+            // 
+            // 
+            // 
+            // 
+            this.txtfindref.CustomButton.Image = null;
+            this.txtfindref.CustomButton.Location = new System.Drawing.Point(79, 1);
+            this.txtfindref.CustomButton.Name = "";
+            this.txtfindref.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtfindref.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtfindref.CustomButton.TabIndex = 1;
+            this.txtfindref.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtfindref.CustomButton.UseSelectable = true;
+            this.txtfindref.CustomButton.Visible = false;
+            this.txtfindref.Lines = new string[0];
+            this.txtfindref.Location = new System.Drawing.Point(619, 28);
+            this.txtfindref.MaxLength = 32767;
+            this.txtfindref.Name = "txtfindref";
+            this.txtfindref.PasswordChar = '\0';
+            this.txtfindref.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtfindref.SelectedText = "";
+            this.txtfindref.SelectionLength = 0;
+            this.txtfindref.SelectionStart = 0;
+            this.txtfindref.ShortcutsEnabled = true;
+            this.txtfindref.Size = new System.Drawing.Size(101, 23);
+            this.txtfindref.TabIndex = 39;
+            this.txtfindref.UseSelectable = true;
+            this.txtfindref.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtfindref.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtfindref.TextChanged += new System.EventHandler(this.txtref_Changed);
+            // 
             // ReceiveSlipsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 450);
+            this.ClientSize = new System.Drawing.Size(1275, 450);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.txtfindref);
+            this.Controls.Add(this.lblReccount);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.txtfind);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.GridReceiveSlips);
             this.Name = "ReceiveSlipsList";
-            this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Select Purchase Order To Receive";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.GridReceiveSlips_Load);
@@ -181,5 +236,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private MetroFramework.Controls.MetroTextBox txtfind;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel lblReccount;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroTextBox txtfindref;
     }
 }

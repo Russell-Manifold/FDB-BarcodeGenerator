@@ -37,6 +37,7 @@
             this.btnLogIn = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -96,11 +97,19 @@
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // LogIn
             // 
             this.AcceptButton = this.btnLogIn;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.TogCodeShow);
@@ -128,5 +137,6 @@
         private MetroFramework.Controls.MetroToggle TogCodeShow;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.Button btnLogIn;
+        private System.Windows.Forms.Button button1;
     }
 }

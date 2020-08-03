@@ -181,24 +181,38 @@ namespace BarcodeEncoder
                 MessageBox.Show("There was a error in previewing your barcode please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void BtnPrint_Click(object sender, EventArgs e)
+        private async void BtnPrint_Click(object sender, EventArgs e)
         {
             if (i!=null)
             {
-                PaperSize size = new PaperSize();
-                size.RawKind = (int)PaperKind.Custom;
-                size.Width = 135;
-                size.Height = 125;
-                size.PaperName = "Barcode";
-                PrintDocument pd = new PrintDocument();
-                pd = printDocument1;
-                pd.PrinterSettings = printDocument1.PrinterSettings;
-                pd.PrinterSettings.DefaultPageSettings.PaperSize = size;
-                Console.Out.WriteLine("My paper size: " + pd.DefaultPageSettings.PaperSize);
-                PrintDialog printDialog = new PrintDialog(); // to choose printer
-                printDialog.Document = pd;
-                printPreviewDialog1.Document = pd;
-                printPreviewDialog1.ShowDialog();
+                if (!exists)
+                {
+                    await linkBarcodes();
+                }
+                var frm1 = new frmwait();
+                frm1.Show();
+                frm1.Refresh();
+                Bitmap bmp = new Bitmap(PicBoxFinal.ClientSize.Width, PicBoxFinal.ClientSize.Height);
+                PicBoxFinal.DrawToBitmap(bmp, PicBoxFinal.ClientRectangle);
+                bmp.Save(System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "barcode1Print.jpg"), ImageFormat.Jpeg);
+                var frm = new BarcodePrint();
+                frm.Show();
+                frm1.Hide();
+
+                //PaperSize size = new PaperSize();
+                //size.RawKind = (int)PaperKind.Custom;
+                //size.Width = 135;
+                //size.Height = 125;
+                //size.PaperName = "Barcode";
+                //PrintDocument pd = new PrintDocument();
+                //pd = printDocument1;
+                //pd.PrinterSettings = printDocument1.PrinterSettings;
+                //pd.PrinterSettings.DefaultPageSettings.PaperSize = size;
+                //Console.Out.WriteLine("My paper size: " + pd.DefaultPageSettings.PaperSize);
+                //PrintDialog printDialog = new PrintDialog(); // to choose printer
+                //printDialog.Document = pd;
+                //printPreviewDialog1.Document = pd;
+                //printPreviewDialog1.ShowDialog();
             }
             else
             {

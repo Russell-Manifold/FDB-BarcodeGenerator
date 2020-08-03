@@ -271,7 +271,7 @@
             this.txtUserName.CustomButton.Visible = false;
             this.txtUserName.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtUserName.Lines = new string[0];
-            this.txtUserName.Location = new System.Drawing.Point(137, 124);
+            this.txtUserName.Location = new System.Drawing.Point(137, 123);
             this.txtUserName.MaxLength = 32767;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PasswordChar = '\0';

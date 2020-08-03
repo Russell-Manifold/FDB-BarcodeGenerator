@@ -19,22 +19,14 @@ namespace BarcodeEncoder
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            var frm1 = new frmwait();
-            frm1.Show();
-            frm1.Refresh();
             InProgressDisplay frm = new InProgressDisplay(106);
             frm.ShowDialog();
-            frm1.Hide();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            var frm1 = new frmwait();
-            frm1.Show();
-            frm1.Refresh();
             InProgressDisplay frm = new InProgressDisplay(102);
             frm.ShowDialog();
-            frm1.Hide();
         }
     }
 }

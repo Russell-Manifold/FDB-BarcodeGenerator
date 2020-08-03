@@ -53,5 +53,11 @@ namespace BarcodeEncoder
         {
 
         }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+            BarcodeEncoder.Properties.Settings.Default.ConnectionString = txfLocation.Text;
+            MessageBox.Show("Successfully Saved");
+        }
     }
 }

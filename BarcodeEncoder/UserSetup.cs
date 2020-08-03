@@ -138,11 +138,11 @@ namespace BarcodeEncoder
             string Qstr = string.Empty;
             if (txtUserName.Visible == true)
             {
-                Qstr = "UPDATE dbo.tblUser SET UserName = '" + DDUserName.Text.ToString() + "' ,UserBarcode = '" + txtPwd.Text.ToString() + "', iJobTitleCode = '" + ddJobTitles.SelectedValue.ToString() + "', isActive = '" + togActive.Checked + "' WHERE UserNumber = '" + DDUserName.SelectedValue+ "'";
+                Qstr = "INSERT INTO dbo.tblUser (UserName, UserNumber, iJobTitleCode, isActive, UserBarcode) SELECT '" + txtUserName.Text.ToString() + "', '" + txtUserNumber.Text + "', '" + ddJobTitles.SelectedValue.ToString() + "', 1, '" + txtPwd.Text.ToString() + "'";
             }
             else
             {
-                Qstr = "INSERT INTO dbo.tblUser (UserName, UserNumber, iJobTitleCode, isActive, UserBarcode) SELECT '" + DDUserName.Text.ToString() + "', '" + txtUserNumber.Text + "', '" + ddJobTitles.Text.ToString() + "', 1, '" + txtPwd.Text.ToString() + "'"; 
+                Qstr = "UPDATE dbo.tblUser SET UserName = '" + DDUserName.Text.ToString() + "' ,UserBarcode = '" + txtPwd.Text.ToString() + "', iJobTitleCode = '" + ddJobTitles.SelectedValue.ToString() + "', isActive = '" + togActive.Checked + "' WHERE UserNumber = '" + DDUserName.SelectedValue + "'";
             }  
             RestSharp.RestClient client = new RestSharp.RestClient();
             string path = "DocumentSQLConnection";
