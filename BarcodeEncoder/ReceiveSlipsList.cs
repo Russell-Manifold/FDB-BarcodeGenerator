@@ -42,7 +42,7 @@ namespace BarcodeEncoder
                 }
                 else
                 {
-                    MessageBox.Show("Unable to display Receiving Slips", "Unable to connect", MessageBoxButtons.OK);
+                    MessageBox.Show("Unable to display Receiving Slips" + Environment.NewLine + res.Content.ToString() + Environment.NewLine + res.StatusCode.ToString(), "Unable to connect", MessageBoxButtons.OK);
                 }
             }
             return await Task.FromResult("");
@@ -50,22 +50,22 @@ namespace BarcodeEncoder
 
         private async void GridReceiveSlips_Load(object sender, EventArgs e)
         {
-            frmwait frm1 = new frmwait();
-            frm1.Show();
-            frm1.TopMost = true;
-            frm1.Refresh();
+            //frmwait frm1 = new frmwait();
+            //frm1.Show();
+            //frm1.TopMost = true;
+            //frm1.Refresh();
             var getslips = await Task.Run(GetReceiveSlips);         
-            frm1.Refresh();
+            //frm1.Refresh();
             if (ds.Tables[0].Rows.Count > 0)
             {
                 dtbl = ds.Tables[0];
                 GridReceiveSlips.DataSource = dtbl;
-                frm1.Refresh();
+                //frm1.Refresh();
                 GridReceiveSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 GridReceiveSlips.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 lblReccount.Text = dtbl.DefaultView.Count + " Records";
             }
-            frm1.Dispose();
+            //frm1.Dispose();
         }
 
         private void GridReceiveSlips_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
