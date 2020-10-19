@@ -8,10 +8,8 @@
           <Image Name="BarcodeImg">
             <Source>External</Source>
             <Value>="File://" + Parameters!imgpath.Value</Value>
-            <Top>0.44662cm</Top>
-            <Left>0.31432cm</Left>
-            <Height>1.89688cm</Height>
-            <Width>2.94918cm</Width>
+            <Height>3cm</Height>
+            <Width>3.5cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -24,12 +22,14 @@
       </Body>
       <Width>3.5cm</Width>
       <Page>
-        <PageHeight>29.7cm</PageHeight>
-        <PageWidth>21cm</PageWidth>
-        <LeftMargin>2cm</LeftMargin>
-        <RightMargin>2cm</RightMargin>
-        <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
+        <PageHeight>3.5cm</PageHeight>
+        <PageWidth>4cm</PageWidth>
+        <InteractiveHeight>3.5cm</InteractiveHeight>
+        <InteractiveWidth>4cm</InteractiveWidth>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>

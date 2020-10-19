@@ -79,9 +79,9 @@
             // 
             this.pictureBox1.BackgroundImage = global::BarcodeEncoder.Properties.Resources.Save;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(277, 357);
+            this.pictureBox1.Location = new System.Drawing.Point(391, 336);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(172, 29);
+            this.pictureBox1.Size = new System.Drawing.Size(58, 50);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);

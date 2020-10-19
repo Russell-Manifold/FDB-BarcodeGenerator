@@ -35,6 +35,7 @@ namespace BarcodeEncoder
                 if (res.StatusCode.ToString().Contains("OK"))
                 {
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
+
                      if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Tables[0].DefaultView.RowFilter = " Status <> '" + "Complete" + "'";
@@ -54,16 +55,19 @@ namespace BarcodeEncoder
             //frm1.Show();
             //frm1.TopMost = true;
             //frm1.Refresh();
-            var getslips = await Task.Run(GetReceiveSlips);         
+            var getslips = await Task.Run(GetReceiveSlips);
             //frm1.Refresh();
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables.Count > 0)
             {
-                dtbl = ds.Tables[0];
-                GridReceiveSlips.DataSource = dtbl;
-                //frm1.Refresh();
-                GridReceiveSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                GridReceiveSlips.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                lblReccount.Text = dtbl.DefaultView.Count + " Records";
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dtbl = ds.Tables[0];
+                    GridReceiveSlips.DataSource = dtbl;
+                    //frm1.Refresh();
+                    GridReceiveSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    GridReceiveSlips.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    lblReccount.Text = dtbl.DefaultView.Count + " Records";
+                }
             }
             //frm1.Dispose();
         }

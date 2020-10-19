@@ -56,14 +56,17 @@ namespace BarcodeEncoder
             frm1.Refresh();
             var getslips = await Task.Run(GetPickingSlips);
             frm1.Refresh();
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables.Count > 0)
             {
-                dtbl = ds.Tables[0];
-                GridPickSlips.DataSource = dtbl;
-                frm1.Refresh();
-                GridPickSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                GridPickSlips.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                lblReccount.Text = dtbl.DefaultView.Count + " Records";
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dtbl = ds.Tables[0];
+                    GridPickSlips.DataSource = dtbl;
+                    frm1.Refresh();
+                    GridPickSlips.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    GridPickSlips.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    lblReccount.Text = dtbl.DefaultView.Count + " Records";
+                }
             }
         frm1.Dispose();
         }

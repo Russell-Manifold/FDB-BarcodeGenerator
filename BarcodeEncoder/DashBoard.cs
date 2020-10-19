@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -88,7 +89,7 @@ namespace BarcodeEncoder
             { }
             CreateForm = new Create();
             CreateForm.ShowDialog();
-            btnNewBarcode.Focus();
+            BtnCreateBarcode.Focus();
         }
 
         private void BtnCreate_Click(object sender, EventArgs e)
@@ -204,7 +205,7 @@ namespace BarcodeEncoder
             if (UserData["JobTitleCode"].ToString()=="Sup")
             {
                 btnPickSlipsList.Enabled = true;
-                btnNewBarcode.Enabled = true;
+                BtnCreateBarcode.Visible = true;
                 btnScan.Enabled = true;
                 btnCreate.Enabled = true;
                 //inv counts
@@ -248,25 +249,25 @@ namespace BarcodeEncoder
                 {
 
                 }
-                try
-                {
+                //try
+                //{
 
-                    if (Convert.ToBoolean(UserData["CreateBarcodes"]))
-                    {
-                        btnNewBarcode.Enabled = true;
-                        btnNewBarcode.BackColor = Color.Transparent;
-                    }
-                    else 
-                    {
-                        btnNewBarcode.Enabled = false;
-                        btnNewBarcode.BackColor = Color.LightGray;
-                    }
-                }
-                catch
-                {
-                    btnNewBarcode.Enabled = false;
-                    btnNewBarcode.BackColor = Color.LightGray;
-                }
+                //    if (Convert.ToBoolean(UserData["CreateBarcodes"]))
+                //    {
+                //        btnNewBarcode.Enabled = true;
+                //        btnNewBarcode.BackColor = Color.Transparent;
+                //    }
+                //    else 
+                //    {
+                //        btnNewBarcode.Enabled = false;
+                //        btnNewBarcode.BackColor = Color.LightGray;
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    btnNewBarcode.Enabled = false;
+                //    btnNewBarcode.BackColor = Color.LightGray;
+                //}
                 try
                 {
                     if (Convert.ToBoolean(UserData["LinkBarcodes"]))
@@ -280,7 +281,7 @@ namespace BarcodeEncoder
                         btnScan.BackColor = Color.LightGray;
                     }
                 }
-                catch
+                catch (Exception ex1)
                 {
                     btnScan.Enabled = true;
                     btnScan.BackColor = Color.LightGray;
@@ -298,7 +299,7 @@ namespace BarcodeEncoder
                         btnCreate.BackColor = Color.LightGray;
                     }
                 }
-                catch
+                catch (Exception ex2)
                 {
                     btnCreate.Enabled = false;
                     btnCreate.BackColor = Color.LightGray;
@@ -358,14 +359,17 @@ namespace BarcodeEncoder
                 {
                     DataSet ds = new DataSet();
                     ds = JsonConvert.DeserializeObject<DataSet>(res.Content);
-                    if (ds.Tables[0].Rows.Count > 0)
+                    if (ds.Tables.Count > 0)
                     {
-                        RepackBarcodePrint frm = new RepackBarcodePrint();
-                        frm.ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No barcodes to print", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            RepackBarcodePrint frm = new RepackBarcodePrint();
+                            frm.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No barcodes to print", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
                 else
@@ -374,5 +378,15 @@ namespace BarcodeEncoder
                 }
             }
         }
+
+        private async void timer1_Tick(object sender, EventArgs e)
+        {
+            // check for complete'd IO's for invoicing
+           await GetReadyDocs();
+        }
+        private async Task <bool> GetReadyDocs()
+        {
+            return false;
+         }
     }
 }

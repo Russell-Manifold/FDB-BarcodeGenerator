@@ -40,16 +40,13 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnPrint = new System.Windows.Forms.PictureBox();
             this.btnSaveLocation = new System.Windows.Forms.PictureBox();
             this.PicBoxFinal = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.PictureBox();
             this.btnCreate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveLocation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxFinal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClear)).BeginInit();
@@ -162,15 +159,6 @@
             this.metroLabel5.TabIndex = 32;
             this.metroLabel5.Text = "File name:";
             // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(36, 513);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(36, 19);
-            this.metroLabel7.TabIndex = 41;
-            this.metroLabel7.Text = "Print";
-            // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
@@ -190,18 +178,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 42;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrint.Image = global::BarcodeEncoder.Properties.Resources.Print;
-            this.btnPrint.Location = new System.Drawing.Point(23, 460);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(66, 50);
-            this.btnPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnPrint.TabIndex = 40;
-            this.btnPrint.TabStop = false;
-            this.btnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
             // btnSaveLocation
             // 
@@ -263,8 +239,6 @@
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.btnSaveLocation);
             this.Controls.Add(this.metroLabel5);
@@ -283,7 +257,6 @@
             this.Name = "Encoder";
             this.Style = MetroFramework.MetroColorStyle.Orange;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveLocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxFinal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClear)).EndInit();
@@ -306,8 +279,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
-        private System.Windows.Forms.PictureBox btnPrint;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private System.Windows.Forms.PictureBox btnSaveLocation;
         private System.Windows.Forms.PictureBox pictureBox1;
